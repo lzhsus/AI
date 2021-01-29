@@ -1,0 +1,101 @@
+{
+    "miniprogramRoot": "miniprogram/",
+    "cloudfunctionRoot": "cloudfunctions/",
+    "setting": {
+        "urlCheck": false,
+        "es6": false,
+        "enhance": true,
+        "postcss": false,
+        "preloadBackgroundData": false,
+        "minified": false,
+        "newFeature": true,
+        "coverView": true,
+        "nodeModules": false,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": false,
+        "scopeDataCheck": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "useMultiFrameRuntime": true,
+        "useApiHook": true,
+        "useApiHostProcess": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "enableEngineNative": false,
+        "bundle": false,
+        "useIsolateContext": true,
+        "useCompilerModule": true,
+        "userConfirmedUseCompilerModuleSwitch": false,
+        "userConfirmedBundleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": false
+    },
+    "appid": "wx1314c40d5e143385",
+    "projectname": "AR",
+    "libVersion": "2.13.1",
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "id": -1,
+                    "name": "db guide",
+                    "pathName": "pages/databaseGuide/databaseGuide",
+                    "query": ""
+                },
+                {
+                    "name": "pages/boast/boast",
+                    "pathName": "pages/boast/boast",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/emotional/emotional",
+                    "pathName": "pages/emotional/emotional",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/my/my",
+                    "pathName": "pages/my/my",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/demo/demo",
+                    "pathName": "pages/demo/demo",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/ranking/ranking",
+                    "pathName": "pages/ranking/ranking",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/verse/verse",
+                    "pathName": "pages/verse/verse",
+                    "scene": null
+                }
+            ]
+        }
+    }
+}

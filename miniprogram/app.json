@@ -1,0 +1,51 @@
+{
+	"pages": [
+		"pages/my/my",
+		"pages/index/index",
+		"pages/boast/boast",
+		"pages/emotional/emotional",
+		"pages/demo/demo",
+		"pages/ranking/ranking",
+		"pages/verse/verse"
+	],
+	"tabBar": {
+		"color": "#8a8a8a",
+		"selectedColor": "#13227a",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "讲笑话情话",
+				"iconPath":"./status/nav-icon1.png",
+				"selectedIconPath":"./status/nav-icon1-active.png"
+			},
+			{
+				"pagePath": "pages/emotional/emotional",
+				"text": "情感分析",
+				"iconPath":"./status/nav-icon2.png",
+				"selectedIconPath":"./status/nav-icon2-active.png"
+			},
+			{
+				"pagePath": "pages/boast/boast",
+				"text": "夸夸话术",
+				"iconPath":"./status/nav-icon3.png",
+				"selectedIconPath":"./status/nav-icon3-active.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "个人中心",
+				"iconPath":"./status/nav-icon4.png",
+				"selectedIconPath":"./status/nav-icon4-active.png"
+			}
+		]
+	},
+	"window": {
+		"backgroundColor": "#F6F6F6",
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#F6F6F6",
+		"navigationBarTitleText": "demo",
+		"navigationBarTextStyle": "black"
+	},
+	"sitemapLocation": "sitemap.json",
+	"servicemarket": true,
+	"style": "v2"
+}

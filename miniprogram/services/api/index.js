@@ -1,0 +1,35 @@
+import request from "./request";
+
+let api = Object.assign({},{});
+
+api.invokeMsg = function(data, isShowLoading=true){
+    return request('control','user/api/invoke/msg',data,isShowLoading);
+}
+api.invokeBoast = function(data, isShowLoading=true){
+    return request('control','user/api/invoke/boast',data,isShowLoading);
+}
+api.invokeEmotional = function(data, isShowLoading=true){
+    return request('control','user/api/invoke/emotional',data,isShowLoading);
+}
+api.userInfo = function(data, isShowLoading=true){
+    return request('control','user/api/info',data,isShowLoading);
+}
+api.userSign = function(data, isShowLoading=true){
+    return request('control','user/api/sign',data,isShowLoading);
+}
+api.userCreate = function(data, isShowLoading=true){
+    return request('control','user/api/create',data,isShowLoading);
+}
+api.userRanking = function(data, isShowLoading=true){
+    return request('control','user/api/ranking',data,isShowLoading);
+}
+api.userRankinglist = function(data, isShowLoading=true){
+    return request('control','user/api/rankinglist',data,isShowLoading);
+}
+api.verseCreate = function(data, isShowLoading=false){
+    return request('control','user/api/verse/create',data,isShowLoading);
+}
+
+
+
+module.exports = api;
