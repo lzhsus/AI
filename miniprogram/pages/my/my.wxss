@@ -177,3 +177,9 @@
   width: 50rpx;
   height: 50rpx;
 }
+weather {
+  opacity: 0;
+}
+weather .hbao {
+  display: none;
+}
