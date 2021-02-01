@@ -2,7 +2,7 @@
     "miniprogramRoot": "miniprogram/",
     "cloudfunctionRoot": "cloudfunctions/",
     "setting": {
-        "urlCheck": false,
+        "urlCheck": true,
         "es6": false,
         "enhance": true,
         "postcss": false,
@@ -39,7 +39,7 @@
     },
     "appid": "wx1314c40d5e143385",
     "projectname": "AR",
-    "libVersion": "2.13.1",
+    "libVersion": "2.13.2",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "condition": {
@@ -93,6 +93,18 @@
                 {
                     "name": "pages/verse/verse",
                     "pathName": "pages/verse/verse",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/magicgirl/magicgirl",
+                    "pathName": "pages/magicgirl/magicgirl",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/manager/manager",
+                    "pathName": "pages/manager/manager",
                     "scene": null
                 }
             ]

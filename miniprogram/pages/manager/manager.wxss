@@ -1,0 +1,10 @@
+.luyin-icon {
+  position: fixed;
+  bottom: 200rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160rpx;
+}
+.luyin-icon:active {
+  opacity: 0.5;
+}

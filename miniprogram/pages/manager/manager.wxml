@@ -1,0 +1,7 @@
+
+
+
+<!-- 录音 -->
+<view class="luyin-icon {{isTouch?'active':''}}" bindtouchstart='bindtouchstart' bindtouchend='bindtouchend' bindtouchmove='bindtouchmove'>
+    <image src="https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/luyin-icon.png?sign=094e95dbdb10707865db12da55740e68&t=1612177205" class="img100" mode="widthFix" />
+</view>

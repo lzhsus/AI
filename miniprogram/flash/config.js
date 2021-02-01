@@ -8,11 +8,12 @@ var flashObj={
     bottomLayer: {name: "bg"},
     topLayer: {name: "nav"},
     middleLayer: {
-        index:{name:"index"}
+        index:{name:"index"},
+        magicgirl:{name:"magicgirl"}
     },
     asset: {},
     firstPage: 'index',
-    firstload: ['index'],
+    firstload: ['index','magicgirl'],
     preload: [],
     preloadNum: 1,
   };
@@ -43,8 +44,8 @@ function gotoPageHandler(e){
     });
 }
 export const loadInit=function(firstPage,cb){
-    // flashObj['firstPage']=firstPage;
-    // flashObj['firstload']=[firstPage];
+    flashObj['firstPage']=firstPage;
+    flashObj['firstload']=[firstPage];
     flash = new res.Flash(createjs.canvas);
     flash.loadInit(flashObj)
     .then((lib) => {

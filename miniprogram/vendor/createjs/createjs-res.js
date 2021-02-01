@@ -63,6 +63,14 @@ function Loader(cls,loaderNum, link = false) {
                 lib = require("../../flash/index.js");
             }
             break;
+        
+      case "magicgirl":
+        canvas = require("../../flash/static/magicgirl.js");
+        if (!link) {
+            lib = require("../../flash/magicgirl.js");
+        }
+        break;
+            
     }
 
       
@@ -115,7 +123,7 @@ function Loader(cls,loaderNum, link = false) {
   function startLoad(id) {
     var loadStepCount = 0;
     var tempArr=[];
-    var tempTime = "20210128"
+    var tempTime = "202102010928"
     for (let i = id; i < resLength && i < id + preloadNum; i++) {
       let imgObj = wxCanvas.createImage();
       imgObj.onload = function() {
