@@ -1,0 +1,3 @@
+<view class="btn">手机充值
+    <navigator url="plugin://myPlugin/home?color=#34B77F"></navigator>
+</view>

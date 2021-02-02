@@ -105,6 +105,13 @@
                 {
                     "name": "pages/manager/manager",
                     "pathName": "pages/manager/manager",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/txv-video/txv-video",
+                    "pathName": "pages/txv-video/txv-video",
+                    "query": "",
                     "scene": null
                 }
             ]
