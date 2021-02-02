@@ -29,6 +29,13 @@ api.userRankinglist = function(data, isShowLoading=true){
 api.verseCreate = function(data, isShowLoading=false){
     return request('control','user/api/verse/create',data,isShowLoading);
 }
+// 音频使用记录
+api.managerLog = function(data, isShowLoading=false){
+    return request('control','user/api/manager_log',data,isShowLoading);
+}
+api.translateLog = function(data, isShowLoading=false){
+    return request('control','user/api/translate_log',data,isShowLoading);
+}
 
 
 

@@ -7,6 +7,8 @@ const create = require('./create/index');
 const ranking = require('./ranking/index');
 const rankinglist = require('./rankinglist/index');
 const verse = require('./verse/index');
+const manager_log = require('./manager_log/index');
+const translate_log = require('./translate_log/index');
 
 module.exports = {
     invoke:invoke,
@@ -17,5 +19,7 @@ module.exports = {
     create:create,
     ranking:ranking,
     rankinglist:rankinglist,
-    verse:verse
+    verse:verse,
+    manager_log:manager_log,
+    translate_log:translate_log
 }

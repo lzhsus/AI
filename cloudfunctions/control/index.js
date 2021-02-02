@@ -90,6 +90,20 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('user/api/manager_log', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.manager_log(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('user/api/translate_log', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.translate_log(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     return app.serve();
