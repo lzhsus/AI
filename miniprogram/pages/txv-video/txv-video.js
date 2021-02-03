@@ -5,8 +5,8 @@ Page({
     onLoad: function (options) {
 
     },
-    onReady: function () {
-
+    bindchange(e){
+        let {current} = e.detail;
     },
     onShow: function () {
 

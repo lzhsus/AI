@@ -62,13 +62,6 @@
                 <text class="tag02">剩余 未知</text>
             </view>
         </view>
-        <!-- <view bindtap="openPageClick" data-path="/pages/worldgame/worldgame" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon06.png)">
-            <text class="value">手游排行</text>
-            <view class="tag-box">
-                <text class="tag01">已用 未知</text>
-                <text class="tag02">剩余 未知</text>
-            </view>
-        </view> -->
     </view>
     <weather size="xl" theme="light" bgcolor="#0081ff"/>
 </view>

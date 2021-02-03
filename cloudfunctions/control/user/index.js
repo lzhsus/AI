@@ -9,6 +9,7 @@ const rankinglist = require('./rankinglist/index');
 const verse = require('./verse/index');
 const manager_log = require('./manager_log/index');
 const translate_log = require('./translate_log/index');
+const active = require('./active/index');
 
 module.exports = {
     invoke:invoke,
@@ -21,5 +22,6 @@ module.exports = {
     rankinglist:rankinglist,
     verse:verse,
     manager_log:manager_log,
-    translate_log:translate_log
+    translate_log:translate_log,
+    active:active
 }

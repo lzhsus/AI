@@ -104,6 +104,14 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('user/api/active', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.active(event, context)
+            resolve(res);
+        }); 
+    });
+    
     
     
     return app.serve();

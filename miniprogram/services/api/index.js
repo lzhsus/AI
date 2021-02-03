@@ -36,6 +36,12 @@ api.managerLog = function(data, isShowLoading=false){
 api.translateLog = function(data, isShowLoading=false){
     return request('control','user/api/translate_log',data,isShowLoading);
 }
+api.activeList = function(data, isShowLoading=false){
+    return request('control','user/api/active',data,isShowLoading);
+}
+api.thirdpartyInfo = function(data, isShowLoading=false){
+    return request('thirdparty','thirdparty/api/info',data,isShowLoading);
+}
 
 
 

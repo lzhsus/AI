@@ -134,6 +134,14 @@ module.exports =async (event,context,root)=>{
             })
             .end()
         result = result.list.map(res=>{
+                if(!res.jokebot_msg1) res.jokebot_msg1 ={count:0};
+                if(!res.jokebot_msg2) res.jokebot_msg2 ={count:0};
+                if(!res.jokebot_msg3) res.jokebot_msg3 ={count:0};
+                if(!res.jokebot_msg4) res.jokebot_msg4 ={count:0};
+                if(!res.jokebot_msg5) res.jokebot_msg5 ={count:0};
+                if(!res.boast_msg) res.boast_msg = {count:0};
+                if(!res.emotional_msg) res.emotional_msg = {count:0};
+                
             res.jokebot_msg = {
                 count:res.jokebot_msg1['count']+res.jokebot_msg3['count']+res.jokebot_msg3['count']+res.jokebot_msg4['count']+res.jokebot_msg5['count']
             }

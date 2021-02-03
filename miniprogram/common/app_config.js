@@ -7,9 +7,13 @@ export default{
     ossCloud:"cloud://text-4zw80.7465-text-4zw80-1301526660/",
     appid: 'wx1314c40d5e143385',
     envVersion: '',
+    tabPath:[],
     baidu:{
         AppID:23622740,
         ApiKey:'sj6cA1Ce0e3Gf1gZTOZ6F2mU',
         SecretKey:"7N9GVEqDYlAP7TWcrUdFUbWgOHuMaU1K"
+    },
+    waimai:{
+        apikey:"JRyKkdigD7e01Sb3P9UCCljrMPduPyZ5",//接口系统识别调用用户唯一凭证，apikey重置之后 token也会随之进行变更。	
     }
 }

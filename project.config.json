@@ -113,6 +113,17 @@
                     "pathName": "pages/txv-video/txv-video",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/active/active",
+                    "pathName": "pages/active/active",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/txv-video/txv-video",
+                    "pathName": "pages/txv-video/txv-video",
+                    "scene": null
                 }
             ]
         }

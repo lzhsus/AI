@@ -1,4 +1,5 @@
 import ls from "../services/cz-storage";
+import appConfig from "../common/app_config";
 
 export const LS = ls;
 export const isIOS = function(){
@@ -71,4 +72,45 @@ export const formatSeconds = function (value,language) {
         }
     }
     return result;
+}
+
+// 页面跳转
+export const openWeappLink = function (link, pages) {
+    console.log('link',link)
+    if( !link ) return;
+    if( link.indexOf("https:")!=-1 ){
+        if( pages ){
+            wx.navigateTo({
+                url: pages+'?link='+encodeURIComponent(link),
+            });
+            return;
+        }
+        console.log('22222')
+        wx.navigateTo({
+            url: '/pages/webview/webview?link='+encodeURIComponent(link),
+        });
+    }else{
+        if( link.indexOf("appid:")!=-1 ){
+            let path = link.split("##");
+            let _appid = path[0].replace(/appid:/i, "");
+            let _path = path[1]||'';
+            if( _appid ){
+                wx.navigateToMiniProgram({
+                    appId: _appid,
+                    path: _path,
+                });
+            }
+        }else{
+            let tabPathLink = link.split('?')[0];
+            if( appConfig.tabPath.indexOf(tabPathLink)!=-1 ){
+                wx.switchTab({
+                    url: link,
+                });
+            }else{
+                wx.navigateTo({
+                    url: link
+                });
+            }
+        }            
+    }    
 }
