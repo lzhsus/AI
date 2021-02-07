@@ -114,3 +114,6 @@ export const openWeappLink = function (link, pages) {
         }            
     }    
 }
+export const getFileID = function(fileID){
+    return fileID.replace('cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/','https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/');
+}

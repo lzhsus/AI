@@ -123,6 +123,12 @@
                 {
                     "name": "pages/txv-video/txv-video",
                     "pathName": "pages/txv-video/txv-video",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/orc/orc",
+                    "pathName": "pages/orc/orc",
                     "scene": null
                 }
             ]

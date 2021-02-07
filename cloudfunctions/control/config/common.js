@@ -136,9 +136,22 @@ function randomString(len) {
  　　}
  　　return pwd;
  }
+ 
+ function  randomeIs32(num=32) {
+    /*生成32位随机流水号*/
+    /*默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1*/
+    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    var maxPos = $chars.length;
+    var pwd = '';
+    for (i = 0; i < num||32; i++) {
+         pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+}
 module.exports = {
     random_No:random_No,
     getNewTime:getNewTime,
     randomString:randomString,
-    error_type:error_type
+    error_type:error_type,
+    randomeIs32:randomeIs32
 }

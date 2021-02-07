@@ -42,6 +42,12 @@ api.activeList = function(data, isShowLoading=false){
 api.thirdpartyInfo = function(data, isShowLoading=false){
     return request('thirdparty','thirdparty/api/info',data,isShowLoading);
 }
+api.wx_serverApiOcr = function(data, isShowLoading=false){
+    return request('control','wx_server/api/ocr',data,isShowLoading);
+}
+api.wxServerApiCreate = function(data, isShowLoading=false){
+    return request('control','wx_server/api/create',data,isShowLoading);
+}
 
 
 

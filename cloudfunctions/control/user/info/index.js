@@ -57,7 +57,7 @@ module.exports =async (event,context,root)=>{
                 as:'emotional_msg'
             })
             .lookup({
-                from:"invoke_jokebot_msg1",
+                from:"invoke_jokebot_msg",
                 let:{},
                 pipeline: $.pipeline()
                     .match({
@@ -65,61 +65,13 @@ module.exports =async (event,context,root)=>{
                     })
                     .count('count')
                     .done(),
-                as:'jokebot_msg1'
-            })
-            .lookup({
-                from:"invoke_jokebot_msg2",
-                let:{},
-                pipeline: $.pipeline()
-                    .match({
-                        openId:_.eq(OPENID)
-                    })
-                    .count('count')
-                    .done(),
-                as:'jokebot_msg2'
-            })
-            .lookup({
-                from:"invoke_jokebot_msg3",
-                let:{},
-                pipeline: $.pipeline()
-                    .match({
-                        openId:_.eq(OPENID)
-                    })
-                    .count('count')
-                    .done(),
-                as:'jokebot_msg3'
-            })
-            .lookup({
-                from:"invoke_jokebot_msg4",
-                let:{},
-                pipeline: $.pipeline()
-                    .match({
-                        openId:_.eq(OPENID)
-                    })
-                    .count('count')
-                    .done(),
-                as:'jokebot_msg4'
-            })
-            .lookup({
-                from:"invoke_jokebot_msg5",
-                let:{},
-                pipeline: $.pipeline()
-                    .match({
-                        openId:_.eq(OPENID)
-                    })
-                    .count('count')
-                    .done(),
-                as:'jokebot_msg5'
+                as:'jokebot_msg'
             })
             .project({
                 is_sign:true,//当天签到
                 emotional_msg:$.arrayElemAt(['$emotional_msg', 0]),//情感分析
                 boast_msg:$.arrayElemAt(['$boast_msg', 0]),         //夸夸话术
-                jokebot_msg1: $.arrayElemAt(['$jokebot_msg1', 0]),//笑话
-                jokebot_msg2: $.arrayElemAt(['$jokebot_msg2', 0]),
-                jokebot_msg3: $.arrayElemAt(['$jokebot_msg3', 0]),
-                jokebot_msg4: $.arrayElemAt(['$jokebot_msg4', 0]),
-                jokebot_msg5: $.arrayElemAt(['$jokebot_msg5', 0]),
+                jokebot_msg: $.arrayElemAt(['$jokebot_msg', 0]),//笑话
                 create_time: true,
                 openId:true,
                 token:true,
@@ -134,17 +86,10 @@ module.exports =async (event,context,root)=>{
             })
             .end()
         result = result.list.map(res=>{
-                if(!res.jokebot_msg1) res.jokebot_msg1 ={count:0};
-                if(!res.jokebot_msg2) res.jokebot_msg2 ={count:0};
-                if(!res.jokebot_msg3) res.jokebot_msg3 ={count:0};
-                if(!res.jokebot_msg4) res.jokebot_msg4 ={count:0};
-                if(!res.jokebot_msg5) res.jokebot_msg5 ={count:0};
-                if(!res.boast_msg) res.boast_msg = {count:0};
-                if(!res.emotional_msg) res.emotional_msg = {count:0};
-                
-            res.jokebot_msg = {
-                count:res.jokebot_msg1['count']+res.jokebot_msg3['count']+res.jokebot_msg3['count']+res.jokebot_msg4['count']+res.jokebot_msg5['count']
-            }
+            if(!res.jokebot_msg) res.jokebot_msg1 ={count:0};
+            if(!res.boast_msg) res.boast_msg = {count:0};
+            if(!res.emotional_msg) res.emotional_msg = {count:0};
+            
             res.is_sign = res.is_sign&&res.is_sign.length?1:0
             return res;
         })

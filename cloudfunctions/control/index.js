@@ -10,6 +10,7 @@ cloud.init({
  * 管理员
  */
 const user = require('./user/index');
+const wx_server = require('./wx_server/index');
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -108,6 +109,21 @@ exports.main = async (event, context) => {
         let { OPENID} = cloud.getWXContext()
         ctx.body = new Promise(async resolve => {
             var res = await user.active(event, context)
+            resolve(res);
+        }); 
+    });
+    // 微信服务
+    app.router('wx_server/api/ocr', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await wx_server.OCR(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('wx_server/api/create', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await wx_server.create(event, context)
             resolve(res);
         }); 
     });

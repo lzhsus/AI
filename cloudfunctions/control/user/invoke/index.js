@@ -51,7 +51,7 @@ module.exports =async (event,context,root)=>{
         if(result&&result.errCode==0){
             let data = ((JSON.parse(result.data)).data_list)[0];
             
-            db.collection('invoke_jokebot_msg'+invokeData['mode']).add({
+            db.collection('invoke_jokebot_msg').add({
                 // data 字段表示需新增的 JSON 数据
                 data: {
                     client_msg_id:client_msg_id,
