@@ -14,7 +14,7 @@ Page({
     success(data){
         Api.wxServerApiCreate(data).then(res=>{
             if(res['success']){
-
+                console.log(res)
             }else{
                 wx.showModal({
                     content: res.msg,

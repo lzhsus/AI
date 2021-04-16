@@ -112,6 +112,36 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('user/api/dog', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.dog(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('user/api/reptile', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.reptile(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('user/api/chongwuupdata', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.chongwuupdata(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('user/api/_send', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user._send(event, context)
+            resolve(res);
+        }); 
+    });
+    
+    
     // 微信服务
     app.router('wx_server/api/ocr', (ctx) => {
         let { OPENID} = cloud.getWXContext()

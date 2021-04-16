@@ -39,9 +39,10 @@
     },
     "appid": "wx1314c40d5e143385",
     "projectname": "AR",
-    "libVersion": "2.13.2",
+    "libVersion": "2.11.2",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
     "condition": {
         "plugin": {
             "list": []
@@ -129,6 +130,37 @@
                 {
                     "name": "pages/orc/orc",
                     "pathName": "pages/orc/orc",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/gather/gather",
+                    "pathName": "pages/gather/gather",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/test/test",
+                    "pathName": "pages/test/test",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/orc/orc",
+                    "pathName": "pages/orc/orc",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/dog/dog",
+                    "pathName": "pages/dog/dog",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/test/test",
+                    "pathName": "pages/test/test",
+                    "query": "",
                     "scene": null
                 }
             ]

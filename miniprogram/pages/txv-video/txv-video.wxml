@@ -1,18 +1,6 @@
 
 <swiper vertical bindchange="bindchange">
     <swiper-item>
-        <txv-video vid="r00358kkr8x" playerid="txv1" autoplay="{{false}}" defn="杜比" width="100%" height="100%"></txv-video>
-    </swiper-item>
-    <swiper-item>
-        <txv-video vid="e0035xy42do" playerid="txv1" autoplay="{{false}}" defn="杜比" width="100%" height="100%"></txv-video>
-    </swiper-item>
-    <swiper-item>
-        <txv-video vid="e0035xy42do" playerid="txv1" autoplay="{{false}}" defn="杜比" width="100%" height="100%"></txv-video>
-    </swiper-item>
-    <swiper-item>
-        <txv-video vid="e0035xy42do" playerid="txv1" autoplay="{{false}}" defn="杜比" width="100%" height="100%"></txv-video>
-    </swiper-item>
-    <swiper-item>
-        <txv-video vid="e0035xy42do" playerid="txv1" autoplay="{{false}}" defn="杜比" width="100%" height="100%"></txv-video>
+        <txv-video vid="f3226vg28on" playerid="txv1" autoplay="{{false}}" defn="杜比" width="100%" height="100%"></txv-video>
     </swiper-item>
 </swiper>

@@ -7,6 +7,19 @@ export const isIOS = function(){
 	return res.system.toLowerCase().indexOf("ios")!=-1&&res.platform.indexOf("devtools")==-1
 }
 
+export const subscribeMessage = function(tmplIds=[]){
+    return new Promise(function (resolve) {
+        wx.requestSubscribeMessage({
+            tmplIds: tmplIds,
+            complete:(res)=>{
+                console.log('requestSubscribeMessage',res)
+                res.tmplIds = tmplIds;
+                resolve(res);
+            }
+        });
+    });
+}
+
 export const getNewTime = function () {
     var date =  new Date();
     var year = date.getFullYear();

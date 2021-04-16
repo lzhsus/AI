@@ -35,7 +35,7 @@ module.exports =async (event,context,root)=>{
             await db.collection('ranking_list').add({
                 data: Object.assign(parame,data_info)
             })
-        }else{
+        }else if(parame.time>ranking[0].time){
             await db.collection('ranking_list').where({
                 openId:OPENID
             }).update({

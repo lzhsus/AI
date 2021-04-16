@@ -15,6 +15,11 @@ Page({
     onShow: function () {
         this.getUserInfo()
     },
+    opensetPage(){
+        wx.navigateTo({
+          url: '/pages/setting',
+        })
+    },
     openPageClick(e){
         // 请先完成每日签到
         if(this.data.userInfo.is_sign!=1){
@@ -35,7 +40,12 @@ Page({
             url: '/pages/ranking/ranking',
         })
     },
-    siginClick(){
+    async siginClick(){
+        let _send = 'SaHm16y6Cjdod2w_EgbZhyhjUyKA4U72QRTUwjAJE30'
+        let msg = await common.subscribeMessage([_send])
+        if( msg[_send]&&msg[_send]=='accept' ){
+            Api.apiSend({id:_send})
+        }
         if(this.data.userInfo.is_sign==1){
             wx.showModal({
                 content:'当天已签到！',

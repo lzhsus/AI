@@ -5,6 +5,7 @@
 		"pages/boast/boast",
 		"pages/emotional/emotional",
 		"pages/demo/demo",
+		"pages/test/test",
 		"pages/ranking/ranking",
 		"pages/verse/verse",
 		"pages/magicgirl/magicgirl",
@@ -13,12 +14,21 @@
 		"pages/txv-video/txv-video",
 		"pages/active/active",
 		"pages/orc/orc",
+		"pages/gather/gather",
+		"pages/dog/dog",
+		"pages/dogdetail/dogdetail",
+		"pages/setting/setting",
 		"pages/webview/webview"
 	],
 	"tabBar": {
 		"color": "#8a8a8a",
 		"selectedColor": "#13227a",
 		"list": [{
+				"pagePath": "pages/dog/dog",
+				"text": "宠物狗",
+				"iconPath": "./status/nav-icon3.png",
+				"selectedIconPath": "./status/nav-icon3-active.png"
+			},{
 				"pagePath": "pages/index/index",
 				"text": "讲笑话情话",
 				"iconPath": "./status/nav-icon1.png",
@@ -29,12 +39,6 @@
 				"text": "情感分析",
 				"iconPath": "./status/nav-icon2.png",
 				"selectedIconPath": "./status/nav-icon2-active.png"
-			},
-			{
-				"pagePath": "pages/boast/boast",
-				"text": "夸夸话术",
-				"iconPath": "./status/nav-icon3.png",
-				"selectedIconPath": "./status/nav-icon3-active.png"
 			},
 			{
 				"pagePath": "pages/my/my",
@@ -53,14 +57,15 @@
 	},
 	"sitemapLocation": "sitemap.json",
 	"servicemarket": true,
-	"style": "v2",
 	"permission": {
 		"scope.userLocation": {
 			"desc": "根据用户当前位置获取实时天气信息"
 		}
 	},
 	"usingComponents": {
-		"weather": "plugin://weather/weather"
+		"weather": "plugin://weather/weather",
+		"van-tab": "./components/vant/tab/index",
+		"van-tabs": "./components/vant/tabs/index"
 	},
 	"plugins": {
 		"weather": {
@@ -71,17 +76,13 @@
             "version": "0.3.4",
             "provider": "wx069ba97219f66d99"
 		},
-		"myPlugin":{
-            "version": "1.0.3",
-            "provider": "wxbb22134f6a3611c6"
-		},
-		"tencentvideo": {
-		  "version": "1.3.20",
-		  "provider": "wxa75efa648b60994b"
-		},
 		"ocr-plugin": {
-		"version": "3.0.6",
-		"provider": "wx4418e3e031e551be"
+			"version": "3.0.6",
+			"provider": "wx4418e3e031e551be"
+		},
+		"takeaway": {
+		  "version": "3.0.2",
+		  "provider": "wx1f21ff2855eba0d1"
 		}
 	}
 }

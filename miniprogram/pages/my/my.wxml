@@ -1,5 +1,6 @@
 <view class="content-weapper" id="myWeapp">
     <view class="head-top">
+        <view class="set-icon" bindtap="opensetPage" wx:if="{{userInfo.avatarUrl}}"></view>
         <view class="user-msg-box">                    
             <view class="cuserAvatarUrl">
                 <view><open-data type="userAvatarUrl"></open-data></view>
@@ -33,7 +34,7 @@
                 <text class="tag02">剩余 {{userInfo.restrict_count.qinggan-userInfo.emotional_msg.count}}</text>
             </view>
         </view>
-        <view class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon02.png)">
+        <view bindtap="openPageClick" data-path="/pages/boast/boast" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon02.png)">
             <text class="value">夸夸话术</text>
             <view class="tag-box">
                 <text class="tag01">已用 {{userInfo.boast_msg.count}}</text>
@@ -62,6 +63,16 @@
                 <text class="tag02">剩余 未知</text>
             </view>
         </view>
+        <!-- <view class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon06.png)">
+            <text class="value red">领取外卖红包</text>
+            <view class="tag-box">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+            <navigator  url="plugin://takeaway/index" >
+                <button>领取外卖红包</button>
+            </navigator>
+        </view> -->
     </view>
     <weather size="xl" theme="light" bgcolor="#0081ff"/>
 </view>

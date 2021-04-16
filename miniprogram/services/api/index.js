@@ -1,6 +1,7 @@
 import request from "./request";
+import cloud_index from "./cloud_index";
 
-let api = Object.assign({},{});
+let api = Object.assign({},cloud_index);
 
 api.invokeMsg = function(data, isShowLoading=true){
     return request('control','user/api/invoke/msg',data,isShowLoading);
@@ -29,6 +30,25 @@ api.userRankinglist = function(data, isShowLoading=true){
 api.verseCreate = function(data, isShowLoading=false){
     return request('control','user/api/verse/create',data,isShowLoading);
 }
+api.dogList = function(data, isShowLoading=true){
+    return request('control','user/api/dog',data,isShowLoading);
+}
+api.dogDetail = function(data, isShowLoading=true){
+    return request('control','user/api/dog',data,isShowLoading);
+}
+api.reptileList = function(data, isShowLoading=true){
+    return request('control','user/api/reptile',data,isShowLoading);
+}
+api.reptileDetail = function(data, isShowLoading=true){
+    return request('control','user/api/reptile',data,isShowLoading);
+}
+api.chongwuupdata = function(data, isShowLoading=true){
+    return request('control','user/api/chongwuupdata',data,isShowLoading);
+}
+api.apiSend = function(data, isShowLoading=false){
+    return request('control','user/api/_send',data,isShowLoading);
+}
+
 // 音频使用记录
 api.managerLog = function(data, isShowLoading=false){
     return request('control','user/api/manager_log',data,isShowLoading);
