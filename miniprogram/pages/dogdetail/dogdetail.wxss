@@ -1,11 +1,11 @@
 page {
   background: #f4f4f4;
 }
-#dataDetail {
+#petDetail .pet-content .pet-content-main {
   padding: 20rpx;
   box-sizing: border-box;
 }
-#dataDetail .model {
+#petDetail .pet-content .pet-content-main .model {
   width: 100%;
   padding: 40rpx;
   border-radius: 20rpx;
@@ -19,55 +19,55 @@ page {
   background-size: 400rpx auto;
   margin-bottom: 30rpx;
 }
-#dataDetail .model .m-title {
+#petDetail .pet-content .pet-content-main .model .m-title {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 12rpx;
 }
-#dataDetail .model .dect {
+#petDetail .pet-content .pet-content-main .model .dect {
   font-size: 12px;
   color: #000;
 }
-#dataDetail .model .petID {
+#petDetail .pet-content .pet-content-main .model .petID {
   position: absolute;
   top: 20rpx;
   right: 20rpx;
   font-size: 10px;
   color: #999;
 }
-#dataDetail .model .name {
+#petDetail .pet-content .pet-content-main .model .name {
   font-size: 20px;
   color: #000;
   font-weight: bold;
 }
-#dataDetail .model .eng-name {
+#petDetail .pet-content .pet-content-main .model .eng-name {
   font-size: 14px;
   color: #888;
   height: 60rpx;
   line-height: 60rpx;
 }
-#dataDetail .model .nation-life {
+#petDetail .pet-content .pet-content-main .model .nation-life {
   font-size: 12px;
   color: #1d1d1d;
   height: 50rpx;
   line-height: 50rpx;
 }
-#dataDetail .model .nation-life text {
+#petDetail .pet-content .pet-content-main .model .nation-life text {
   margin-right: 12rpx;
 }
-#dataDetail .model .character {
+#petDetail .pet-content .pet-content-main .model .character {
   font-size: 12px;
   color: #000;
   height: 50rpx;
   line-height: 50rpx;
 }
-#dataDetail .model .easyOfDisease {
+#petDetail .pet-content .pet-content-main .model .easyOfDisease {
   font-size: 12px;
   color: #000;
   height: 50rpx;
   line-height: 50rpx;
 }
-#dataDetail .model .price {
+#petDetail .pet-content .pet-content-main .model .price {
   font-size: 14px;
   color: #383838;
   height: 40rpx;

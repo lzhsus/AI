@@ -11,6 +11,9 @@ Page({
     },
     onLoad (opt) {
         mixinsIndex.onLoad(opt);
+        Api.tabList().then(res=>{
+            console.log(res);
+        })
     },
     onShow: function () {
         this.getUserInfo()

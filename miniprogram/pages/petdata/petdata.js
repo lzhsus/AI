@@ -6,41 +6,26 @@ import mixinsIndex from '../../mixins/index';
 Page({
     data: {
         pageShow:false,
-        dogList:[],
-        tabIndex:1
+        petList:[],
+        tabIndex:1,
+        tabLis:[]
     },
     async onLoad (opt) {
         mixinsIndex.onLoad(opt);
-        this.getDataList()
-    },
-    getDataList(){
-        if(this.data.tabIndex==1){
-            this.getDogList()
-        }else{
-            this.getReptileList()
-        }
-    },
-    getDogList(){
-        Api.dogList().then(res=>{
-            if(res['success']){
-                res = res.result||{}
-                this.setData({
-                    dogList:res.list||[],
-                    pageShow:true
-                })
-            }else{
-                wx.showModal({
-                    content: res.msg,
-                  })
-            }
+        let list = await Api.tabList();
+        this.setData({
+            tabLis:list
         })
+        this.getPetList()
     },
-    getReptileList(){
-        Api.reptileList().then(res=>{
+    getPetList(){
+        Api.proPetList({
+            type:this.data.tabIndex,
+        }).then(res=>{
             if(res['success']){
                 res = res.result||{}
                 this.setData({
-                    dogList:res.list||[],
+                    petList:res.list||[],
                     pageShow:true
                 })
             }else{
@@ -55,7 +40,7 @@ Page({
         this.setData({
             tabIndex:id
         })
-        this.getDataList()
+        this.getPetList()
     },
     openDogDetail(e){
         let {petid,coverurl,type} = e.currentTarget.dataset;

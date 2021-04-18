@@ -15,7 +15,7 @@
 		"pages/active/active",
 		"pages/orc/orc",
 		"pages/gather/gather",
-		"pages/dog/dog",
+		"pages/petdata/petdata",
 		"pages/dogdetail/dogdetail",
 		"pages/setting/setting",
 		"pages/webview/webview"
@@ -24,7 +24,7 @@
 		"color": "#8a8a8a",
 		"selectedColor": "#13227a",
 		"list": [{
-				"pagePath": "pages/dog/dog",
+				"pagePath": "pages/petdata/petdata",
 				"text": "宠物狗",
 				"iconPath": "./status/nav-icon3.png",
 				"selectedIconPath": "./status/nav-icon3-active.png"
@@ -79,10 +79,6 @@
 		"ocr-plugin": {
 			"version": "3.0.6",
 			"provider": "wx4418e3e031e551be"
-		},
-		"takeaway": {
-		  "version": "3.0.2",
-		  "provider": "wx1f21ff2855eba0d1"
 		}
 	}
 }

@@ -15,6 +15,9 @@ const dog = require('./dog/index');
 const reptile = require('./reptile/index');
 const chongwuupdata = require('./chongwuupdata/index');
 
+const petDetail = require('./petDetail/index');
+const petList = require('./petList/index');
+
 module.exports = {
     invoke:invoke,
     boast:boast,
@@ -28,8 +31,8 @@ module.exports = {
     manager_log:manager_log,
     translate_log:translate_log,
     active:active,
-    dog:dog,
-    reptile:reptile,
     chongwuupdata:chongwuupdata,
-    _send:_send
+    _send:_send,
+    petDetail:petDetail,
+    petList:petList
 }

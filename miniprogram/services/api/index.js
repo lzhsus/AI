@@ -1,4 +1,5 @@
 import request from "./request";
+import requestHttp from "./requestHttp";
 import cloud_index from "./cloud_index";
 
 let api = Object.assign({},cloud_index);
@@ -30,18 +31,6 @@ api.userRankinglist = function(data, isShowLoading=true){
 api.verseCreate = function(data, isShowLoading=false){
     return request('control','user/api/verse/create',data,isShowLoading);
 }
-api.dogList = function(data, isShowLoading=true){
-    return request('control','user/api/dog',data,isShowLoading);
-}
-api.dogDetail = function(data, isShowLoading=true){
-    return request('control','user/api/dog',data,isShowLoading);
-}
-api.reptileList = function(data, isShowLoading=true){
-    return request('control','user/api/reptile',data,isShowLoading);
-}
-api.reptileDetail = function(data, isShowLoading=true){
-    return request('control','user/api/reptile',data,isShowLoading);
-}
 api.chongwuupdata = function(data, isShowLoading=true){
     return request('control','user/api/chongwuupdata',data,isShowLoading);
 }
@@ -68,7 +57,19 @@ api.wx_serverApiOcr = function(data, isShowLoading=false){
 api.wxServerApiCreate = function(data, isShowLoading=false){
     return request('control','wx_server/api/create',data,isShowLoading);
 }
+api.wxServerApiUpdata = function(data, isShowLoading=false){
+    return request('control','wx_server/api/updata',data,isShowLoading);
+}
 
+api.proPetList = function(data, isShowLoading=true){
+    return request('control','user/api/pet/list',data,isShowLoading);
+}
+api.proPetDetail = function(data, isShowLoading=true){
+    return request('control','user/api/pet/detail',data,isShowLoading);
+}
+api.tabList = function(data, isShowLoading=true){
+    return requestHttp('https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/tablist.js?v=3333',data,isShowLoading);
+}
 
 
 module.exports = api;

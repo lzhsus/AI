@@ -9,20 +9,20 @@ const db = cloud.database({
 const _ = db.command;
 const $ = _.aggregate
 // 云函数入口函数
+    const log = cloud.logger()
 exports.main = async (event, context) => {
     const {
         OPENID
     } = cloud.getWXContext();
     let parsms = event.data;
-    const log = cloud.logger()
     let sendData = {
         page: 'pages/my/my',
         data: {
             thing2: { //奖励
-                value: "每日签到获得相应的奖励次数~"
+                value: "每日签到奖励次数~"
             },
             time3: { //签到时间
-                value: new Date().getTime()
+                value: dateFormat("YYYY-MM-DD", new Date())
             }
         }
     }
@@ -32,45 +32,49 @@ exports.main = async (event, context) => {
         .end()
     let total = 0;
     let msgList = []
-    if (user && user.list && user.list.length) {
-        let newArr = [...new Set(user.list)]; // 这个方法最简便
-        total = newArr.length;
+    try {
+        let newArr = []; // 这个方法最简便
+        for(let i=0;i<user.list.length;i++){
+            let item = user.list[i];
+            if(!newArr.some(res=>{return res.openId==item.openId})){
+                newArr.push(item)
+                break;
+            }
+        }
+
         for (let i = 0; i < newArr.length; i++) {
             msgList.push(subscribeMessage(sendData, newArr[i]))
         }
-        Promise.all(msgList).then(async item => {
-            for(let i=0;i<item.length;i++){
-                await db.collection('msg_send').where({
-                    _id: item[i]._id
-                }).remove()
-            }
-            let send = {
-                name: "_send",
-                total: total,
-                success: item.filter(_s => {
-                    return _s.code==1;
-                }).length,
-                lose: item.filter(_s => {
-                    return _s.code==0;
-                }).length,
-                item:item,
-                newArr:newArr,
-                time: new Date().getTime()
-            }
-            log.info(send)
-        })
-    }
-    var res = {
-        errcode: 200,
-        msg: "操作成功!",
-        result: {},
-        success: true,
-        timestamp: new Date().getTime()
+        let list = await Promise.all(msgList);
+        for(let i=0;i<list.length;i++){
+            if(list[i].code==0) break;
+            db.collection('msg_send').where({
+                _id: list[i].item._id
+            }).remove()
+        }
+        var res = {
+            errcode:200,
+            msg: "操作成功!",
+            result:{},
+            newArr:list,
+            success:true,
+            timestamp:new Date().getTime()
+        }
+        
+    }catch (error) {
+        var res = {
+             errcode:404,
+             msg: "网络错误",
+             result:{},
+             user:user,
+             success:false,
+             timestamp:new Date().getTime()
+        }
     }
     return res;
 }
 
-function subscribeMessage(sendData, item, _id) {
+function subscribeMessage(sendData, item) {
     return new Promise(async (resolve, reject) => {
         try {
             let data = Object.assign(sendData, {
@@ -79,9 +83,28 @@ function subscribeMessage(sendData, item, _id) {
                 lang: 'zh_CN',
             })
             await cloud.openapi.subscribeMessage.send(data)
-            resolve({code:1,_id:item._id})
+            resolve({code:1,item})
         } catch (error) {
-            resolve({code:0,_id:item._id})
+            resolve({code:0,item})
         }
     })
+}
+function dateFormat(fmt, date) {
+    let ret;
+    const opt = {
+        "Y+": date.getFullYear().toString(),        // 年
+        "m+": (date.getMonth() + 1).toString(),     // 月
+        "d+": date.getDate().toString(),            // 日
+        "H+": date.getHours().toString(),           // 时
+        "M+": date.getMinutes().toString(),         // 分
+        "S+": date.getSeconds().toString()          // 秒
+        // 有其他格式化字符需求可以继续添加，必须转化成字符串
+    };
+    for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        };
+    };
+    return fmt;
 }

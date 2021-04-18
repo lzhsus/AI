@@ -20,9 +20,13 @@ page {
   align-items: center;
 }
 #dog .tab .tab-fixed .tab-item {
-  width: 300rpx;
+  width: 160rpx;
   height: 36px;
   border-radius: 12rpx;
+  margin: 0 12rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: inline-block;
   background: #fff;
   text-align: center;
   line-height: 36px;
@@ -35,6 +39,9 @@ page {
   background: #409eff;
   color: #fff;
   font-size: 18px;
+}
+#dog .tab .tab-fixed .scroll-view {
+  white-space: nowrap;
 }
 #dog .main {
   padding: 20rpx;

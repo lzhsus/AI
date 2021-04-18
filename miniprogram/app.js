@@ -1,4 +1,3 @@
-var plugin = requirePlugin("takeaway")
 
 App({
     onLaunch: function () {
@@ -10,10 +9,6 @@ App({
                 traceUser: true,
             })
         }
-        //推广位请联系产品获取（联系微信号：fuyaozichu）
-        plugin.initInfo({
-            pId: '推广位ID'
-        })
         this.autoUpdate()
     },
     autoUpdate: function () {

@@ -112,20 +112,6 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
-    app.router('user/api/dog', (ctx) => {
-        let { OPENID} = cloud.getWXContext()
-        ctx.body = new Promise(async resolve => {
-            var res = await user.dog(event, context)
-            resolve(res);
-        }); 
-    });
-    app.router('user/api/reptile', (ctx) => {
-        let { OPENID} = cloud.getWXContext()
-        ctx.body = new Promise(async resolve => {
-            var res = await user.reptile(event, context)
-            resolve(res);
-        }); 
-    });
     app.router('user/api/chongwuupdata', (ctx) => {
         let { OPENID} = cloud.getWXContext()
         ctx.body = new Promise(async resolve => {
@@ -140,6 +126,22 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('user/api/pet/list', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.petList(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('user/api/pet/detail', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.petDetail(event, context)
+            resolve(res);
+        }); 
+    });
+    
+
     
     
     // 微信服务
@@ -157,6 +159,14 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('wx_server/api/updata', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await wx_server.updata(event, context)
+            resolve(res);
+        }); 
+    });
+    
     
     
     

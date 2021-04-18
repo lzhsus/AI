@@ -16,33 +16,31 @@ module.exports =async (event,context,root)=>{
     } = cloud.getWXContext();
     let parame = event.data||{};
     try {
-        let db_name = parame.type==1?'dogdetail':'reptiledetail';
-        let result =await requestApi(parame.petID)
+        // 宠物狗1  宠物龟2 宠物猫3
+        let url;
+        if(parame.type==1) url = 'https://api.apishop.net/common/dogFamily/queryDogInfo';
+        if(parame.type==2) url = 'https://api.apishop.net/common/reptileFamily/queryReptileInfo';
+        if(parame.type==3) url = 'https://api.apishop.net/common/catFamily/queryCatInfo';
+        if(parame.type==4) url = 'https://api.apishop.net/common/aquariumFamily/queryAquariumInfo';
 
-        // if(false){
-            let data_info = {};
-            data_info.openId = OPENID;
-            data_info.create_time = db.serverDate();
-            data_info.updata_time = db.serverDate();
-            await db.collection(db_name).add({
-                data:Object.assign(data_info,JSON.parse(result).result)
+        let result = await requestApi(parame.petID,url);
+        let data_info = {};
+        data_info.openId = OPENID;
+        data_info.create_time = db.serverDate();
+        data_info.updata_time = db.serverDate();
+
+        await db.collection('pet_detail').add({
+            data:Object.assign(data_info,JSON.parse(result).result,{
+                type:parame.type
             })
-            var res = {
-                errcode:200,
-                msg: "操作成功!",
-                result:result,
-                success:true,
-                timestamp:new Date().getTime()
-            }
-        // }else{
-        //     var res = {
-        //         errcode:404,
-        //         msg: "",
-        //         result:error,
-        //         success:false,
-        //         timestamp:new Date().getTime()
-        //     }
-        // }
+        })
+        var res = {
+            errcode:200,
+            msg: "操作成功!",
+            result:result,
+            success:true,
+            timestamp:new Date().getTime()
+        }
     } catch (error) {
         var error_type = globalConfig.common.error_type(error.errCode);
         var res = {
@@ -56,10 +54,10 @@ module.exports =async (event,context,root)=>{
     return res;
 }
 
-function requestApi(petID){
+function requestApi(petID,url){
     return new Promise((resolve,reject)=>{
         request({
-            url:"https://api.apishop.net/common/reptileFamily/queryReptileInfo",
+            url:url,
             method: "POST",
             form:{
                 apiKey:'FvyUpCY291e0f253c7e7bf0fcc19b130a1d7dca49a99224',
