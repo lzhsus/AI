@@ -1,0 +1,70 @@
+#sports-index {
+    .sport-header {
+        display: flex;justify-content: space-between;align-items: start;
+        .head-back {
+            width: 200rpx;
+            display: flex;justify-content: space-between;padding: 20px;box-sizing: border-box;
+            flex-direction: column;
+            .back-icon{
+                width: 100rpx;height: 100rpx;
+                background: url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/back-icon2.png?sign=baa67ff16a07a74b23ace081f98a375c&t=1618830516) center center no-repeat;
+                background-size: contain;
+            }
+            .logo-iocn{
+                width: 100rpx;height: 100rpx;
+                background: url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/back-icon.png?sign=baa67ff16a07a74b23ace081f98a375c&t=1618830516) center center no-repeat;
+                background-size: contain;
+            }
+        }
+        .head-main {
+            width: 550rpx;height: 500rpx;
+            border-radius: 0 0 0 20rpx;overflow: hidden;
+            background: #4768d9;position: relative;
+            .day-step{
+                position: absolute;top: 180rpx;left: 70rpx;
+                font-size: 12px;color: #fff;
+                display: flex;flex-direction: column;
+                .step{ font-size: 20px;font-weight: bold; }
+            }
+            .run-info{
+                position: absolute;top: 340rpx;left: 70rpx;
+                font-size: 12px;color: #dddddd;
+                display: flex;flex-direction: column;
+                .run-tiem{
+                    display: flex;justify-content: flex-start;align-items: center;
+                    text{
+                        display: flex;justify-content: flex-start;align-items: center;margin-right: 20rpx;
+                        &::before{
+                            display: inline-block;content: '';
+                            width: 3px;height: 3px;border-radius: 50%;
+                            border: 2px solid #dddddd;margin-right: 4px;
+                        }
+                    }
+                }
+                .run-hint{
+                    margin-top: 12rpx;
+                }
+            }
+        }
+    }
+}
+
+#schedule{
+    position: absolute;top:50%;right: -75px;
+    transform: translateY(-50%);
+    .schedule-item{
+        width: 150px;height: 150px;background: #b4c2f1;position: relative;
+        border-radius: 50%;overflow: hidden;
+        &::after{
+            display: block;content: '';
+            position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);
+            border-radius: 50%;background: #4768d9;
+            width: 100px;height: 100px;
+        }
+        .schedule-rotate{
+            width: 150px;height: 150px;margin-left: 75px;
+            transform: rotate(0deg);transform-origin: left center;
+            background: #ffffff;
+        }
+    }
+}

@@ -60,7 +60,9 @@ api.wxServerApiCreate = function(data, isShowLoading=false){
 api.wxServerApiUpdata = function(data, isShowLoading=false){
     return request('control','wx_server/api/updata',data,isShowLoading);
 }
-
+api.wxServerApiRun = function(data, isShowLoading=false){
+    return request('control','wx_server/api/run',data,isShowLoading);
+}
 api.proPetList = function(data, isShowLoading=true){
     return request('control','user/api/pet/list',data,isShowLoading);
 }
@@ -70,6 +72,8 @@ api.proPetDetail = function(data, isShowLoading=true){
 api.tabList = function(data, isShowLoading=true){
     return requestHttp('https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/tablist.js?v=3333',data,isShowLoading);
 }
-
+api._sendData = function(data, isShowLoading=true){
+    return requestHttp('https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/my_data/_send.js?v=3333',data,isShowLoading);
+}
 
 module.exports = api;

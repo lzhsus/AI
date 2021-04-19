@@ -1,2 +1,9 @@
-<!--pages/test/test.wxml-->
-<text>pages/test/test.wxml</text>
+<view class="run-main">
+    <view class="title">
+        <text>步数</text><text>1120</text>
+    </view>
+
+    <ec-canvas id="month-trend-bar-dom" class="month-trend" canvas-id="month-trend-bar" bind:init="echartBarInit"
+        ec="{{ec}}">
+    </ec-canvas>
+</view>

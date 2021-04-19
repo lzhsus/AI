@@ -1,6 +1,0 @@
-
-<swiper vertical bindchange="bindchange">
-    <swiper-item>
-        <txv-video vid="f3226vg28on" playerid="txv1" autoplay="{{false}}" defn="杜比" width="100%" height="100%"></txv-video>
-    </swiper-item>
-</swiper>

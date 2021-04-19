@@ -11,14 +11,20 @@
 		"pages/magicgirl/magicgirl",
 		"pages/manager/manager",
 		"pages/recharge/recharge",
-		"pages/txv-video/txv-video",
 		"pages/active/active",
 		"pages/orc/orc",
-		"pages/gather/gather",
 		"pages/petdata/petdata",
 		"pages/dogdetail/dogdetail",
 		"pages/setting/setting",
 		"pages/webview/webview"
+	],
+	"subpackages":[
+        {
+            "root": "sports/",
+            "pages": [
+                "index/index"
+            ]
+		}
 	],
 	"tabBar": {
 		"color": "#8a8a8a",

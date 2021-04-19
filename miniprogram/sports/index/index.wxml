@@ -1,0 +1,26 @@
+<view id="sports-index">
+    <view class="sport-header">
+        <view class="head-back">
+            <view class="back-icon"></view>
+        </view>
+        <view class="head-main">
+            <!-- 进入进度 -->
+            <!-- 今日步数 -->
+            <view class="day-step">
+                <text class="step">1,256</text>
+                <text>今日步数</text>
+            </view>
+            <view class="run-info">
+                <view class="run-tiem">
+                    <text>829 卡路里</text><text>1.5 公里</text>
+                </view>
+                <view class="run-hint">您今日一走1.5公里</view>
+            </view>
+            <view id="schedule">
+                <view class="schedule-item">
+                    <view class="schedule-rotate" style="transform: rotate({{0}}deg)"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

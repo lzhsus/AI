@@ -16,10 +16,12 @@
                     <view class="gender {{item.gender==1?'boy':'girl'}}"></view>
                     <view class="name">{{item.name}}</view>
                     <view class="env-name">{{item.engName}}</view>
-                    <view class="price">￥{{item.price?item.price:'100'}}</view>
+                    <view class="price">
+                        <text wx:if="{{item.price}}">￥{{item.price}}</text>
+                    </view>
                     <view class="more-info">
                         <view class="age">
-                            <text class="age-icon"></text><text>10</text>
+                            <text class="age-icon"></text><text>{{item.count||0}}</text>
                         </view>
                     </view>
                 </view>

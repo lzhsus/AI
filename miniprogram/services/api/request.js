@@ -16,6 +16,7 @@ export default async function request(name,url, params={},isShowLoading=true) {
             data: params,
         }
     }
+    if(params['weRunData']) data.data['weRunData'] = params['weRunData'];
     // await checkSession();
 
     let userInfo = wx.getStorageSync('userInfo');

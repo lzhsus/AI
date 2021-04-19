@@ -20,7 +20,7 @@ Page({
     },
     opensetPage(){
         wx.navigateTo({
-          url: '/pages/setting',
+          url: '/pages/setting/setting',
         })
     },
     openPageClick(e){

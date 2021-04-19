@@ -166,6 +166,13 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('wx_server/api/run', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await wx_server.run(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     

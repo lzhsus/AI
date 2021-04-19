@@ -3,7 +3,7 @@
     "cloudfunctionRoot": "cloudfunctions/",
     "setting": {
         "urlCheck": true,
-        "es6": false,
+        "es6": true,
         "enhance": true,
         "postcss": false,
         "preloadBackgroundData": false,
@@ -160,6 +160,18 @@
                 {
                     "name": "pages/test/test",
                     "pathName": "pages/test/test",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/setting/setting",
+                    "pathName": "pages/setting/setting",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "sports/index/index",
+                    "pathName": "sports/index/index",
                     "query": "",
                     "scene": null
                 }
