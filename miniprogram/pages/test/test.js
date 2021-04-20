@@ -19,28 +19,6 @@ Page({
         //     name:"subscribeMessage"
         // })
 
-        wx.getWeRunData({
-            success:(res)=> {
-                // 或拿 cloudID 通过云调用直接获取开放数据
-                const cloudID = res.cloudID
-                Api.wxServerApiRun({
-                    weRunData: wx.cloud.CloudID(res.cloudID)
-                }).then(res=>{
-                    if(res['success']){
-                        res = res.result||{};
-                        let day = 7;
-                        let times = res.stepInfoList.map((item,index)=>{
-                            return moment((new Date(new Date(item.timestamp*1000)))).format("MM/DD");
-                        }).filter((res,index)=>{ return index<day})
-                        let values = res.stepInfoList.map((item,index)=>{
-                            return item.step
-                        }).filter((res,index)=>{ return index<day})
-
-                        this.initChart(values,times)
-                    }
-                })
-            }
-        })
     },
     
     async echartBarInit({detail}){

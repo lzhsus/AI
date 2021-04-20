@@ -11,8 +11,6 @@ const verse = require('./verse/index');
 const manager_log = require('./manager_log/index');
 const translate_log = require('./translate_log/index');
 const active = require('./active/index');
-const dog = require('./dog/index');
-const reptile = require('./reptile/index');
 const chongwuupdata = require('./chongwuupdata/index');
 
 const petDetail = require('./petDetail/index');

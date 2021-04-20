@@ -1,26 +1,52 @@
 <view id="sports-index">
     <view class="sport-header">
         <view class="head-back">
-            <view class="back-icon"></view>
+            <view class="back-icon"></view><view class="logo-iocn">H羞羞的语言</view>
         </view>
+        <!-- 进入进度 今日步数 -->
         <view class="head-main">
-            <!-- 进入进度 -->
-            <!-- 今日步数 -->
             <view class="day-step">
-                <text class="step">1,256</text>
-                <text>今日步数</text>
+                <text class="step">{{runInfo.today.step_t}}</text><text>今日步数</text>
             </view>
             <view class="run-info">
                 <view class="run-tiem">
-                    <text>829 卡路里</text><text>1.5 公里</text>
+                    <text>{{runInfo.today.calorie_t}} 卡路里</text><text>{{runInfo.today.distance_t}} 公里</text>
                 </view>
-                <view class="run-hint">您今日一走1.5公里</view>
+                <view class="run-hint">您今日一走{{runInfo.today.distance_t}}公里</view>
             </view>
             <view id="schedule">
                 <view class="schedule-item">
-                    <view class="schedule-rotate" style="transform: rotate({{0}}deg)"></view>
+                    <view class="schedule-rotate" style="transform: rotate({{-res.schedule}}deg)"></view>
                 </view>
             </view>
+        </view>
+    </view>
+    <view class="sport-module">
+        <view class="sport-module-title">本月概要</view>
+        <view class="sport-list">
+            <scroll-view scroll-x="{{true}}" style="white-space: nowrap;height: 130px;">
+                <view class="sport-item">
+                    <view class="sport-info">
+                        <view class="step">{{runInfo.total.step_t}}</view>
+                        <view class="title">脚步</view>
+                        <view class="desc">七月走了</view>
+                    </view>
+                </view>
+                <view class="sport-item">
+                    <view class="sport-info">
+                        <view class="step">{{runInfo.total.calorie_t}}</view>
+                        <view class="title">卡路里</view>
+                        <view class="desc">七月走了</view>
+                    </view>
+                </view>
+                <view class="sport-item">
+                    <view class="sport-info">
+                        <view class="step">{{runInfo.total.distance_t}}</view>
+                        <view class="title">公里</view>
+                        <view class="desc">七月走了</view>
+                    </view>
+                </view>
+            </scroll-view>
         </view>
     </view>
 </view>

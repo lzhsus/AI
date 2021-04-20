@@ -16,13 +16,15 @@
 		"pages/petdata/petdata",
 		"pages/dogdetail/dogdetail",
 		"pages/setting/setting",
+		"pages/run/run",
 		"pages/webview/webview"
 	],
 	"subpackages":[
         {
             "root": "sports/",
             "pages": [
-                "index/index"
+				"index/index",
+				"log/log"
             ]
 		}
 	],
@@ -39,6 +41,11 @@
 				"text": "讲笑话情话",
 				"iconPath": "./status/nav-icon1.png",
 				"selectedIconPath": "./status/nav-icon1-active.png"
+			},{
+				"pagePath": "pages/run/run",
+				"text": "运动",
+				"iconPath": "./status/nav-icon5.png",
+				"selectedIconPath": "./status/nav-icon5-active.png"
 			},
 			{
 				"pagePath": "pages/emotional/emotional",

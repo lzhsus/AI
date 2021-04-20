@@ -1,12 +1,21 @@
 import ls from "../services/cz-storage";
+import _moment from "../utils/moment.min"
 import appConfig from "../common/app_config";
 
 export const LS = ls;
+export const moment = _moment;
 export const isIOS = function(){
 	const res = wx.getSystemInfoSync();
 	return res.system.toLowerCase().indexOf("ios")!=-1&&res.platform.indexOf("devtools")==-1
 }
-
+export const formatMoney=function (value,isFixed=2){
+    value = Number(value)
+    value = value.toFixed(isFixed)
+    if (Math.abs(value) < 1000) {
+        return value
+    }
+    return String(value).replace(/./g, (c, i, a) => i && c !== '.' && !((a.length - i) % 3) ? ',' + c : c);
+}
 export const subscribeMessage = function(tmplIds=[]){
     return new Promise(function (resolve) {
         wx.requestSubscribeMessage({
@@ -19,7 +28,10 @@ export const subscribeMessage = function(tmplIds=[]){
         });
     });
 }
-
+export const scheduleLoading = function(step,target,deg=360){
+    if(step>=target) return deg;
+    return deg*step/target;
+}
 export const getNewTime = function () {
     var date =  new Date();
     var year = date.getFullYear();

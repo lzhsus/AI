@@ -11,6 +11,7 @@ cloud.init({
  */
 const user = require('./user/index');
 const wx_server = require('./wx_server/index');
+const run = require('./run/index');
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -174,6 +175,29 @@ exports.main = async (event, context) => {
         }); 
     });
     
+    
+    // 运动
+    app.router('wx/api/run/create', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await run.create(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('wx/api/run/info', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await run.info(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('wx/api/run/list', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await run.list(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     

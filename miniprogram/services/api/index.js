@@ -75,5 +75,15 @@ api.tabList = function(data, isShowLoading=true){
 api._sendData = function(data, isShowLoading=true){
     return requestHttp('https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/my_data/_send.js?v=3333',data,isShowLoading);
 }
+// 运动
+api.wxRunCreate = function(data, isShowLoading=true){
+    return request('control','wx/api/run/create',data,isShowLoading);
+}
+api.wxRunInfo = function(data, isShowLoading=true){
+    return request('control','wx/api/run/info',data,isShowLoading);
+}
+api.wxRunList = function(data, isShowLoading=true){
+    return request('control','wx/api/run/list',data,isShowLoading);
+}
 
 module.exports = api;
