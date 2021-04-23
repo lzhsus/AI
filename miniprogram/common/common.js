@@ -142,3 +142,95 @@ export const openWeappLink = function (link, pages) {
 export const getFileID = function(fileID){
     return fileID.replace('cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/','https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/');
 }
+
+export const compressImage = async function (data,isCompressPng) {
+    let arr = [];   
+    data.forEach(item=>{
+        arr.push(new Promise(async function(resolve, reject) {
+            if(item.success){
+                resolve(item);
+            }else if(getType(item.url)=='.JPG'){
+                let url = await getCompressImage(item.url);
+                item.url = url;
+                resolve(item);
+            }else if(isCompressPng){
+                let url = await createHaiabo('haibaoCanvas',item.url)
+                item.url = url;
+                url = await getCompressImage(item.url);
+                item.url = url;
+                resolve(item);
+            }else{
+                resolve(item);
+            }
+        }));
+    });   
+    return Promise.all(arr); 
+}
+
+function getCompressImage(url){
+    return new Promise((resolveC,rejectC)=>{
+        wx.compressImage({
+            src: url, 
+            quality: 20,
+            success:(res)=>{
+                resolveC(res.tempFilePath)
+            },
+            fail:res=>{
+                resolveC(url)
+            }
+        });
+    })
+}
+function createHaiabo(canvasID,img){
+    return new Promise((cbResolve, cbReject)=> {
+        const query = wx.createSelectorQuery();
+        query.select("#"+canvasID).fields({ node: true, size: true }).exec((res) => {
+            const canvas = res[0].node;
+            let ctx = canvas.getContext('2d');
+            let img1 = new Promise((resolve, reject)=> {
+                getImageInfo(canvas, img, resolve);
+            })
+            Promise.all([img1]).then(function (res) {
+                console.log(res[0].width,res[0].height)
+
+                canvas.width = res[0].width;
+                canvas.height = res[0].height;
+
+                ctx.drawImage(res[0], 0, 0, canvas.width,  canvas.height);
+                ctx.save();
+                wx.canvasToTempFilePath({
+                    canvas: canvas,
+                    width: canvas.width,
+                    height: canvas.height,
+                    fileType:"jpg",
+                    quality:0.2,
+                    success:(res)=> {
+                        console.log('---',res.tempFilePath)
+                        cbResolve(res.tempFilePath);
+                    },
+                    fail:(res)=> {
+                        cbResolve(img);
+                    },
+                })         
+            }).catch((res)=>{
+                cbResolve(img);
+            });
+
+        })
+    });
+}
+
+function getImageInfo(canvas, imgPath, resolve){
+    var img = canvas.createImage();
+    img.onload=function(){
+        resolve(img);
+    }
+    img.src = imgPath;
+}
+function getType(file){
+    let path = JSON.parse(JSON.stringify(file));
+    var index1 = path.lastIndexOf(".");
+    var index2 = path.length;
+    var type = path.substring(index1,index2).toUpperCase();
+    return type;
+}

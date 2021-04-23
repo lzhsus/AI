@@ -1,11 +1,14 @@
 const Api = require('../../services/api/index');
 import * as echarts from '../../utils/echart/echarts';
+import * as common from '../../common/common';
 let wxNode=null,chart=null;
 import moment from '../../utils/moment.min';
 
 Page({
     data: {
-        ec:{}
+        ec:{},
+        canvasWidth:1,
+        canvasHeight:1
     },
     async onLoad(options) {
         // Api.cloud_userInfo().then(res=>{
@@ -18,9 +21,50 @@ Page({
         // wx.cloud.callFunction({
         //     name:"subscribeMessage"
         // })
-
+        // common.compressImage()
     },
-    
+    openClick(){
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success :async (res) =>{
+                // tempFilePath可以作为img标签的src属性显示图片
+                let tempFilePaths = res.tempFilePaths
+                tempFilePaths = tempFilePaths.map(item=>{return {url:item}})
+                console.log('压缩前》》',tempFilePaths[0].url)
+
+                let list = await common.compressImage(tempFilePaths);
+                if(list.some(item=>{ return !item.success })){
+                    list = await common.compressImage(tempFilePaths,true);
+                }
+
+                
+                wx.showShareImageMenu({
+                    path: list[0].url,
+                    fail: (res)=> {
+                        console.log(res)
+                        if( res.errMsg.indexOf('deny')!=-1||res.errMsg.indexOf('denied')!=-1 ){
+                            wx.showToast({
+                                title: '保存相册失败，请设置权限！',
+                                icon: 'none',
+                                duration: 2000,
+                            })
+                            this.settingShow = true;
+                            this.settingType = 'scope.writePhotosAlbum';
+                        }else{
+                            wx.showToast({
+                                title: '保存相册失败，请重试！',
+                                icon: 'none',
+                                duration: 2000,
+                            });
+                        }
+                    }
+                }); 
+                console.log('压缩后》》',list[0].url)
+            }
+        })
+    },
     async echartBarInit({detail}){
         wxNode = detail.wxNode;
         chart = null;

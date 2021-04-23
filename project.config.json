@@ -39,7 +39,7 @@
     },
     "appid": "wx1314c40d5e143385",
     "projectname": "AR",
-    "libVersion": "2.14.1",
+    "libVersion": "2.16.0",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
