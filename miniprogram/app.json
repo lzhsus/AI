@@ -23,8 +23,9 @@
         {
             "root": "sports/",
             "pages": [
-				"index/index",
-				"log/log"
+				"log/log",
+				"running/running",
+				"haibao/haibao"
             ]
 		}
 	],

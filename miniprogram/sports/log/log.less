@@ -4,12 +4,16 @@
         .head-top{
             position: fixed;top: 0;left: 0;width: 100%;
             width: 100%;height: 200rpx;background:#ffffff;
-            
+            display: flex;justify-content: flex-start;align-items: center;
             .sport-info{
                 width: 100%;height: 100%;
                 padding-left: 100rpx;box-sizing: border-box;
                 display: flex;justify-content: center;align-items: flex-start;
                 flex-direction: column;
+                &.active{
+                    background: rgb(64, 158, 255,0.1);
+                    border-radius: 30rpx;overflow: hidden;
+                }
                 .step{
                     font-size: 18px;font-weight: bold;position: relative;
                     &::after{
@@ -38,6 +42,14 @@
             &:last-child{ margin-bottom: 0; }
             .step{
                 width: 160rpx;
+                font-size: 18px;color: #000;font-weight: bold;
+                display: flex;justify-content:space-between;align-items: flex-end;
+                text{ 
+                    font-size: 14px;
+                }
+            }
+            .calorie{
+                width: 260rpx;
                 font-size: 18px;color: #000;font-weight: bold;
                 display: flex;justify-content:space-between;align-items: flex-end;
                 text{ 

@@ -1,6 +1,10 @@
 import ls from "../services/cz-storage";
 import _moment from "../utils/moment.min"
 import appConfig from "../common/app_config";
+var QQMapWX = require('../services/qqmap-wx-jssdk.min');
+var mta= require('../services/mta_analysis')
+var qqmapsdk;
+var locationData;
 
 export const LS = ls;
 export const moment = _moment;
@@ -10,11 +14,30 @@ export const isIOS = function(){
 }
 export const formatMoney=function (value,isFixed=2){
     value = Number(value)
+    if(value==0) return value;
     value = value.toFixed(isFixed)
     if (Math.abs(value) < 1000) {
         return value
     }
     return String(value).replace(/./g, (c, i, a) => i && c !== '.' && !((a.length - i) % 3) ? ',' + c : c);
+}
+// 字体初始化
+export const loadFontFaceInit = function(source,family){
+    return new Promise((resolve,reject)=>{
+        wx.loadFontFace({
+            family: family,
+            source: `url(${source})`,
+            success(res) {
+                console.info("字体 "+ family + " 初始化成功...")
+            },
+            fail: function(res) {
+                console.info("字体 "+ family + " 初始化失败...")
+            },
+            complete: function(res) {
+                resolve()
+            }
+        });
+    })
 }
 export const subscribeMessage = function(tmplIds=[]){
     return new Promise(function (resolve) {
@@ -31,6 +54,10 @@ export const subscribeMessage = function(tmplIds=[]){
 export const scheduleLoading = function(step,target,deg=360){
     if(step>=target) return deg;
     return deg*step/target;
+}
+export const scheduleSH = function(step,target){
+    if(step>=target) return 100;
+    return ((step/target)*100).toFixed(2)
 }
 export const getNewTime = function () {
     var date =  new Date();
@@ -233,4 +260,37 @@ function getType(file){
     var index2 = path.length;
     var type = path.substring(index1,index2).toUpperCase();
     return type;
+}
+
+// 根据地址获取经纬度
+export const getReverseGeocoder = function(address){
+    if( !qqmapsdk ){
+        qqmapsdk = new QQMapWX({
+            key: appConfig.txMapKey,
+        });
+    }
+    return new Promise((resolve, reject)=> {
+        qqmapsdk.reverseGeocoder({
+            address: address, 
+            success:(res)=> {
+                res = res.result||{};
+                resolve(res.location);
+            },
+            fail:(err)=> {
+                console.error(err);
+            },
+            complete:(res)=> {
+                console.log(res);
+            }
+        });
+    });
+}
+
+// 开启返回提示
+export const enableAlertBeforeUnload = function (message){
+    if( wx.enableAlertBeforeUnload ){
+        wx.enableAlertBeforeUnload({
+            message: message||'是否退出当前页面？',
+        });
+    }
 }

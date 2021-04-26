@@ -19,11 +19,25 @@ module.exports =async (event,context,root)=>{
         calorie:0.06,//每米消耗卡路里(10000米消耗600卡路里)
     }
     try {
+        let userinfo = await db.collection('user_info').where({
+            openId:OPENID
+        }).field({
+            target_step: true,
+        }).get();
+
+        let target_step = ''
+        if(userinfo&&userinfo.data&&userinfo.data.length){
+            target_step = userinfo.data[0].target_step||'';
+        }
+
+        
         let { firstDay,lastDay,todayDay } = timestamp(parame.time);
         let result = await db.collection('wx_run').aggregate().match({
             openId:OPENID,
             timestamp:_.and(_.gte(firstDay),_.lte(lastDay))
-        }).limit(31).end();
+        }).limit(31).sort({
+            timestamp:-1
+        }).end();
 
         let total = 0;
         let list = (result.list||[]).map(item=>{
@@ -39,7 +53,7 @@ module.exports =async (event,context,root)=>{
             openId:OPENID,
             timestamp:todayDay
         }).end();
-
+        todayList = todayList.list||[]
         let todayObj = {}
         if(todayList&&todayList.length){
             todayObj = {
@@ -58,6 +72,8 @@ module.exports =async (event,context,root)=>{
                     distance:config['stepWidth']*total,
                     calorie:config['stepWidth']*total*config['calorie'],
                 },
+                isToday:todayList.length?1:0,
+                target_step:Number(target_step)||6000,
                 today:todayObj,
                 timestamp:todayDay,
                 list:list

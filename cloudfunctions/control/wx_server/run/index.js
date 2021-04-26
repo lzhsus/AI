@@ -18,65 +18,49 @@ module.exports =async (event,context,root)=>{
     try {
         let { stepInfoList } = event['weRunData'].data;
         let todayItem = stepInfoList[stepInfoList.length-1];
-        // 检查当天的数据是否有变化
-        let resultToday = await db.collection('wx_run').aggregate().match({
-            openId:OPENID,
-            timestamp:todayItem.timestamp,
-            step:todayItem.step
-        }).end();
-
-        // 检查是否存在数据 当天的数据预警存在 并且没有更新
-        let isPresence = resultToday&&resultToday.length>=1;
-        if(isPresence){
-            var res = {
-                errcode:200,
-                msg: "操作成功!",
-                result:todayItem,
-                success:true,
-                timestamp:new Date().getTime()
-            }
-        }else{
-            var data_info = {};
+        
+        var data_info = {};
             data_info.openId = OPENID;
             data_info.create_time = db.serverDate();
             data_info.updata_time = db.serverDate();
-            let result = await db.collection('wx_run').where({
-                openId:OPENID
-            }).count();
-            // 检查是否存在数据
-            isPresence = result&&result.total&&result.total>0;
-            if(isPresence){
-                let resultDay = await db.collection('wx_run').where({
+
+        let result = await db.collection('wx_run').aggregate().match({
+            openId:OPENID
+        }).sort({
+            timestamp:-1
+        }).limit(1).end();
+
+        if(result&&result.list&&result.list.length){
+            // 最后一天是当天 只更新当天
+            if(todayItem.timestamp==result.list[0].timestamp){
+                await db.collection('wx_run').where({
                     timestamp:todayItem.timestamp
-                }).count()
-                // 检查当天是否存在
-                isPresence = resultDay&&resultDay.total&&resultDay.total>0;
-                if(isPresence){
-                    await db.collection('wx_run').where({
-                        timestamp:todayItem.timestamp
-                    }).update({
-                        data:{
-                            step:todayItem.step,
-                            updata_time:db.serverDate()
-                        }
-                    })
-                }else{
-                    await db.collection('wx_run').add({
-                        data:Object.assign(data_info,todayItem)
-                    })
-                }
+                }).update({
+                    data:{
+                        step:todayItem.step,
+                        updata_time:db.serverDate()
+                    }
+                })
             }else{
                 for(let i=0;i<stepInfoList.length;i++){
-                    await db.collection('wx_run').add({
-                        data:Object.assign(data_info,stepInfoList[i])
-                    })
+                    if(stepInfoList[i].timestamp>result.list[0].timestamp){
+                        await db.collection('wx_run').add({
+                            data:Object.assign(data_info,stepInfoList[i])
+                        })
+                    }
                 }
+            }
+        }else{
+            for(let i=0;i<stepInfoList.length;i++){
+                await db.collection('wx_run').add({
+                    data:Object.assign(data_info,stepInfoList[i])
+                })
             }
         }
         var res = {
             errcode:200,
             msg: "操作成功!",
-            result:todayItem,
+            result:{},
             success:true,
             timestamp:new Date().getTime()
         }

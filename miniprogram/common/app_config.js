@@ -8,6 +8,7 @@ export default{
     appid: 'wx1314c40d5e143385',
     envVersion: '',
     tabPath:[],
+    txMapKey:"YM3BZ-O466F-RR3JF-J4FPY-V6LOV-P4FZP",
     baidu:{
         AppID:23622740,
         ApiKey:'sj6cA1Ce0e3Gf1gZTOZ6F2mU',

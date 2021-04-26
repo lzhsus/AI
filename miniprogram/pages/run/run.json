@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "运动"
+  "navigationStyle":"custom",
+  "navigationBarTextStyle":"black"
 }

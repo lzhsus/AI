@@ -127,6 +127,13 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('user/api/field/updata', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.updata(event, context)
+            resolve(res);
+        }); 
+    });
     app.router('user/api/pet/list', (ctx) => {
         let { OPENID} = cloud.getWXContext()
         ctx.body = new Promise(async resolve => {

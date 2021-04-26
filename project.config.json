@@ -39,7 +39,7 @@
     },
     "appid": "wx1314c40d5e143385",
     "projectname": "AR",
-    "libVersion": "2.16.0",
+    "libVersion": "2.16.1",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -184,6 +184,18 @@
                 {
                     "name": "sports/log/log",
                     "pathName": "sports/log/log",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "sports/haibao/haibao",
+                    "pathName": "sports/haibao/haibao",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "sports/running/running",
+                    "pathName": "sports/running/running",
                     "scene": null
                 }
             ]

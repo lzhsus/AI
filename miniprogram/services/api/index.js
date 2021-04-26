@@ -38,6 +38,10 @@ api.apiSend = function(data, isShowLoading=false){
     return request('control','user/api/_send',data,isShowLoading);
 }
 
+api.fieldUpdata = function(data, isShowLoading=true){
+    return request('control','user/api/field/updata',data,isShowLoading);
+}
+
 // 音频使用记录
 api.managerLog = function(data, isShowLoading=false){
     return request('control','user/api/manager_log',data,isShowLoading);
@@ -60,9 +64,6 @@ api.wxServerApiCreate = function(data, isShowLoading=false){
 api.wxServerApiUpdata = function(data, isShowLoading=false){
     return request('control','wx_server/api/updata',data,isShowLoading);
 }
-api.wxServerApiRun = function(data, isShowLoading=false){
-    return request('control','wx_server/api/run',data,isShowLoading);
-}
 api.proPetList = function(data, isShowLoading=true){
     return request('control','user/api/pet/list',data,isShowLoading);
 }
@@ -76,6 +77,10 @@ api._sendData = function(data, isShowLoading=true){
     return requestHttp('https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/my_data/_send.js?v=3333',data,isShowLoading);
 }
 // 运动
+// 活动数据
+api.wxServerApiRun = function(data, isShowLoading=true){
+    return request('control','wx_server/api/run',data,isShowLoading);
+}
 api.wxRunCreate = function(data, isShowLoading=true){
     return request('control','wx/api/run/create',data,isShowLoading);
 }
