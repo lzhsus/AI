@@ -18,7 +18,7 @@ module.exports = async (event, context, root) => {
     try {
         // 宠物狗1  宠物龟2  宠物猫3
         var result = await db.collection('pet_detail').aggregate().match({
-                petID: _.or(_.eq(parame.petID),_.eq(Number(parame.petID))),
+                petID: _.eq(Number(parame.petID)),
                 type:_.or(_.eq(parame.type),_.eq(Number(parame.type)))
             }).end()
         if (result && result.list && result.list.length) {
@@ -33,6 +33,8 @@ module.exports = async (event, context, root) => {
             var res = {
                 errcode: 200,
                 msg: '操作成功！',
+                result:result,
+                parame:parame,
                 result: result.list[0],
                 success: true,
                 timestamp: new Date().getTime()

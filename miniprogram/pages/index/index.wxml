@@ -1,3 +1,8 @@
+<!-- 随机入口 -->
+<movable-area style="width:{{windowWidth}}px;height:{{windowHeight}}px;">
+    <movable-view direction="all" x="{{x}}" y="{{y}}" out-of-bounds bindchange="move" bindtouchend="touchEnd" bindtouchstart="touchStart"></movable-view>
+</movable-area>
+
 <view class="content-weapper" id="indexWeapp">
     <view class="main" id="mainWeapp">
         <scroll-view scroll-y style="height: 100%;" scroll-top="{{scrollTop}}">

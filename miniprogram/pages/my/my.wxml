@@ -65,5 +65,4 @@
         </view>
 
     </view>
-    <weather size="xl" theme="light" bgcolor="#0081ff"/>
 </view>

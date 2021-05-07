@@ -10,11 +10,19 @@ Page({
 		postCommentValue:'',
 		mode:0,
 		dialogueLog:[],
-		mainHeight:0
+		mainHeight:0,
+		
+		windowWidth: 0,
+		windowHeight: 0,
+		x:0,
+		y:0,
+		xp:0, //标记每次移动的起始点
+		yp:0,
     },
 
     onLoad(opt) {
         mixinsIndex.onLoad(opt);
+		this.wxGetSystemInfoSync()
 		let dialogueLog = common.LS.get('dialogueLog_msg');
 		this.setData({
 			dialogueLog:dialogueLog||[]
@@ -122,6 +130,43 @@ Page({
                     content:res.msg,
                     showCancel:false
                 })
+			}
+		})
+	},
+	move(e) {
+		this.setData({
+			xp:e.detail.x,
+			yp:e.detail.y,
+		})
+	},
+	touchStart() {},
+	touchEnd(e) {
+		this.setData({
+			y:this.data.yp>500?500:this.data.yp,
+		})
+		let isTrue = this.data.xp>=this.data.windowWidth/2?1:0;
+		this.setData({
+			x:isTrue==1?this.data.windowWidth:0,
+		})
+	},
+	wxGetSystemInfoSync() {
+		return new Promise((resolve, reject) => {
+			try {
+				const {
+					windowWidth,
+					windowHeight
+				} = wx.getSystemInfoSync();
+				this.setData({
+					windowWidth: windowWidth,
+					windowHeight: windowHeight
+				})
+				resolve()
+			} catch (e) {
+				this.setData({
+					windowWidth: 375,
+					windowHeight: 650
+				})
+				resolve()
 			}
 		})
 	},
