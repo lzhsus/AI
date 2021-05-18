@@ -2,7 +2,7 @@
     "miniprogramRoot": "miniprogram/",
     "cloudfunctionRoot": "cloudfunctions/",
     "setting": {
-        "urlCheck": true,
+        "urlCheck": false,
         "es6": true,
         "enhance": true,
         "postcss": false,
@@ -196,6 +196,13 @@
                 {
                     "name": "sports/running/running",
                     "pathName": "sports/running/running",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/setting/setting",
+                    "pathName": "pages/setting/setting",
+                    "query": "",
                     "scene": null
                 }
             ]

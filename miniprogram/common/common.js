@@ -44,7 +44,6 @@ export const subscribeMessage = function(tmplIds=[]){
         wx.requestSubscribeMessage({
             tmplIds: tmplIds,
             complete:(res)=>{
-                console.log('requestSubscribeMessage',res)
                 res.tmplIds = tmplIds;
                 resolve(res);
             }
@@ -128,7 +127,6 @@ export const formatSeconds = function (value,language) {
 
 // 页面跳转
 export const openWeappLink = function (link, pages) {
-    console.log('link',link)
     if( !link ) return;
     if( link.indexOf("https:")!=-1 ){
         if( pages ){
@@ -137,7 +135,6 @@ export const openWeappLink = function (link, pages) {
             });
             return;
         }
-        console.log('22222')
         wx.navigateTo({
             url: '/pages/webview/webview?link='+encodeURIComponent(link),
         });
@@ -218,7 +215,6 @@ function createHaiabo(canvasID,img){
                 getImageInfo(canvas, img, resolve);
             })
             Promise.all([img1]).then(function (res) {
-                console.log(res[0].width,res[0].height)
 
                 canvas.width = res[0].width;
                 canvas.height = res[0].height;
@@ -232,7 +228,6 @@ function createHaiabo(canvasID,img){
                     fileType:"jpg",
                     quality:0.2,
                     success:(res)=> {
-                        console.log('---',res.tempFilePath)
                         cbResolve(res.tempFilePath);
                     },
                     fail:(res)=> {
@@ -277,10 +272,8 @@ export const getReverseGeocoder = function(address){
                 resolve(res.location);
             },
             fail:(err)=> {
-                console.error(err);
             },
             complete:(res)=> {
-                console.log(res);
             }
         });
     });
@@ -293,4 +286,57 @@ export const enableAlertBeforeUnload = function (message){
             message: message||'是否退出当前页面？',
         });
     }
+}
+
+export const downloadFile = function(path){
+    return new Promise((resolve,reject)=>{
+        wx.downloadFile({
+            url: path, //仅为示例，并非真实的资源
+            success(res) {
+                // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+                if (res.statusCode === 200) {
+                    resolve({success:true,path:res.tempFilePath})
+                }else{
+                    resolve({success:false,path:''})
+                }
+            },
+            fail(){
+                resolve({success:false,path:''})
+            }
+        })
+    })
+}
+// 图片压缩
+export const compressImage2 = async function (url) {
+    return new Promise((resolve,reject)=>{
+        if(getType2(url)=='.JPG'){
+            wx.compressImage({
+                src: url, 
+                quality: 10,
+                success:(res)=>{
+                    resolve(url);
+                },
+                fail:res=>{
+                    resolve(url);
+                }
+            });
+        }else{
+            resolve(url);
+        }
+    })
+}
+function getType2(file){
+    let path = JSON.parse(JSON.stringify(file));
+    var index1 = path.lastIndexOf(".");
+    var index2 = path.length;
+    var type = path.substring(index1,index2).toUpperCase();
+    return type;
+}
+
+export const createImgName = function (dir, suffix) {
+    var name = '';
+    let arr = dir.split('/')||[''];
+    name = arr[arr.length-1] + '_' + new Date().getTime() + '.' + (suffix || 'png')
+
+    return name;
 }

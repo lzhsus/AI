@@ -10,6 +10,6 @@
 	"triggers": [{
 		"name": "subscribeMessage",
 		"type": "timer",
-		"config": "0 0 9 * * * *"
+		"config": "0 0 9,18 * * * *"
 	}]
 }

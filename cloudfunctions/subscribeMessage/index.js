@@ -16,28 +16,56 @@ exports.main = async (event, context) => {
     } = cloud.getWXContext();
     let parsms = event.data;
     try {
-        let sendData = {
-            page: 'pages/my/my',
-            data: {
-                thing2: { value: "每日签到奖励次数~" },
-                time3: { value: dateFormat("YYYY-mm-dd", new Date()) }
+        let moduleList = [{
+            id: "SaHm16y6Cjdod2w_EgbZhyhjUyKA4U72QRTUwjAJE30",
+            name: "签到提醒",
+            sendData: {
+                page: 'pages/my/my',
+                data: {
+                    thing2: { value: "每日签到奖励次数~" },
+                    time3: { value: dateFormat("YYYY-mm-dd", new Date()) }
+                }
             }
-        }
+        },{
+            id: "5yQAF93upO98903L2z96L1ypnfWmHuSmUemDZxNXp-M",
+            name: "运动打卡提醒",
+            sendData: {
+                page: 'pages/my/my',
+                data: {
+                    thing1:{ value:"每天晚上5公里" },
+                    thing5:{ value:"当前行走2000米" },
+                    phrase4:{ value:"未完成" },
+                }
+            }
+        }]
+        // let sendData = {
+        //     page: 'pages/my/my',
+        //     data: {
+        //         thing2: { value: "每日签到奖励次数~" },
+        //         time3: { value: dateFormat("YYYY-mm-dd", new Date()) }
+        //     }
+        // }
         var _sendList = await db.collection('msg_send').aggregate().limit(9999).end();
-
+        let _list = _sendList.list||[]
+        let hous = new Date().getHours();
+        if(hous<12){
+            _list = _list.filter(res=>{ return res.id==moduleList[0].id })
+        }else{
+            _list = _list.filter(res=>{ return res.id==moduleList[1].id })
+        }
         let msgList = [],newArr = []; 
-        for(let i=0;i<_sendList.list.length;i++){
-            if(!newArr.some(res=>{return res.openId==_sendList.list[i].openId})){
-                newArr.push(_sendList.list[i]);
+        for(let i=0;i<_list.length;i++){
+            if(!newArr.some(res=>{return res.openId==_list[i].openId})){
+                newArr.push(_list[i]);
                 break;
             }
         }
         for (let i = 0; i < newArr.length; i++) {
-            msgList.push(subscribeMessage(sendData, newArr[i]))
+            let sendData = moduleList.filter(item=>{ return item.id==newArr[i].id }).map(item=>{ return item.sendData; })
+            msgList.push(subscribeMessage(sendData[0], newArr[i]))
         }
         let list = await Promise.all(msgList);
         
-        const log = cloud.logger();
         log.info({ name: '_send_log',list: list });
 
         for(let i=0;i<list.length;i++){
@@ -55,7 +83,7 @@ exports.main = async (event, context) => {
         var res = {
              errcode:404,
              msg: "网络错误",
-             result:{},
+             result:error,
              success:false,
              timestamp:new Date().getTime()
         }
@@ -70,6 +98,8 @@ function subscribeMessage(_send, item) {
                 touser: item.openId,
                 templateId: item.id,
             })
+            
+            log.info(data)
             await cloud.openapi.subscribeMessage.send(data);
             resolve({code:1,item})
         } catch (error) {

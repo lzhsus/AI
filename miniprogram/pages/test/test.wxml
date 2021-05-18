@@ -7,6 +7,7 @@
         ec="{{ec}}">
     </ec-canvas>
 </view> -->
+<image src="{{url}}" mode="widthFix" />
 <view bindtap="openClick"> 选择图片</view>
 <image class="img100" src="http://tmp/zFdzcfdUSc6Q194955968a1e210dce5d122e6b236135.png" mode="wiethFix"></image>
 <canvas type="2d" id="haibaoCanvas" canvas-id="haibaoCanvas" style="width:1000px; height:500px;"></canvas>

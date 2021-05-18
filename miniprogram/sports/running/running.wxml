@@ -1,5 +1,5 @@
 <map polyline="{{polyline}}" longitude="{{init.longitude}}" latitude="{{init.latitude}}" min-scale="{{13}}" markers="{{markers}}" 
-    max-scale="{{20}}" scale="{{18}}" show-compass="{{true}}" show-location="{{true}}">
+    max-scale="{{20}}" scale="{{19}}" show-compass="{{true}}" show-location="{{true}}">
     <cover-view slot="callout">
         <cover-view marker-id="1"></cover-view>
         <cover-view marker-id="2"></cover-view>

@@ -2,8 +2,6 @@ const Api = require('../../services/api/index');
 import * as common from '../../common/common';
 import appConfig from '../../common/app_config';
 import mixinsIndex from '../../mixins/index';
-let run = 0;
-let intervalTime = null;
 Page({
     data: {
         pageShow:'',
@@ -29,34 +27,26 @@ Page({
             this.setData({
                 startRuning:false
             })
-            this.wxGetLocation()
         }
+        common.LS.remove("runing");
     },
     onHide(e){
         common.LS.put("runing",1,1/24);
-        
-        if(intervalTime){
-            clearInterval(intervalTime)
-        }
     },
     onUnload(){
         common.LS.remove("runing");
-        if(intervalTime){
-            clearInterval(intervalTime)
-        }
+        this.setData({
+            startRuning:false
+        })
     },
     startRuningTap(){
         this.setData({
             startRuning:true
         })
-        this.wxSetTimeout()
-    },
-    wxSetTimeout(){
-        intervalTime = setInterval(async () => {
-            this.wxGetLocation()
-        }, 2000);
+        this.wxGetLocation()
     },
     async wxGetLocation(){
+        if(!this.data.startRuning) return;
         let location = await common.getReverseGeocoder();
         if(location.lat&&location.lng){
             if(!this.data.init.longitude&&!this.data.init.latitude){
@@ -80,7 +70,7 @@ Page({
                 if(points.length==0){
                     points.push({
                         longitude: location.lng,
-                        latitude: location.lng
+                        latitude: location.lat
                     })
                 }
                 points.push({
@@ -96,5 +86,8 @@ Page({
                 })
             }
         }
+        setTimeout(()=>{
+            this.wxGetLocation()
+        },2000)
     },
 })

@@ -18,11 +18,22 @@ module.exports =async (event,context,root)=>{
         let data_info = {};
         data_info.updata_time = db.serverDate();
 
-        await db.collection(parame.name).where({
-            openId:OPENID
-        }).update({
-            data:Object.assign(data_info,parame.data)
-        })
+        if(parame.updataImage){
+            await db.collection(parame.name).where({
+                _id:parame._id
+            }).update({
+                data:{
+                    img_url:parame.img_url
+                }
+            })
+
+        }else{
+            await db.collection(parame.name).where({
+                openId:OPENID
+            }).update({
+                data:Object.assign(data_info,parame.data)
+            })
+        }
 
         var res = {
             errcode:200,
