@@ -1,0 +1,26 @@
+<view class="weapper">
+    <block wx:for="{{forumList}}" wx:key="index" wx:if="{{forumList.length}}">
+    <view class="item">
+        <view class="author-header">
+            <view class="user-info">
+                <view class="img"><image src="{{item.userInfo.avatarUrl}}" class="img100" mode="widthFix" /></view>
+                <view class="name-wrap">
+                    <view class="name">{{item.userInfo.nickName}}</view>
+                    <view class="update-time">{{item.create_time}}</view>
+                </view>
+            </view>
+            <view class="follow">关注</view>
+        </view>
+        <view class="cover_img" bindtap="openDetail" data-id="{{item._id}}">
+            <image src="{{item.img_url}}" mode="widthFix" class="img100" />
+        </view>
+        <view class="text" bindtap="openDetail" data-id="{{item._id}}">{{item.desc}}</view>
+        <view class="opt" bindtap="openDetail" data-id="{{item._id}}">
+            <text class="likes-num">{{item.browse_num}}</text>
+            <text class="num">{{item.num||0}}</text>
+        </view>
+    </view>
+    </block>
+    <view wx:if="{{!forumList.length}}" class="no-data">暂无数据...</view>
+    <view class="create-up" bindtap="openPageUp"></view>
+</view>

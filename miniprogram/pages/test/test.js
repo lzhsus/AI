@@ -27,7 +27,7 @@ Page({
         //     name:"subscribeMessage"
         // })
         // common.compressImage()
-        this.downloadFile()
+        // this.downloadFile()
     },
     downloadFile() {
         Api.proPetList({

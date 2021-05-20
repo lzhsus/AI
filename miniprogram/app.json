@@ -27,6 +27,15 @@
 				"running/running",
 				"haibao/haibao"
             ]
+		},
+		{
+            "root": "forum/",
+            "pages": [
+				"index/index",
+				"create/create",
+				"detail/detail"
+            ]
+			
 		}
 	],
 	"tabBar": {

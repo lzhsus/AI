@@ -204,6 +204,24 @@
                     "pathName": "pages/setting/setting",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "forum/index/index",
+                    "pathName": "forum/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "forum/create/create",
+                    "pathName": "forum/create/create",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "forum/detail/detail",
+                    "pathName": "forum/detail/detail",
+                    "query": "_id=79550af260a4b535180070973af7aef5",
+                    "scene": null
                 }
             ]
         }

@@ -155,5 +155,10 @@ Page({
         wx.navigateTo({
             url: '/sports/running/running',
         })
+    },
+    openForumPages(){
+        wx.navigateTo({
+            url: '/forum/index/index',
+        })
     }
 })

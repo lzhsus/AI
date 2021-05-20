@@ -54,6 +54,15 @@
             </scroll-view>
         </view>
     </view>
+    <view class="sport-module">
+        <view class="sport-module-title">
+            <text>讨论专区</text>
+            <text ></text>
+        </view>
+        <view class="sport-list border" bindtap="openForumPages">
+            <image src="https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/sq-img.jpg?sign=8beb9c8974145523f9a4cbc870a6a883&t=1621395859" mode="widthFix" class="img100" />
+        </view>
+    </view>
     <!--  -->
     <view class="sport-module">
         <view class="sport-module-title">

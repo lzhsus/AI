@@ -312,7 +312,7 @@ export const compressImage2 = async function (url) {
         if(getType2(url)=='.JPG'){
             wx.compressImage({
                 src: url, 
-                quality: 10,
+                quality: 0.5,
                 success:(res)=>{
                     resolve(url);
                 },

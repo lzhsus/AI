@@ -59,4 +59,5 @@ globalApi.sendMessage = function(data, isShowLoading=true){
 }
 
 
+
 export { globalApi }

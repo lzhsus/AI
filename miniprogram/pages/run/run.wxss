@@ -110,6 +110,10 @@
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
+#sports-index .sport-module .sport-list.border {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
 #sports-index .sport-module .sport-list .sport-item {
   display: inline-block;
   margin-top: 15px;

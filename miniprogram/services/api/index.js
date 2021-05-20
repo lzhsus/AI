@@ -90,5 +90,20 @@ api.wxRunInfo = function(data, isShowLoading=true){
 api.wxRunList = function(data, isShowLoading=true){
     return request('control','wx/api/run/list',data,isShowLoading);
 }
+// 论坛
+
+api.formatList = function(data, isShowLoading=true){
+    return request('control','format/api/list',data,isShowLoading);
+}
+// 创建
+api.formatUp = function(data, isShowLoading=false){
+    return request('control','format/api/up',data,isShowLoading);
+}
+api.formatDetail = function(data, isShowLoading=true){
+    return request('control','format/api/detail',data,isShowLoading);
+}
+api.formatCommentt = function(data, isShowLoading=true){
+    return request('control','format/api/commentt',data,isShowLoading);
+}
 
 module.exports = api;

@@ -1,0 +1,8 @@
+<view class="img" bindtap="openImageClick"> 
+    <image wx:if="{{img_url}}" src="{{img_url}}" class="img100" mode="widthFix"/>
+    <text wx:else class="hint">选择图片</text>
+</view>
+<view class="desc">
+    <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述信息" bindinput="bindinput"></textarea>
+</view>
+<view class="btn" bindtap="submitClick">确认提交</view>

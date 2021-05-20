@@ -12,6 +12,7 @@ cloud.init({
 const user = require('./user/index');
 const wx_server = require('./wx_server/index');
 const run = require('./run/index');
+const format = require('./format/index');
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -205,6 +206,38 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    // 论坛
+    app.router('format/api/list', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await format.list(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('format/api/up', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await format.up(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('format/api/detail', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await format.detail(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('format/api/commentt', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await format.commentt(event, context)
+            resolve(res);
+        }); 
+    });
+    
+    
+    
     
     
     

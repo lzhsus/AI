@@ -10,8 +10,8 @@
     </view>
     <view class="main">
         <block wx:for="{{petList}}" wx:key="index">
-            <view class="item" bindtap="openDogDetail" data-petID="{{item.petID}}" data-coverURL="{{item.img_url}}" data-type="{{item.type}}">
-                <view class="img" style="background-image:url({{item.img_url}})"></view>
+            <view class="item" bindtap="openDogDetail" data-petID="{{item.petID}}" data-coverURL="{{item.coverURL}}" data-type="{{item.type}}">
+                <view class="img" style="background-image:url({{item.coverURL}})"></view>
                 <view class="info">
                     <view class="gender {{item.gender==1?'boy':'girl'}}"></view>
                     <view class="name">{{item.name}}</view>
