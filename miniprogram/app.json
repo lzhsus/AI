@@ -36,6 +36,13 @@
 				"detail/detail"
             ]
 			
+		},
+		{
+            "root": "college/",
+            "pages": [
+				"index/index",
+				"updata/updata"
+            ]
 		}
 	],
 	"tabBar": {

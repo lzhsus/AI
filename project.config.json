@@ -222,6 +222,18 @@
                     "pathName": "forum/detail/detail",
                     "query": "_id=79550af260a4b535180070973af7aef5",
                     "scene": null
+                },
+                {
+                    "name": "college/index/index",
+                    "pathName": "college/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "college/updata/updata",
+                    "pathName": "college/updata/updata",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

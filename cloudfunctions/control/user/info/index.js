@@ -82,7 +82,8 @@ module.exports =async (event,context,root)=>{
                 restrict_count:true,
                 avatarUrl:true,
                 nickName:true,
-                gender:true
+                gender:true,
+                isSuperAdmin:true
             })
             .end()
         result = result.list.map(res=>{

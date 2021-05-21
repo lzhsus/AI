@@ -13,6 +13,7 @@ const user = require('./user/index');
 const wx_server = require('./wx_server/index');
 const run = require('./run/index');
 const format = require('./format/index');
+const college = require('./college/index');
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -235,7 +236,21 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
-    
+    // 大学分数线
+    app.router('college/api/list', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await college.list(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('college/api/updata', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await college.updata(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     

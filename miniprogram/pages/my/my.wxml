@@ -63,6 +63,19 @@
                 <text class="tag02">剩余 未知</text>
             </view>
         </view>
-
+        <view bindtap="openPageClick" data-path="/college/index/index" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon07.png)">
+            <text class="value">高考分数</text>
+            <view class="tag-box" wx:if="{{pageShow}}">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+        </view>
+        <view wx:if="{{userInfo.isSuperAdmin}}" bindtap="openPageClick" data-path="/college/updata/updata" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon07.png)">
+            <text class="value">高考更新</text>
+            <view class="tag-box" wx:if="{{pageShow}}">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+        </view>
     </view>
 </view>

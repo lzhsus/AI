@@ -105,5 +105,14 @@ api.formatDetail = function(data, isShowLoading=true){
 api.formatCommentt = function(data, isShowLoading=true){
     return request('control','format/api/commentt',data,isShowLoading);
 }
+// 高考分数
+api.collegeList = function(data, isShowLoading=true){
+    return request('control','college/api/list',data,isShowLoading);
+}
+api.collegeUpdata = function(data, isShowLoading=true){
+    return request('control','college/api/updata',data,isShowLoading);
+}
+
+
 
 module.exports = api;
