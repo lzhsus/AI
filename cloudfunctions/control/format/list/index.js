@@ -19,6 +19,9 @@ module.exports =async (event,context,root)=>{
         let result = await db.collection('format_list')
         .aggregate()
         .limit(999)
+        .sort({
+            create_time: -1,
+        })
         .lookup({
             from:"format_comment",
             let:{

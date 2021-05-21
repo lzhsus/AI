@@ -8,6 +8,7 @@ import {
 } from '../../services/uploadFile.js';
 Page({
     data: {
+        createList:[{img_url:"",msg:''}],
         userInfo:{},
         img_url:''
     },
@@ -17,6 +18,21 @@ Page({
     },
     onShow: function () {
 
+    },
+    adddataClick(){
+        let createList = this.data.createList
+        createList.push({img_url:"",msg:''})
+        this.setData({
+            createList:createList
+        })
+    },
+    delClick(e){
+        let {index} = e.currentTarget.dataset;
+        let createList = this.data.createList
+        createList.splice(index,1)
+        this.setData({
+            createList:createList
+        })
     },
     getUserInfo(){
         Api.userInfo().then(res=>{
@@ -40,12 +56,16 @@ Page({
         })
     },
     bindinput(e){
-        let { value } = e.detail
+        let {index} = e.currentTarget.dataset;
+        let createList = this.data.createList;
+
+        createList[index].msg = e.detail.value;
         this.setData({
-            desc:value
+            createList:createList
         })
     },
-    openImageClick(){
+    openImageClick(e){
+        let {index} = e.currentTarget.dataset;
         wx.chooseImage({
             count: 1,
             sizeType: ['original', 'compressed'],
@@ -53,29 +73,37 @@ Page({
             success: async (res) => {
                 // tempFilePath可以作为img标签的src属性显示图片
                 let tempFilePaths = res.tempFilePaths;
+
+                let createList = this.data.createList;
+                createList[index].img_url = tempFilePaths[0]
                 this.setData({
-                    img_url:tempFilePaths[0]
+                    createList:createList
                 })
             }
         })
     },
     async submitClick(){
-        if(!this.data.desc||!this.data.img_url){
-            wx.showModal({
-                content: '请选择图片已经信息描述！',
-                showCancel:false
-            })
-            return
-        }
+        // if(!this.data.desc||!this.data.img_url){
+        //     wx.showModal({
+        //         content: '请选择图片已经信息描述！',
+        //         showCancel:false
+        //     })
+        //     return
+        // }
         wx.showLoading({
             title:'加载中',
             mask:true
         });
-        let image = await common.compressImage2(this.data.img_url);
-        var images = await uploadFiles([image], 'forum')
+        let createList = this.data.createList
+        for(let i=0;i<createList.length;i++){
+            let image = await common.compressImage2(createList[i].img_url);
+            var images = await uploadFiles([image], 'forum')
+            createList[i].img_url = images[0].fileID.replace("cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/","https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/")
+        }
         Api.formatUp({
-            desc:this.data.desc,
-            img_url:images[0].fileID.replace("cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/","https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/"),
+            // desc:this.data.desc,
+            // img_url:images[0].fileID.replace("cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/","https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/"),
+            list:createList,
             userInfo:{
                 avatarUrl:this.data.userInfo.avatarUrl,
                 nickName:this.data.userInfo.nickName,
