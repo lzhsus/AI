@@ -25,5 +25,5 @@
     </view>
     </block>
     <view wx:if="{{!forumList.length}}" class="no-data">暂无数据...</view>
-    <view class="create-up" bindtap="openPageUp"></view>
+    <view class="create-up" bindtap="openPageUp" wx:if="{{forumList.length}}"></view>
 </view>

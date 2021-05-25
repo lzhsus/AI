@@ -96,3 +96,11 @@
   line-height: 80rpx;
   margin: 0 12rpx;
 }
+.nodata {
+  padding: 100px;
+  box-sizing: border-box;
+  font-size: 30px;
+  color: #b9b7be;
+  font-weight: bold;
+  text-align: center;
+}

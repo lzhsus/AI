@@ -70,7 +70,7 @@ Page({
     },
     openPageUp(){
         wx.navigateTo({
-            url: '/forum/create/create'
+            url: '/forum/create/create?show=true'
         })
     },
     onShow: function () {

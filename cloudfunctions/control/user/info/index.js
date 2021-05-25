@@ -98,7 +98,9 @@ module.exports =async (event,context,root)=>{
         var res = {
             errcode:200,
             msg: "操作成功!",
-            result:result[0],
+            result:Object.assign(result[0],{
+                
+            }),
             success:true,
             timestamp:new Date().getTime()
         }

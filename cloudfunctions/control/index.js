@@ -14,6 +14,7 @@ const wx_server = require('./wx_server/index');
 const run = require('./run/index');
 const format = require('./format/index');
 const college = require('./college/index');
+const garbage = require('./garbage/index');
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -256,6 +257,21 @@ exports.main = async (event, context) => {
         let { OPENID} = cloud.getWXContext()
         ctx.body = new Promise(async resolve => {
             var res = await college.updata(event, context)
+            resolve(res);
+        }); 
+    });
+    // 垃圾分类
+    app.router('garbage/api/data', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await garbage.data(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('garbage/api/hotlist', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await garbage.hotlist(event, context)
             resolve(res);
         }); 
     });

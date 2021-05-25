@@ -116,6 +116,10 @@ api.collegeList = function(data, isShowLoading=true){
 api.collegeUpdata = function(data, isShowLoading=true){
     return request('control','college/api/updata',data,isShowLoading);
 }
+// 垃圾分类
+api.garbageData = function(data, isShowLoading=true){
+    return request('control','garbage/api/data',data,isShowLoading);
+}
 
 
 

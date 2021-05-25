@@ -13,10 +13,15 @@ Page({
         img_url:'',
         addressChecked:false,
         address:'',
+        createShow:false
     },
-    async onLoad(opt) {        
+    async onLoad(opt) {     
+        this.setData({createShow:opt.show||false})   
         mixinsIndex.onLoad(opt);
         this.getUserInfo()
+        wx.setNavigationBarTitle({
+            title: this.data.createShow?"发布":"敬请期待"
+        })
     },
     onShow: function () {
     },

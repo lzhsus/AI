@@ -43,6 +43,12 @@
 				"updata/updata",
 				"chart/chart"
             ]
+		},
+		{
+            "root": "garbage/",
+            "pages": [
+				"index/index"
+            ]
 		}
 	],
 	"tabBar": {

@@ -16,11 +16,8 @@ module.exports =async (event,context,root)=>{
     } = cloud.getWXContext();
     let parame = event.data||{};
     try {
-        let result = await db.collection('format_list')
-        .aggregate()
-        .limit(999)
-        .sort({
-            create_time: -1,
+        let result = await db.collection('format_list').aggregate().match({
+            _id:parame._id
         })
         .lookup({
             from:"format_comment",
@@ -31,47 +28,15 @@ module.exports =async (event,context,root)=>{
                 .match(_.expr($.and([
                     $.eq(['$pro_id', '$$id'])
                 ])))
-                .group({
-                    _id: '$pro_id',
-                    comment_num: $.sum(1)
-                })
                 .done(),
-            as:'counts'
-        })
-        .lookup({
-            from:"format_follow",
-            let:{
-                openId:"$openId",
-            },
-            pipeline: $.pipeline()
-                .match(_.expr($.and([
-                    $.eq(['$target_openId', '$$openId'])
-                ])))
-                .group({
-                    _id: '$target_openId',
-                    format_num: $.sum(1)
-                })
-                .done(),
-            as:'follow'
-        })
-        .replaceRoot({
-            newRoot: $.mergeObjects([ $.arrayElemAt(['$counts', 0]), '$$ROOT' ]),
-        })
-        .replaceRoot({
-            newRoot: $.mergeObjects([ $.arrayElemAt(['$follow', 0]), '$$ROOT' ])
-        })
-        .project({
-            counts: 0,
-            follow:0
+            as:'comment'
         })
         .end();
 
         var res = {
             errcode:200,
             msg: "操作成功!",
-            result:{
-                list:[]//result.list||
-            },
+            result:result.list[0]||{},
             success:true,
             timestamp:new Date().getTime()
         }

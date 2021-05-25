@@ -250,6 +250,12 @@
                 {
                     "name": "pages/run/run",
                     "pathName": "pages/run/run",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "garbage/index/index",
+                    "pathName": "garbage/index/index",
                     "scene": null
                 }
             ]
