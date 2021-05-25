@@ -69,6 +69,11 @@ page {
   text-align: center;
   box-sizing: border-box;
 }
+.weapper .item .author-header .follow.active {
+  background: transparent;
+  color: #24c789;
+  font-weight: bold;
+}
 .weapper .item .cover_img {
   max-height: 700rpx;
   display: flex;
@@ -124,4 +129,12 @@ page {
   margin-right: 4px;
   background: url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/xx-icon.png) center center no-repeat;
   background-size: cover;
+}
+.weapper .item .address {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 4px 0;
+  font-size: 12px;
+  color: #b9b7be;
 }

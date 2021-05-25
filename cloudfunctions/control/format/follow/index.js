@@ -10,38 +10,26 @@ const globalConfig = require('../../config/index')
 const $ = db.command.aggregate
 // import moment from '../../utils/moment.min';
 
+
 module.exports =async (event,context,root)=>{
     const {
         OPENID,UNIONID
     } = cloud.getWXContext();
     let parame = event.data||{};
     try {
-        let data = {}
-        if(parame.province&&parame.year){
-            data = {
-                province:_.eq(parame.province),
-                year:_.eq(parame.year),
-            }
-        }else if(parame.province){
-            data = {
-                province:_.eq(parame.province),
-            }
-        }else if(parame.year){
-            data = {
-                year:_.eq(parame.year),
-            }
-        }
-        let result = await db.collection('college_list').aggregate()
-                .match(data)
-                .limit(9999)
-                .end();
+        var data_info = {};
+        data_info.openId = OPENID;
+        data_info.create_time = db.serverDate();
+        data_info.updata_time = db.serverDate();
+        
+        await db.collection('format_follow').add({
+            data: Object.assign(parame,data_info)
+        })
 
         var res = {
             errcode:200,
             msg: "操作成功!",
-            result:{
-                list:result.list||[]
-            },
+            result:{},
             success:true,
             timestamp:new Date().getTime()
         }

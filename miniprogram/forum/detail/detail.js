@@ -6,7 +6,9 @@ Page({
     data: {
         userInfo:{},
         itemDetail:{},
-        postCommentValue:""
+        postCommentValue:"",
+        placeholder:"请输入评论内容...",
+        target_user:{},
     },
     async onLoad(opt) {        
         mixinsIndex.onLoad(opt);
@@ -32,16 +34,40 @@ Page({
             return
         }
         res = res.result||{}
-        res.comment = res.comment.map(item=>{
+        this.setComment(res)
+    },
+
+    onShow: function () {
+
+    },
+    setComment(res){
+        let comment = res.comment||[]
+        comment = comment.map(item=>{
             item.time = common.moment(new Date(res.create_time)).format("YYYY-MM-DD HH:mm:ss")
             return item;
         })
+        for(let i=0;i<comment.length-1;i++){
+            for(let j=0;j<comment.length-1;j++){
+                if(comment[i]._id==comment[j+1].target_user._id){
+                    let list = comment[i].targetList||[]
+                    list.push(comment[j+1])
+                    comment[j+1].show = true;
+                    comment[i].targetList = list;
+                }
+            }
+        }
+        comment = comment.filter(item=>{ return !item.show; })
+        res.comment = comment
         this.setData({
             itemDetail:res
         })
     },
-    onShow: function () {
-
+    selClickTarget(e){
+        let { item } = e.currentTarget.dataset;
+        this.setData({
+            target_user:item,
+            placeholder:"正在回复@"+item.userInfo.nickName
+        })
     },
     bindinput(e){
         this.setData({
@@ -58,17 +84,25 @@ Page({
             })
             return
         }
-        Api.formatCommentt({
+        let data = {
             msg:this.data.postCommentValue,
             pro_id:this.data.itemDetail._id,
             userInfo:this.data.userInfo,
-            target_user:{}
-        }).then(res=>{
+            target_user:this.data.target_user
+        }
+        Api.formatCommentt(data).then(res=>{
             if(res.success){
                 res= res.result||{}
+                let itemDetail = this.data.itemDetail;
+                itemDetail.comment.push(Object.assign(data,{
+                    time:common.moment().format("YYYY-MM-DD HH:mm:ss"),
+                    openId:itemDetail.openId
+                }))
+                this.setComment(itemDetail)
                 this.setData({
                     postCommentValue:''
                 })
+
                 wx.showToast({
                     title: '评论成功！',
                     icon:"none",

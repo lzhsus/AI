@@ -2,6 +2,7 @@ const Api = require('../../services/api/index');
 import * as common from '../../common/common';
 import appConfig from '../../common/app_config';
 import mixinsIndex from '../../mixins/index';
+
 Page({
     data: {
         pageShow:'',
@@ -88,6 +89,6 @@ Page({
         }
         setTimeout(()=>{
             this.wxGetLocation()
-        },2000)
+        },500)
     },
 })

@@ -10,6 +10,10 @@
         </view>
     </view>
 </block>
+<view class="radio-box" bindtap="openAddressData">
+    <radio value="r1" checked="{{addressChecked}}" /> 设置当前位置
+</view>
+<view wx:if="{{addressChecked}}" class="address">{{address}}</view>
 
 <view class="btn-box">
     <view class="add-data" bindtap="adddataClick">添加一条</view>

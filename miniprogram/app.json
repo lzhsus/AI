@@ -34,14 +34,14 @@
 				"index/index",
 				"create/create",
 				"detail/detail"
-            ]
-			
+            ]	
 		},
 		{
             "root": "college/",
             "pages": [
 				"index/index",
-				"updata/updata"
+				"updata/updata",
+				"chart/chart"
             ]
 		}
 	],

@@ -33,16 +33,36 @@ module.exports =async (event,context,root)=>{
                 ])))
                 .group({
                     _id: '$pro_id',
-                    num: $.sum(1)
+                    comment_num: $.sum(1)
                 })
                 .done(),
             as:'counts'
         })
+        .lookup({
+            from:"format_follow",
+            let:{
+                openId:"$openId",
+            },
+            pipeline: $.pipeline()
+                .match(_.expr($.and([
+                    $.eq(['$target_openId', '$$openId'])
+                ])))
+                .group({
+                    _id: '$target_openId',
+                    format_num: $.sum(1)
+                })
+                .done(),
+            as:'follow'
+        })
         .replaceRoot({
-          newRoot: $.mergeObjects([ $.arrayElemAt(['$counts', 0]), '$$ROOT' ])
+            newRoot: $.mergeObjects([ $.arrayElemAt(['$counts', 0]), '$$ROOT' ]),
+        })
+        .replaceRoot({
+            newRoot: $.mergeObjects([ $.arrayElemAt(['$follow', 0]), '$$ROOT' ])
         })
         .project({
-            counts: 0
+            counts: 0,
+            follow:0
         })
         .end();
 

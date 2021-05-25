@@ -10,14 +10,51 @@ Page({
     data: {
         createList:[{img_url:"",msg:''}],
         userInfo:{},
-        img_url:''
+        img_url:'',
+        addressChecked:false,
+        address:'',
     },
     async onLoad(opt) {        
         mixinsIndex.onLoad(opt);
         this.getUserInfo()
     },
     onShow: function () {
-
+    },
+    openAddressData(){
+        if(this.data.addressChecked){
+            this.setData({
+                addressChecked:false
+            })
+            return
+        }
+        wx.choosePoi({
+            success:res=>{
+                console.log(res)
+                if(res.type==0){
+                    this.setData({
+                        addressChecked:false,
+                        address:''
+                    })
+                }
+                if(res.type==1){
+                    this.setData({
+                        addressChecked:true,
+                        address:res.city
+                    })
+                }
+                if(res.type==2){
+                    this.setData({
+                        addressChecked:true,
+                        address:res.address+' '+res.name
+                    })
+                }
+            },
+            fail:err=>{
+                this.setData({
+                    addressChecked:false
+                })
+            }
+        })
     },
     adddataClick(){
         let createList = this.data.createList
@@ -104,6 +141,7 @@ Page({
             // desc:this.data.desc,
             // img_url:images[0].fileID.replace("cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/","https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/"),
             list:createList,
+            address:this.data.addressChecked?this.data.address:'',
             userInfo:{
                 avatarUrl:this.data.userInfo.avatarUrl,
                 nickName:this.data.userInfo.nickName,

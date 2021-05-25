@@ -33,14 +33,16 @@ module.exports =async (event,context,root)=>{
         if(result&&result.list&&result.list.length){
             // 最后一天是当天 只更新当天
             if(todayItem.timestamp==result.list[0].timestamp){
-                await db.collection('wx_run').where({
-                    timestamp:todayItem.timestamp
-                }).update({
-                    data:{
-                        step:todayItem.step,
-                        updata_time:db.serverDate()
-                    }
-                })
+                for(let i=0;i<stepInfoList.length;i++){
+                    await db.collection('wx_run').where({
+                        timestamp:stepInfoList[i].timestamp
+                    }).update({
+                        data:{
+                            step:stepInfoList[i].step,
+                            updata_time:db.serverDate()
+                        }
+                    })
+                }
             }else{
                 for(let i=0;i<stepInfoList.length;i++){
                     if(stepInfoList[i].timestamp>result.list[0].timestamp){
@@ -61,6 +63,7 @@ module.exports =async (event,context,root)=>{
             errcode:200,
             msg: "操作成功!",
             result:{},
+            stepInfoList:stepInfoList,
             success:true,
             timestamp:new Date().getTime()
         }

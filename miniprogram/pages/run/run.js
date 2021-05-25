@@ -160,5 +160,11 @@ Page({
         wx.navigateTo({
             url: '/forum/index/index',
         })
+    },
+    oenGoodsPage(){
+        wx.navigateToMiniProgram({
+            appId: 'wxe7bd80f710c7cb35',
+            path: '/pages/index/index?scene=run',
+        });
     }
 })

@@ -48,6 +48,17 @@
   text-align: center;
   box-sizing: border-box;
 }
+#detail-info .item .li {
+  margin-bottom: 40rpx;
+}
+#detail-info .item .address {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 4px 0;
+  font-size: 12px;
+  color: #b9b7be;
+}
 #detail-info .item .text {
   margin: 12rpx auto;
   font-weight: bold;
@@ -118,6 +129,10 @@
   overflow: hidden;
   font-size: 12px;
 }
+#detail-info .comment .comment-list .comment-main .comment-li-item.comment-li-item2 {
+  padding-left: 100rpx;
+  box-sizing: border-box;
+}
 #detail-info .comment .comment-list .comment-main .comment-li-item .avatar {
   width: 64rpx;
   min-width: 64rpx;
@@ -129,13 +144,13 @@
   justify-content: center;
   width: 100%;
 }
-#detail-info .comment .comment-list .comment-main .comment-li-item .userinfo .nickname {
+#detail-info .comment .comment-list .comment-main .comment-li-item .userinfo .nickname-box {
   color: #333f48;
   margin-bottom: 8rpx;
   display: block;
   font-weight: bold;
 }
-#detail-info .comment .comment-list .comment-main .comment-li-item .userinfo .nickname .time {
+#detail-info .comment .comment-list .comment-main .comment-li-item .userinfo .nickname-box .time {
   margin-left: 10rpx;
   font-size: 11px;
   color: #a4a4a4;

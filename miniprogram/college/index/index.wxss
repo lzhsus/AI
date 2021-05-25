@@ -36,6 +36,15 @@
   top: 50%;
   transform: translateY(-50%);
 }
+.weapp .module .title .e-tu {
+  position: absolute;
+  top: 50%;
+  left: 50rpx;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
 .weapp .module .time {
   padding: 12rpx 0;
   box-sizing: border-box;
@@ -72,18 +81,20 @@
 }
 .weapp .module .score-box .thead .view1 {
   width: 40%;
+  min-width: 40%;
   padding: 4px;
   box-sizing: border-box;
   border-right: 1px solid #DCDFE6;
 }
 .weapp .module .score-box .thead .view2 {
   width: 30%;
+  min-width: 30%;
   padding: 4px;
   box-sizing: border-box;
   border-right: 1px solid #DCDFE6;
 }
 .weapp .module .score-box .thead .view3 {
-  width: 30%;
+  width: 100%;
   padding: 4px;
   box-sizing: border-box;
 }
@@ -99,18 +110,20 @@
 }
 .weapp .module .score-box .tbady .tr .view1 {
   width: 40%;
+  min-width: 40%;
   padding: 4px;
   box-sizing: border-box;
   border-right: 1px solid #DCDFE6;
 }
 .weapp .module .score-box .tbady .tr .view2 {
   width: 30%;
+  min-width: 30%;
   padding: 4px;
   box-sizing: border-box;
   border-right: 1px solid #DCDFE6;
 }
 .weapp .module .score-box .tbady .tr .view3 {
-  width: 30%;
+  width: 100%;
   padding: 4px;
   box-sizing: border-box;
 }
@@ -118,6 +131,7 @@
   padding: 100rpx;
   width: 100%;
   box-sizing: border-box;
+  text-align: center;
   font-size: 14px;
   color: #000;
   font-weight: bold;

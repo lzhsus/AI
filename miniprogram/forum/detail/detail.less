@@ -26,6 +26,13 @@
                 font-size: 12px;color: #fff;text-align: center;box-sizing: border-box;
             }
         }
+        .li{
+            margin-bottom: 40rpx;
+        }
+        .address{
+            display: flex;justify-content: flex-start;align-items: center;margin: 4px 0;
+            font-size: 12px;color: #b9b7be;
+        }
         .cover_img{}
         .text{
             margin: 12rpx auto;font-weight: bold;
@@ -66,16 +73,19 @@
                 padding: 20px 0;
                 .comment-li-item{
                     display: flex;padding-top:15rpx;overflow: hidden;font-size:12px;
+                    &.comment-li-item2{
+                        padding-left: 100rpx;box-sizing: border-box;
+                    }
                     .avatar{
                         width: 64rpx;min-width: 64rpx;
                     }
                     .userinfo{
                         display: flex;padding-left:20rpx;flex-direction:column;justify-content: center;width: 100%;
-                        .nickname{
-                        color: #333f48;margin-bottom: 8rpx;display: block;font-weight: bold;
-                        .time{
-                            margin-left:10rpx;font-size: 11px;color: #a4a4a4;font-weight: normal;
-                        }
+                        .nickname-box{
+                            color: #333f48;margin-bottom: 8rpx;display: block;font-weight: bold;
+                            .time{
+                                margin-left:10rpx;font-size: 11px;color: #a4a4a4;font-weight: normal;
+                            }
                         }     
                         .content{
                             display: block;color: #656565;

@@ -236,6 +236,14 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('format/api/follow', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await format.follow(event, context)
+            resolve(res);
+        }); 
+    });
+    
     // 大学分数线
     app.router('college/api/list', (ctx) => {
         let { OPENID} = cloud.getWXContext()

@@ -76,7 +76,8 @@ module.exports =async (event,context,root)=>{
                 target_step:Number(target_step)||6000,
                 today:todayObj,
                 timestamp:todayDay,
-                list:list
+                list:list,
+                shequShow:false
             },
             success:true,
             timestamp:new Date().getTime()

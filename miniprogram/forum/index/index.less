@@ -38,6 +38,9 @@ page{
                 width: 140rpx;height: 60rpx;line-height: 60rpx;
                 background: #24c789;border: 1px solid #24c789;border-radius: 30rpx;letter-spacing: 2px;
                 font-size: 12px;color: #fff;text-align: center;box-sizing: border-box;
+                &.active{
+                    background: transparent;color: #24c789;font-weight: bold;
+                }
             }
         }
         .cover_img{
@@ -68,6 +71,10 @@ page{
                     background-size: cover;
                 }
             }
+        }
+        .address{
+            display: flex;justify-content: flex-start;align-items: center;margin: 4px 0;
+            font-size: 12px;color: #b9b7be;
         }
     }
 }

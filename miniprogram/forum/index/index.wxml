@@ -9,15 +9,18 @@
                     <view class="update-time">{{item.create_time}}</view>
                 </view>
             </view>
-            <view class="follow">关注</view>
+            <view class="follow {{item.format_num?'active':''}}" bindtap="followUserInfo" data-item="{{item}}">{{!item.format_num?'关注':'已关注'}}</view>
         </view>
         <view class="cover_img" bindtap="openDetail" data-id="{{item._id}}">
-            <image src="{{item.img_url}}" mode="widthFix" class="img100" />
+            <image src="{{item.img_url||item.list[0].img_url}}" mode="widthFix" class="img100" />
         </view>
         <view class="text" bindtap="openDetail" data-id="{{item._id}}">{{item.desc}}</view>
         <view class="opt" bindtap="openDetail" data-id="{{item._id}}">
             <text class="likes-num">{{item.browse_num}}</text>
-            <text class="num">{{item.num||0}}</text>
+            <text class="num">{{item.comment_num||0}}</text>
+        </view>
+        <view class="address" wx:if="{{item.address}}">
+            <text>{{item.address}}</text>
         </view>
     </view>
     </block>

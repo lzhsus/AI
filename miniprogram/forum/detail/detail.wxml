@@ -10,23 +10,35 @@
                     <view class="update-time">{{itemDetail.create_time}}</view>
                 </view>
             </view>
-            <view class="follow">关注</view>
+            <view class="follow"></view>
         </view>
-        <view class="cover_img">
-            <image src="{{itemDetail.img_url}}" mode="widthFix" class="img100" />
+        <view class="li" wx:for="{{itemDetail.list}}" wx:key="index">
+            <view class="cover_img">
+                <image src="{{item.img_url}}" mode="widthFix" class="img100" />
+            </view>
+            <view class="text">{{item.msg||item.desc||item.msg.value}}</view>
         </view>
-        <view class="text">{{itemDetail.desc}}</view>
+        <view class="address" wx:if="{{itemDetail.address}}">
+            <text>{{itemDetail.address}}</text>
+        </view>
     </view>
     <view class="comment">
         <view class="comment-title">评论信息</view>
         <view class="comment-list">
             <view class="comment-main" wx:if="{{itemDetail.comment.length}}"> 
                 <block wx:for="{{itemDetail.comment}}" wx:key="index">
-                    <view class="comment-li-item">
+                    <view class="comment-li-item" bindtap="selClickTarget" data-item="{{item}}">
                         <view class="avatar"><image src="{{item.userInfo.avatarUrl}}" mode="widthFix" class="img100" /></view>
                         <view class="userinfo">
-                            <view class="nickname-box">{{item.userInfo.nickName}}<text class="time">{{item.time}}</text></view>
+                            <view class="nickname-box">{{item.userInfo.nickName}} <text class="time">{{item.time}}</text></view>
                             <view class="content">{{item.msg}}</view>
+                        </view> 
+                    </view>
+                    <view class="comment-li-item comment-li-item2" wx:if="{{item.targetList&&item.targetList.length}}" wx:for="{{item.targetList}}" wx:key="index" wx:for-item="items">
+                        <view class="avatar"><image src="{{items.userInfo.avatarUrl}}" mode="widthFix" class="img100" /></view>
+                        <view class="userinfo">
+                            <view class="nickname-box">{{items.userInfo.nickName}} <text class="time">{{items.time}}</text></view>
+                            <view class="content">{{items.msg}}</view>
                         </view> 
                     </view>
                 </block>
@@ -41,7 +53,7 @@
 				<button class="button-opacity" data-id="{{itemDetail._id}}" data-name="{{itemDetail.desc}}" data-imageUrl="{{itemDetail.img_url}}" open-type="share">分享</button>
 			</view>
 			<view class="text-form">
-				<textarea class="report-ipt" bindinput="bindinput" auto-height placeholder="请输入评论" bindconfirm="bindconfirm" />
+				<textarea class="report-ipt" bindinput="bindinput" value="{{postCommentValue}}" auto-height placeholder="{{placeholder}}" bindconfirm="bindconfirm" />
 				<view class='report-submit-btn' bindtap="bindconfirm">发送</view> 
             </view>
         </view>
