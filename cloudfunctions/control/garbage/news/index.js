@@ -22,9 +22,15 @@ module.exports =async (event,context,root)=>{
 
     try {
         var options = {
-            uri: 'https://api.tianapi.com/txapi/lajifenlei/index',
+            uri: 'https://api.tianapi.com/lajifenleinews/index',
             method:"GET",
-            qs: {key:'2c52cf2cd023ccef3c6d44439a7e2cd8',word:parame.word,num:50},
+            qs: {
+                key:'2c52cf2cd023ccef3c6d44439a7e2cd8',
+                num:50,
+                page:parame.page,
+                rand:0,
+                word:parame.word
+            },
             headers: {
                 'User-Agent': 'Request-Promise'
             },
@@ -34,12 +40,7 @@ module.exports =async (event,context,root)=>{
         log.info({ name: '_查询_log',result: result||{} });
         if(result.code==200){
             let list = result.newslist.map(item=>{
-                if(item.type==0) item.type_txt = '可回收垃圾';
-                if(item.type==1) item.type_txt = '有害垃圾';
-                if(item.type==2) item.type_txt = '湿垃圾';
-                if(item.type==3) item.type_txt = '干垃圾';
-                if(item.aipre==0) item.aipre_txt = '正常结果';
-                if(item.aipre==1) item.aipre_txt = '预判结果';
+                
                 return item;
             })
             updata(list)

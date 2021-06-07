@@ -15,6 +15,7 @@ const run = require('./run/index');
 const format = require('./format/index');
 const college = require('./college/index');
 const garbage = require('./garbage/index');
+const tianapi = require('./tianapi/index');
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -272,6 +273,21 @@ exports.main = async (event, context) => {
         let { OPENID} = cloud.getWXContext()
         ctx.body = new Promise(async resolve => {
             var res = await garbage.hotlist(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('garbage/api/list', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await garbage.list(event, context)
+            resolve(res);
+        }); 
+    });
+    // 第三方api
+    app.router('tianapi/api/pyqwenan', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await tianapi.pyqwenan(event, context)
             resolve(res);
         }); 
     });

@@ -14,7 +14,7 @@
         <view class="cover_img" bindtap="openDetail" data-id="{{item._id}}">
             <image src="{{item.img_url||item.list[0].img_url}}" mode="widthFix" class="img100" />
         </view>
-        <view class="text" bindtap="openDetail" data-id="{{item._id}}">{{item.desc}}</view>
+        <view class="text" bindtap="openDetail" data-id="{{item._id}}">{{item.desc||item.list[0].msg}}</view>
         <view class="opt" bindtap="openDetail" data-id="{{item._id}}">
             <text class="likes-num">{{item.browse_num}}</text>
             <text class="num">{{item.comment_num||0}}</text>

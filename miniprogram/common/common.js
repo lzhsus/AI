@@ -39,6 +39,28 @@ export const loadFontFaceInit = function(source,family){
         });
     })
 }
+// 微信复制
+export const setClipboardData = function(data){
+    if(!data){
+        wx.showToast({
+            title: '复制内容不可为空',
+            icon:'none',
+            duration:1000
+        })
+        return
+    }
+    return new Promise((resolve,reject)=>{
+        wx.setClipboardData({
+            data:data||'',
+            success:()=>{
+                resolve(true)
+            },
+            fail:()=>{
+                resolve(false)
+            }
+        })
+    })
+}
 export const subscribeMessage = function(tmplIds=[]){
     return new Promise(function (resolve) {
         wx.requestSubscribeMessage({

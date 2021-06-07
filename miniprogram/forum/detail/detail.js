@@ -58,6 +58,8 @@ Page({
         }
         comment = comment.filter(item=>{ return !item.show; })
         res.comment = comment
+        if(!res.list) res.list = [{img_url:res.img_url,msg:res.msg||res.desc||res.msg.value}]
+        console.log(res)
         this.setData({
             itemDetail:res
         })

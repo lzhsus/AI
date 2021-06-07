@@ -23,6 +23,9 @@
 .font-eighty-eight {
     font-family: "Eighty-Eight";
 }
+.font-czy175{
+    font-family: "czy175";
+}
 .font-Rastella-3{
     font-family: "Rastella-3";
 }

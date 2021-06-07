@@ -44,9 +44,7 @@ module.exports =async (event,context,root)=>{
                 openId:"$openId",
             },
             pipeline: $.pipeline()
-                .match(_.expr($.and([
-                    $.eq(['$target_openId', '$$openId'])
-                ])))
+                .match(_.expr($.and([$.eq(['$target_openId', '$$openId']),$.eq(['$openId', OPENID])])))
                 .group({
                     _id: '$target_openId',
                     format_num: $.sum(1)
@@ -65,12 +63,17 @@ module.exports =async (event,context,root)=>{
             follow:0
         })
         .end();
-
+        let list = (result.list||[]).map(item=>{
+            if(item.desc){
+                item.desc = item.list[0].msg
+            }
+            return item;
+        })
         var res = {
             errcode:200,
             msg: "操作成功!",
             result:{
-                list:[]//result.list||
+                list:list
             },
             success:true,
             timestamp:new Date().getTime()

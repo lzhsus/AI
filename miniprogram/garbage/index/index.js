@@ -7,17 +7,15 @@ Page({
 
     },
     onLoad (options) {
-        this.getGarbageData()
+        // this.getGarbageData()
     },
 
     onShow: function () {
 
     },
-    getGarbageData(){
-        Api.garbageData({
-            word:"眼镜"
-        }).then(res=>{
-
+    openSearchClick(){
+        wx.navigateTo({
+          url: '/garbage/search/search',
         })
     }
 })

@@ -77,7 +77,7 @@ module.exports =async (event,context,root)=>{
                 today:todayObj,
                 timestamp:todayDay,
                 list:list,
-                shequShow:false
+                shequShow:true
             },
             success:true,
             timestamp:new Date().getTime()

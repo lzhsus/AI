@@ -17,6 +17,7 @@
 		"pages/dogdetail/dogdetail",
 		"pages/setting/setting",
 		"pages/run/run",
+		"pages/garbage/garbage",
 		"pages/webview/webview"
 	],
 	"subpackages":[
@@ -47,9 +48,17 @@
 		{
             "root": "garbage/",
             "pages": [
-				"index/index"
+				"index/index",
+				"search/search"
+            ]
+		},
+		{
+            "root": "tianapi/",
+            "pages": [
+				"pyqwenan/pyqwenan"
             ]
 		}
+		
 	],
 	"tabBar": {
 		"color": "#8a8a8a",
@@ -71,8 +80,8 @@
 				"selectedIconPath": "./status/nav-icon5-active.png"
 			},
 			{
-				"pagePath": "pages/emotional/emotional",
-				"text": "情感分析",
+				"pagePath": "pages/garbage/garbage",
+				"text": "垃圾分类",
 				"iconPath": "./status/nav-icon2.png",
 				"selectedIconPath": "./status/nav-icon2-active.png"
 			},

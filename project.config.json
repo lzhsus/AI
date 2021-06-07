@@ -256,6 +256,19 @@
                 {
                     "name": "garbage/index/index",
                     "pathName": "garbage/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/garbage/garbage",
+                    "pathName": "pages/garbage/garbage",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "tianapi/pyqwenan/pyqwenan",
+                    "pathName": "tianapi/pyqwenan/pyqwenan",
+                    "query": "",
                     "scene": null
                 }
             ]

@@ -120,6 +120,17 @@ api.collegeUpdata = function(data, isShowLoading=true){
 api.garbageData = function(data, isShowLoading=true){
     return request('control','garbage/api/data',data,isShowLoading);
 }
+api.garbageList = function(data, isShowLoading=true){
+    return request('control','garbage/api/list',data,isShowLoading);
+}
+api.garbageHotlist = function(data, isShowLoading=true){
+    return request('control','garbage/api/hotlist',data,isShowLoading);
+}
+// api
+api.tianapiPyqwenan = function(data, isShowLoading=true){
+    return request('control','tianapi/api/pyqwenan',data,isShowLoading);
+}
+
 
 
 

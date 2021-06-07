@@ -27,7 +27,7 @@
                 <text class="tag02">剩余 {{userInfo.restrict_count.xiaohua-userInfo.jokebot_msg.count}}</text>
             </view>
         </view>
-        <view class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon01.png)">
+        <view class="item" bindtap="openPageClick" data-path="/pages/emotional/emotional" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon01.png)">
             <text class="value">情感分析</text>
             <view class="tag-box" wx:if="{{pageShow}}">
                 <text class="tag01">已用 {{userInfo.emotional_msg.count}}</text>
@@ -58,6 +58,13 @@
         </view>
         <view bindtap="openPageClick" data-path="/pages/manager/manager" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon05.png)">
             <text class="value">同声翻译</text>
+            <view class="tag-box" wx:if="{{pageShow}}">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+        </view>
+        <view bindtap="openPageClick" data-path="/tianapi/pyqwenan/pyqwenan" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon06.png)">
+            <text class="value">经典文案</text>
             <view class="tag-box" wx:if="{{pageShow}}">
                 <text class="tag01">已用 未知</text>
                 <text class="tag02">剩余 未知</text>

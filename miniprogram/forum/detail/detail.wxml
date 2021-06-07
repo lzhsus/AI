@@ -10,7 +10,7 @@
                     <view class="update-time">{{itemDetail.create_time}}</view>
                 </view>
             </view>
-            <view class="follow"></view>
+            <view class=""></view>
         </view>
         <view class="li" wx:for="{{itemDetail.list}}" wx:key="index">
             <view class="cover_img">

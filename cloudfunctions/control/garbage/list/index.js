@@ -16,16 +16,19 @@ module.exports =async (event,context,root)=>{
     } = cloud.getWXContext();
     let parame = event.data||{};
     try {
-        let result = await db.collection('garbage_list').aggregate()
-        .sample({
-            size:1
+        let result = await db.collection('garbage_list').aggregate().match({
+            type:Number(parame.type)
         })
+        .limit(999)
         .end();
 
+        let list = result.list||{}
         var res = {
             errcode:200,
             msg: "操作成功!",
-            result:result.list[0]||{},
+            result:{
+                list:list
+            },
             success:true,
             timestamp:new Date().getTime()
         }
