@@ -180,7 +180,7 @@
   width: 100%;
   background: #fff;
   padding: 4px 18rpx;
-  box-shadow: 0 0 0.28rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.28rem rgba(216, 216, 216, 0.2);
   min-height: 48px;
   display: flex;
   align-items: center;

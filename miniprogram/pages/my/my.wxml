@@ -84,5 +84,22 @@
                 <text class="tag02">剩余 未知</text>
             </view>
         </view>
+        <view bindtap="openPageClick2" data-path="" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon08.png)">
+            <text class="value">Api邀请</text>
+            <view class="tag-box" wx:if="{{pageShow}}">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+        </view>
     </view>
 </view>
+
+<view class="pop" wx:if="{{invPop}}">
+    <view class="pop-contnet" bindtap="closeClickPop">
+        <image src="https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/my_data/inv_img.png?sign=ca3ef68249cd0f92b4a650cc5d901a85&t=1624013165" class="img100" mode="widthFix" />
+    </view>
+</view>
+
+
+
+

@@ -8,6 +8,7 @@ Page({
         pageShow:"",
         userInfo:{},
         queryMainShow:false,
+        invPop:false
     },
     onLoad (opt) {
         mixinsIndex.onLoad(opt);
@@ -17,6 +18,16 @@ Page({
     },
     onShow: function () {
         this.getUserInfo()
+    },
+    closeClickPop(){
+        this.setData({
+            invPop:false
+        })
+    },
+    openPageClick2(){
+        this.setData({
+            invPop:true
+        })
     },
     opensetPage(){
         wx.navigateTo({

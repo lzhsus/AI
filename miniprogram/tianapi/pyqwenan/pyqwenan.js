@@ -15,6 +15,7 @@ Page({
         wananItem:{},
         qiaomenItem:{},
         healthtipItem:{},
+        sayloveItem:{},
         queryMainShow:false
     },
     async onLoad (options) {
@@ -240,4 +241,24 @@ Page({
             }
         })
     },
+    getTianapiSaylove(){
+        Api.tianapiPyqwenan({
+            uri:"http://api.tianapi.com/txapi/saylove/index",
+            api:"saylove",
+            callback:'obj'
+        }).then(res=>{
+            if(res.success){
+                res = res.result||{},
+                this.setData({
+                    sayloveItem:res
+                })
+            }else{
+                wx.showModal({
+                    content: res.msg,
+                    showCancel:false
+                })
+            }
+        })
+    },
+    
 })

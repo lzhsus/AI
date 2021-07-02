@@ -215,3 +215,11 @@ weather {
 weather .hbao {
   display: none;
 }
+.pop-contnet {
+  width: 500rpx;
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
+}

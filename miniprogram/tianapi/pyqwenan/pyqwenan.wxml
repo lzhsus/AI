@@ -70,4 +70,10 @@
         <view class="content" bindtap="copyViewClick" data-content="{{healthtipItem.content}}" wx:if="{{healthtipItem.content}}">{{healthtipItem.content}}<text class="source" wx:if="{{healthtipItem.source}}">来源：{{healthtipItem.source}}</text></view>
         <view class="btn" bindtap="getTianapiHealthtip" wx:if="{{healthtipItem.content}}">随机更新</view>
     </view>
+    <!-- 土味情话 -->
+    <view class="module-item">
+        <view class="title" bindtap="getTianapiSaylove">土味情话</view>
+        <view class="content" bindtap="copyViewClick" data-content="{{sayloveItem.content}}" wx:if="{{sayloveItem.content}}">{{sayloveItem.content}}<text class="source" wx:if="{{sayloveItem.source}}">来源：{{sayloveItem.source}}</text></view>
+        <view class="btn" bindtap="getTianapiSaylove" wx:if="{{sayloveItem.content}}">随机更新</view>
+    </view>
 </view>

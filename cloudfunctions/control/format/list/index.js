@@ -63,9 +63,11 @@ module.exports =async (event,context,root)=>{
             follow:0
         })
         .end();
-        let list = (result.list||[]).map(item=>{
+        let list = result.list.map(item=>{
             if(item.desc){
-                item.desc = item.list[0].msg
+                if(item.list&&item.list.length){
+                    item.desc = item.list[0].msg
+                }
             }
             return item;
         })
