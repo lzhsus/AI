@@ -16,6 +16,7 @@ const format = require('./format/index');
 const college = require('./college/index');
 const garbage = require('./garbage/index');
 const tianapi = require('./tianapi/index');
+const caipiao = require('./caipiao/index');
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -292,6 +293,28 @@ exports.main = async (event, context) => {
         }); 
     });
     
+    
+    app.router('caipiao/api/create', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await caipiao.create(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('caipiao/api/list', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await caipiao.list(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('caipiao/api/wincode/updata', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await caipiao.wincode(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     

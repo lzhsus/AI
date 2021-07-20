@@ -1,0 +1,41 @@
+<view class="pages">
+    <view class="history" bindtap="openPageHistory">历史记录</view>
+    <view class="mian">
+        <view class="hint">至少选择5个前区号码，2个后区号码</view>
+        <view class="ul">
+            <text wx:for="{{frontNumber}}" wx:key="index" class="li {{item.show?'active':''}}">{{item.num}}</text>
+        </view>
+        <view class="ul">
+            <text wx:for="{{backzoneNumber}}" wx:key="index" class="li {{item.show?'active2':''}}">{{item.num}}</text>
+        </view>
+    </view>
+    <view class="random-ban" bindtap="randomClickNumber">随机一组数据</view>    
+    <view class="result-num" wx:if="{{resultList.length}}">
+        <view class="item">
+            <view class="name">前区：</view>
+            <view class="ul">
+                <text wx:for="{{resultList}}" wx:key="index" class="li active" wx:if="{{item.type==1}}">{{item.num}}</text>
+            </view>
+        </view>
+        <view class="item">
+            <view class="name">后区：</view>
+            <view class="ul">
+                <text wx:for="{{resultList}}" wx:key="index" class="li active2" wx:if="{{item.type==2}}">{{item.num}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="random-ban" wx:if="{{resultList.length}}" bindtap="submitClickBtn">确认使用该组数据</view>   
+    <view class="today-view">
+        <view class="today-view-fixed">
+            <view class="today-view-title">今日数据{{todayDay}}</view>
+            <view class="today-view-mian">
+                <view class="today-view-y">
+                    <view class="item" wx:for="{{todayDayList}}">
+                        <view class="day">{{index+1}}：</view>
+                        <text wx:for="{{item.list}}" wx:for-item="item02" class="{{item02.type==1?'active':'active2'}}">{{item02.num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

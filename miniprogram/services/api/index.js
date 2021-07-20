@@ -130,7 +130,15 @@ api.garbageHotlist = function(data, isShowLoading=true){
 api.tianapiPyqwenan = function(data, isShowLoading=true){
     return request('control','tianapi/api/pyqwenan',data,isShowLoading);
 }
-
+api.caipiaoCreate = function(data, isShowLoading=true){
+    return request('control','caipiao/api/create',data,isShowLoading);
+}
+api.caipiaoList = function(data, isShowLoading=true){
+    return request('control','caipiao/api/list',data,isShowLoading);
+}
+api.caipiaoWincodeUpdata = function(data, isShowLoading=true){
+    return request('control','caipiao/api/wincode/updata',data,isShowLoading);
+}
 
 
 

@@ -1,0 +1,23 @@
+<view class="today-view-mian">
+    <view class="today-view-y">
+        <view class="item-box" wx:for="{{todayDayList}}" wx:key="index">
+            <view class="head">
+                <view class="day" bindtap="selectTodayTiem" data-index="{{index}}">{{item.day2}}：</view>
+                <view class="win">
+                    <text wx:for="{{item.win_code}}" wx:for-item="item05" wx:for-index="index7" wx:key="index6"
+                        class="{{index7<5?'active':'active2'}}">{{item05}}</text>
+                </view>
+            </view>
+            <view class="item" wx:for="{{item.list2}}" wx:for-item="item03" wx:key="inde2x">
+                <text wx:for="{{item03.list}}" wx:for-item="item02" wx:key="index3"
+                    class="{{item02.type==1?'active':'active2'}} {{item02.show?'win':''}}">{{item02.num}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="win-box">
+        <view class="win-box-main">
+            <view class="input"><input type="text" placeholder="请输入今天中奖号码" bindinput="inputCode"/></view>
+            <view class="btn" bindtap="submitWinCode">提 交</view>
+        </view>
+    </view>
+</view>

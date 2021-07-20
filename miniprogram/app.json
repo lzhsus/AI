@@ -57,6 +57,13 @@
             "pages": [
 				"pyqwenan/pyqwenan"
             ]
+		},
+		{
+            "root": "caipiao/",
+            "pages": [
+				"index/index",
+				"history/history"
+            ]
 		}
 		
 	],
