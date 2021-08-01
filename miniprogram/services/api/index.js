@@ -139,7 +139,8 @@ api.caipiaoList = function(data, isShowLoading=true){
 api.caipiaoWincodeUpdata = function(data, isShowLoading=true){
     return request('control','caipiao/api/wincode/updata',data,isShowLoading);
 }
-
-
+api.updatacode = function(data, isShowLoading=true){
+    return request('control','caipiao/api/wincode/updatacode',data,isShowLoading);
+}
 
 module.exports = api;

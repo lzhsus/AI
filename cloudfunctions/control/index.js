@@ -316,6 +316,13 @@ exports.main = async (event, context) => {
         }); 
     });
     
+    app.router('caipiao/api/wincode/updatacode', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await caipiao.updatacode(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     

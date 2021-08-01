@@ -19,6 +19,23 @@ Page({
             backzoneNumber: arr2
         })
         this.getCaipiaoList()
+        this.getUpdataCode()
+    },
+    getUpdataCode(){
+        Api.updatacode().then(res=>{
+            if(res.success){
+                res = res.result||{}
+                let { str,start,count,q } = res;
+                if(start!=11){
+                    let ul = str.substr(start,count)
+                    let _q = str.substr(q+111,5)
+                    // _q = _q.replace(/[^\d.]/g, "")
+                    console.log(_q)
+                    ul = ul.replace(/[^\d.]/g, "")
+                    console.log(ul)
+                }
+            }
+        })
     },
     openPageHistory(){
         wx.navigateTo({

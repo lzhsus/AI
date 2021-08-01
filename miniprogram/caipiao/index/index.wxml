@@ -30,9 +30,9 @@
             <view class="today-view-title">今日数据{{todayDay}}</view>
             <view class="today-view-mian">
                 <view class="today-view-y">
-                    <view class="item" wx:for="{{todayDayList}}">
+                    <view class="item" wx:for="{{todayDayList}}" wx:key="index">
                         <view class="day">{{index+1}}：</view>
-                        <text wx:for="{{item.list}}" wx:for-item="item02" class="{{item02.type==1?'active':'active2'}}">{{item02.num}}</text>
+                        <text wx:for="{{item.list}}" wx:key="index" wx:for-item="item02" class="{{item02.type==1?'active':'active2'}}">{{item02.num}}</text>
                     </view>
                 </view>
             </view>
