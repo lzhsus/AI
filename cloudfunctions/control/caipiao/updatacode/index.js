@@ -44,17 +44,17 @@ module.exports =async (event,context,root)=>{
         code = code.replace(/[^\d.]/g, "")
         let str = ''
         for(let i=0;i<7;i++){
-            let _s = '-'
-            if(i==6) _s = ''
-            str+=code.slice(i*2,(i+1)*2)+_s
+            str+=code.slice(i*2,(i+1)*2)+'-'
         }
+        str = str.substr(0,str.length-1)
+
         let isTrue = (_q+'').indexOf('21')!=-1;
         if(isTrue){
             await db.collection('caipiao_win').where({
                 period:Number(_q)
             }).update({
                 data:{
-                    win_code:code
+                    win_code:str
                 }
             })
         }

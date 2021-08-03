@@ -20,6 +20,14 @@ module.exports =async (event,context,root)=>{
         let Month = new Date().getMonth()+1;
         let date = new Date().getDate();
 
+        var result= await db.collection('caipiao_win').aggregate().limit(9999).sort({
+            create_time:-1
+        }).end();
+        let data = result.list||[]
+        if(data[0]&&!data[0].win_code){
+            
+        }
+
         let day2 = Year+'-'+(Month<10?'0'+Month:Month)+'-'+(date<10?'0'+date:date)
         var counts = await db.collection('caipiao_log').where({
             day2:day2,

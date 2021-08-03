@@ -29,11 +29,11 @@ module.exports =async (event,context,root)=>{
         .lookup({
             from:"caipiao_win",
             let:{
-                day2:"$day2",
+                period:"$period",
             },
             pipeline: $.pipeline()
                 .match(_.expr($.and([
-                    $.eq(['$day2', '$$day2'])
+                    $.eq(['$period', '$$period'])
                 ])))
                 .done(),
             as:'win'

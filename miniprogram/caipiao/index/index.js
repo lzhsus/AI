@@ -79,8 +79,9 @@ Page({
             resultList:list01.map((num)=>{ return {type:1,num:num} }).concat(list02.map((num)=>{ return {type:2,num:num} }))
         })
     },
-    submitClickBtn(){
+    async submitClickBtn(){
         let { frontNumber,backzoneNumber } = this.data;
+        await Api.updataPeriod()
         Api.caipiaoCreate({
             day2:common.moment().format("YYYY-MM-DD"),
             day:common.moment().format("YYYY-MM-DD HH:MM:SS"),
