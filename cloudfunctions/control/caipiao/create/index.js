@@ -20,13 +20,6 @@ module.exports =async (event,context,root)=>{
         let Month = new Date().getMonth()+1;
         let date = new Date().getDate();
 
-        var result= await db.collection('caipiao_win').aggregate().limit(9999).sort({
-            create_time:-1
-        }).end();
-        let data = result.list||[]
-        if(data[0]&&!data[0].win_code){
-            
-        }
 
         let day2 = Year+'-'+(Month<10?'0'+Month:Month)+'-'+(date<10?'0'+date:date)
         var counts = await db.collection('caipiao_log').where({
@@ -43,10 +36,16 @@ module.exports =async (event,context,root)=>{
                 timestamp:new Date().getTime()
             }
         }else{
+            var result= await db.collection('caipiao_win').aggregate().limit(9999).sort({
+                create_time:-1
+            }).end();
+            let data = result.list||[];
+            
             var data_info = {};
             data_info.openId = OPENID;
             data_info.create_time = db.serverDate();
             data_info.updata_time = db.serverDate();
+            data_info.period = data[0].period||""
             
             await db.collection('caipiao_log').add({
                 data: Object.assign(parame,data_info)
