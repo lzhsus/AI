@@ -41,7 +41,7 @@ module.exports =async (event,context,root)=>{
         let list = (result.list||[]).map(item=>{
             item.win_code = []
             if(item.win&&item.win.length){
-                item.win_code = item.win[0].win_code
+                item.win_code = item.win[0].win_code.split("-")
             }
             delete item.win;
             return item;
