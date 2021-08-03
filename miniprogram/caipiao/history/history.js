@@ -63,30 +63,28 @@ Page({
                                 }
                             })
                             obj.price = 0
-                            if(oneNum==5&&oneNum==2){
+                            if(oneNum==5&&towNum==2){
                                 obj.price = '1A+0'
-                            }else if(oneNum==5&&oneNum==1){
+                            }else if(oneNum==5&&towNum==1){
                                 obj.price = '1B+0'
-                            }else if(oneNum==5&&oneNum==0){
+                            }else if(oneNum==5&&towNum==0){
                                 obj.price = 10000
-                            }else if(oneNum==4&&oneNum==2){
+                            }else if(oneNum==4&&towNum==2){
                                 obj.price = 3000
-                            }else if(oneNum==4&&oneNum==1){
+                            }else if(oneNum==4&&towNum==1){
                                 obj.price = 300
-                            }else if(oneNum==4&&oneNum==0){
+                            }else if(oneNum==4&&towNum==0){
                                 obj.price = 100
-                            }else if(oneNum==3&&oneNum==2){
+                            }else if(oneNum==3&&towNum==2){
                                 obj.price = 200
-                            }else if(oneNum==3&&oneNum==1||oneNum==2&&oneNum==2){
+                            }else if(oneNum==3&&towNum==1||oneNum==2&&towNum==2){
                                 obj.price = 15
-                            }else if(oneNum==3&&oneNum==0||oneNum==2&&oneNum==1||oneNum==1&&oneNum==2||oneNum==0&&oneNum==2){
+                            }else if(oneNum==3&&towNum==0||oneNum==2&&towNum==1||oneNum==1&&towNum==2||oneNum==0&&towNum==2){
                                 obj.price = 5
                             }else{
                                 obj.price = 0
                             }
                             obj.price = obj.price+''
-                            console.log(obj.price)
-                            console.log(oneNum,towNum)
                             return obj;
                         })
                     }

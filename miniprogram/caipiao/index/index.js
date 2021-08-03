@@ -11,7 +11,7 @@ Page({
         todayDayList:[],
         todayDay:''
     },
-    onLoad: function (options) {
+    async onLoad (options) {
         let arr = this.getNumberList(35)
         let arr2 = this.getNumberList(12)
         this.setData({
@@ -19,23 +19,8 @@ Page({
             backzoneNumber: arr2
         })
         this.getCaipiaoList()
-        this.getUpdataCode()
-    },
-    getUpdataCode(){
-        Api.updatacode().then(res=>{
-            if(res.success){
-                res = res.result||{}
-                let { str,start,count,q } = res;
-                if(start!=11){
-                    let ul = str.substr(start,count)
-                    let _q = str.substr(q+111,5)
-                    // _q = _q.replace(/[^\d.]/g, "")
-                    console.log(_q)
-                    ul = ul.replace(/[^\d.]/g, "")
-                    console.log(ul)
-                }
-            }
-        })
+        await Api.updataPeriod()
+        await Api.updatacode()
     },
     openPageHistory(){
         wx.navigateTo({
