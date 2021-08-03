@@ -13,7 +13,7 @@ page {
   width: 650rpx;
   border-radius: 30rpx;
   overflow: hidden;
-  margin: 50rpx auto;
+  margin: 20rpx auto;
   background: #ffffff;
   padding: 20rpx;
   box-sizing: border-box;
@@ -57,11 +57,11 @@ page {
 }
 .pages .random-ban {
   width: 650rpx;
-  height: 100rpx;
+  height: 80rpx;
   background: #1A98FF;
   margin: auto;
   text-align: center;
-  line-height: 100rpx;
+  line-height: 80rpx;
   font-size: 16px;
   color: #fff;
   font-weight: bold;
@@ -70,9 +70,9 @@ page {
   width: 650rpx;
   border-radius: 30rpx;
   overflow: hidden;
-  margin: 50rpx auto;
+  margin: 10rpx auto;
   background: #ffffff;
-  padding: 20rpx;
+  padding: 12rpx 20rpx;
   box-sizing: border-box;
 }
 .pages .result-num .item {
@@ -97,11 +97,11 @@ page {
 }
 .pages .result-num .item .ul .li {
   display: block;
-  width: 70rpx;
-  height: 70rpx;
+  width: 50rpx;
+  height: 50rpx;
   border-radius: 50%;
   text-align: center;
-  line-height: 70rpx;
+  line-height: 50rpx;
   border: 1px solid #e0e0e0;
   margin: 3px;
   font-size: 14px;

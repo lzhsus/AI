@@ -25,7 +25,7 @@
         </view>
     </view>
     <view class="random-ban" wx:if="{{resultList.length}}" bindtap="submitClickBtn">确认使用该组数据</view>   
-    <view class="today-view">
+    <view class="today-view" wx:if="{{todayDayList.length}}">
         <view class="today-view-fixed">
             <view class="today-view-title">今日数据{{todayDay}}</view>
             <view class="today-view-mian">
