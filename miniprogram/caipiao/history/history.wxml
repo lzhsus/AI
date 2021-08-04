@@ -3,8 +3,8 @@
     <view class="today-view-y">
         <view class="item-box" wx:for="{{todayDayList}}" wx:key="index">
             <view class="head">
-                <view class="day" bindtap="selectTodayTiem" data-index="{{index}}">{{item.day2}}：</view>
-                <view class="win">
+                <view class="day" bindtap="selectTodayTiem" data-index="{{index}}">{{item.day2}}：<text class="period" >第{{item.period||"-未知-"}}期</text></view>
+                <view class="win" wx:if="{{item.win_code&&item.win_code.length>5}}">
                     <text wx:for="{{item.win_code}}" wx:for-item="item05" wx:for-index="index7" wx:key="index6"
                         class="{{index7<5?'active':'active2'}}">{{item05}}</text>
                 </view>

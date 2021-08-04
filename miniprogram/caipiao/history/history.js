@@ -29,6 +29,7 @@ Page({
                         for(let j=0;j<arr.length;j++){
                             if(arr[j].day2==list[i].day2){
                                 arr[j].win_code = list[i].win_code||arr[j].win_code
+                                arr[j].period = list[i].period||arr[j].period
                                 arr[j].list2.push(list[i])
                             }
                         }
@@ -36,6 +37,7 @@ Page({
                         arr.push({
                             day2:list[i].day2,
                             win_code:list[i].win_code||'',
+                            period:list[i].period,
                             list2:[list[i]]
                         })
                     }

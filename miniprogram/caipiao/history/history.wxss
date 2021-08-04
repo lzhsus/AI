@@ -28,11 +28,16 @@ page {
   height: 100rpx;
 }
 .today-view-mian .item-box .head .day {
-  font-size: 20px;
+  font-size: 14px;
   color: #000;
   font-weight: bold;
   padding: 12rpx 20rpx;
   box-sizing: border-box;
+}
+.today-view-mian .item-box .head .day .period {
+  font-size: 12px;
+  color: #4287ee;
+  font-weight: normal;
 }
 .today-view-mian .item-box .head .win {
   display: flex;
