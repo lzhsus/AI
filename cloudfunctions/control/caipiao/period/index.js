@@ -18,16 +18,17 @@ module.exports =async (event,context,root)=>{
             create_time:-1
         }).end();
         let data = result.list||[]
+        let period = ''
         if(data[0]&&data[0].win_code){
             // 创建下一期
             var data_info = {};
             data_info.openId = OPENID;
             data_info.create_time = db.serverDate();
             data_info.updata_time = db.serverDate();
-            
+            period = (Number(data[0].period)||21088)+1
             await db.collection('caipiao_win').add({
                 data: Object.assign(data_info,{
-                    period:(Number(data[0].period)||21088)+1,
+                    period:period,
                     win_code:""
                 })
             })
@@ -35,7 +36,9 @@ module.exports =async (event,context,root)=>{
         var res = {
              errcode:200,
              msg: '操作成功！',
-             result:data[0],
+             result:{
+                period:period||data[0].period
+             },
              success:true,
              timestamp:new Date().getTime()
         }
