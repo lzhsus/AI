@@ -142,5 +142,8 @@ api.caipiaoWincodeUpdata = function(data, isShowLoading=true){
 api.updatacode = function(data, isShowLoading=true){
     return request('control','caipiao/api/wincode/updatacode',data,isShowLoading);
 }
+api.updataPeriod = function(data, isShowLoading=false){
+    return request('control','caipiao/api/wincode/period',data,isShowLoading);
+}
 
 module.exports = api;

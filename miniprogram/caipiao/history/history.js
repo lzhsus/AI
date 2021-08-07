@@ -29,6 +29,7 @@ Page({
                         for(let j=0;j<arr.length;j++){
                             if(arr[j].day2==list[i].day2){
                                 arr[j].win_code = list[i].win_code||arr[j].win_code
+                                arr[j].period = list[i].period||arr[j].period
                                 arr[j].list2.push(list[i])
                             }
                         }
@@ -36,24 +37,57 @@ Page({
                         arr.push({
                             day2:list[i].day2,
                             win_code:list[i].win_code||'',
+                            period:list[i].period,
                             list2:[list[i]]
                         })
                     }
                 }
                 arr.forEach(item=>{
                     if(item.win_code&&item.win_code.length){
-                        let list01 = item.win_code.slice(0,5)
-                        let list02 = item.win_code.slice(5)
-                        item.list2.forEach(obj=>{
+                        let list01 = item.win_code.slice(0,5);
+                        let list02 = item.win_code.slice(5);
+                        item.list2 = item.list2.map(obj=>{
+                            let oneNum = 0;
+                            let towNum = 0;
                             obj.list.forEach(element=>{
                                 element.show = false;
                                 if(element.type==1){
-                                    if(list01.indexOf(element.num)!=-1) element.show = true;
+                                    if(list01.indexOf(element.num)!=-1){
+                                        element.show = true
+                                        oneNum++
+                                    };
                                 }
                                 if(element.type==2){
-                                    if(list02.indexOf(element.num)!=-1) element.show = true;
+                                    if(list02.indexOf(element.num)!=-1){
+                                        element.show = true
+                                        towNum++
+                                    };
                                 }
                             })
+                            obj.price = 0
+                            if(oneNum==5&&towNum==2){
+                                obj.price = '1A+0'
+                            }else if(oneNum==5&&towNum==1){
+                                obj.price = '1B+0'
+                            }else if(oneNum==5&&towNum==0){
+                                obj.price = 10000
+                            }else if(oneNum==4&&towNum==2){
+                                obj.price = 3000
+                            }else if(oneNum==4&&towNum==1){
+                                obj.price = 300
+                            }else if(oneNum==4&&towNum==0){
+                                obj.price = 100
+                            }else if(oneNum==3&&towNum==2){
+                                obj.price = 200
+                            }else if(oneNum==3&&towNum==1||oneNum==2&&towNum==2){
+                                obj.price = 15
+                            }else if(oneNum==3&&towNum==0||oneNum==2&&towNum==1||oneNum==1&&towNum==2||oneNum==0&&towNum==2){
+                                obj.price = 5
+                            }else{
+                                obj.price = 0
+                            }
+                            obj.price = obj.price+''
+                            return obj;
                         })
                     }
                 })
@@ -85,6 +119,16 @@ Page({
         })
         this.setData({
             day2:item.day2
+        })
+    },
+    openChangeRule(){
+        this.setData({
+            popShow:'rule'
+        })
+    },
+    cloreChangeRule(){
+        this.setData({
+            popShow:''
         })
     },
     inputCode(e){

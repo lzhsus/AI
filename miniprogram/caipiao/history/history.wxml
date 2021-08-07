@@ -1,9 +1,10 @@
 <view class="today-view-mian">
+    <view class="rule-icon" bindtap="openChangeRule"><text>活动规则</text></view>
     <view class="today-view-y">
         <view class="item-box" wx:for="{{todayDayList}}" wx:key="index">
             <view class="head">
-                <view class="day" bindtap="selectTodayTiem" data-index="{{index}}">{{item.day2}}：</view>
-                <view class="win">
+                <view class="day" bindtap="selectTodayTiem" data-index="{{index}}">{{item.day2}}：<text class="period" >第{{item.period||"-未知-"}}期</text></view>
+                <view class="win" wx:if="{{item.win_code&&item.win_code.length>5}}">
                     <text wx:for="{{item.win_code}}" wx:for-item="item05" wx:for-index="index7" wx:key="index6"
                         class="{{index7<5?'active':'active2'}}">{{item05}}</text>
                 </view>
@@ -11,6 +12,8 @@
             <view class="item" wx:for="{{item.list2}}" wx:for-item="item03" wx:key="inde2x">
                 <text wx:for="{{item03.list}}" wx:for-item="item02" wx:key="index3"
                     class="{{item02.type==1?'active':'active2'}} {{item02.show?'win':''}}">{{item02.num}}</text>
+                <view class="price" wx:if="{{item.win_code.length}}">{{item.price||0}}</view>
+                <view class="price" wx:else>未开奖</view>
             </view>
         </view>
     </view>
@@ -19,5 +22,11 @@
             <view class="input"><input type="text" placeholder="请输入今天中奖号码" bindinput="inputCode"/></view>
             <view class="btn" bindtap="submitWinCode">提 交</view>
         </view>
+    </view>
+</view>
+
+<view class="pop" wx:if="{{popShow=='rule'}}">
+    <view class="pop-content" bindtap="cloreChangeRule">
+        <image src="https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/jisuan-icon.png?sign=f2afad73f34f79968a8f4e885b8e8d35&t=1627976965" class="img100" mode="widthFix" />
     </view>
 </view>

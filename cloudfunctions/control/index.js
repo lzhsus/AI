@@ -323,6 +323,13 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('caipiao/api/wincode/period', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await caipiao.period(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     

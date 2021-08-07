@@ -14,43 +14,30 @@ module.exports =async (event,context,root)=>{
     // 验证该接口是否需要验证注册
     let parame = event.data;
     try {
-        let match = {
-            openId:OPENID
-        }
-        if(parame.day){
-            match = {
-                day:_.gte(parame.day),
-                openId:OPENID
-            }
-        }
-        var result= await db.collection('caipiao_log').aggregate().match(match).limit(9999).sort({
-            day:-1
-        })
-        .lookup({
-            from:"caipiao_win",
-            let:{
-                period:"$period",
-            },
-            pipeline: $.pipeline()
-                .match(_.expr($.and([
-                    $.eq(['$period', '$$period'])
-                ])))
-                .done(),
-            as:'win'
+        var result= await db.collection('caipiao_win').aggregate().limit(9999).sort({
+            create_time:-1
         }).end();
-        let list = (result.list||[]).map(item=>{
-            item.win_code = []
-            if(item.win&&item.win.length){
-                item.win_code = item.win[0].win_code.split("-")
-            }
-            delete item.win;
-            return item;
-        })
+        let data = result.list||[]
+        let period = ''
+        if(data[0]&&data[0].win_code){
+            // 创建下一期
+            var data_info = {};
+            data_info.openId = OPENID;
+            data_info.create_time = db.serverDate();
+            data_info.updata_time = db.serverDate();
+            period = (Number(data[0].period)||21088)+1
+            await db.collection('caipiao_win').add({
+                data: Object.assign(data_info,{
+                    period:period,
+                    win_code:""
+                })
+            })
+        }
         var res = {
              errcode:200,
              msg: '操作成功！',
              result:{
-                 list:list
+                period:period||data[0].period
              },
              success:true,
              timestamp:new Date().getTime()

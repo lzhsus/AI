@@ -11,7 +11,7 @@ Page({
         todayDayList:[],
         todayDay:''
     },
-    onLoad: function (options) {
+    async onLoad (options) {
         let arr = this.getNumberList(35)
         let arr2 = this.getNumberList(12)
         this.setData({
@@ -19,22 +19,19 @@ Page({
             backzoneNumber: arr2
         })
         this.getCaipiaoList()
-        this.getUpdataCode()
+        await Api.updataPeriod()
+        await Api.updatacode()
     },
-    getUpdataCode(){
-        Api.updatacode().then(res=>{
-            if(res.success){
-                res = res.result||{}
-                let { str,start,count,q } = res;
-                if(start!=11){
-                    let ul = str.substr(start,count)
-                    let _q = str.substr(q+111,5)
-                    // _q = _q.replace(/[^\d.]/g, "")
-                    console.log(_q)
-                    ul = ul.replace(/[^\d.]/g, "")
-                    console.log(ul)
-                }
-            }
+    async updataResultCode(){
+        wx.showLoading({
+          title: '更新中...',
+        })
+        await Api.updataPeriod()
+        let res = await Api.updatacode()
+        wx.hideLoading()
+        wx.showToast({
+          title: res.result.isTrue?'已更新':"更新失败",
+          icon:"none"
         })
     },
     openPageHistory(){
@@ -94,8 +91,9 @@ Page({
             resultList:list01.map((num)=>{ return {type:1,num:num} }).concat(list02.map((num)=>{ return {type:2,num:num} }))
         })
     },
-    submitClickBtn(){
+    async submitClickBtn(){
         let { frontNumber,backzoneNumber } = this.data;
+        await Api.updataPeriod()
         Api.caipiaoCreate({
             day2:common.moment().format("YYYY-MM-DD"),
             day:common.moment().format("YYYY-MM-DD HH:MM:SS"),
