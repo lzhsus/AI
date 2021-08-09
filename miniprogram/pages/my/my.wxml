@@ -84,7 +84,7 @@
                 <text class="tag02">剩余 未知</text>
             </view>
         </view>
-        <view bindtap="openPageClick" data-path="/caipiao/index/index" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon09.png)">
+        <view wx:if="{{userInfo.isSuperAdmin}}" bindtap="openPageClick" data-path="/caipiao/index/index" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon09.png)">
             <text class="value">彩票</text>
             <view class="tag-box" wx:if="{{pageShow}}">
                 <text class="tag01">已用 未知</text>
@@ -93,6 +93,13 @@
         </view>
         <view bindtap="openPageClick2" data-path="" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon10.png)">
             <text class="value">Api邀请</text>
+            <view class="tag-box" wx:if="{{pageShow}}">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+        </view>
+        <view bindtap="openPageClick" data-path="/promotion/index/index" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon11.png)">
+            <text class="value">客推CLUB</text>
             <view class="tag-box" wx:if="{{pageShow}}">
                 <text class="tag01">已用 未知</text>
                 <text class="tag02">剩余 未知</text>

@@ -8,7 +8,19 @@ Page({
         todayDayList:[],
         code:''
     },
-    onLoad: function (options) {
+    async onLoad (options) {
+        let res =  await Api.userInfo();
+        if(!res.success){
+            wx.showModal({
+                content: res.msg,
+                showCancel:false
+            })
+        }
+        res = res.result||{}
+        if(res.isSuperAdmin!=1) return;
+        wx.setNavigationBarTitle({
+            title: '创建记录'
+        })
         this.getCaipiaoList()
     },
     getCaipiaoList(){

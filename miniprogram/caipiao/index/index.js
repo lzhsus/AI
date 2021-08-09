@@ -12,6 +12,18 @@ Page({
         todayDay:''
     },
     async onLoad (options) {
+        let res =  await Api.userInfo();
+        if(!res.success){
+            wx.showModal({
+                content: res.msg,
+                showCancel:false
+            })
+        }
+        res = res.result||{}
+        if(res.isSuperAdmin!=1) return;
+        wx.setNavigationBarTitle({
+            title: '超级大乐透'
+        })
         let arr = this.getNumberList(35)
         let arr2 = this.getNumberList(12)
         this.setData({
