@@ -245,6 +245,12 @@
                     "pathName": "caipiao/history/history",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "promotion/index/index",
+                    "pathName": "promotion/index/index",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

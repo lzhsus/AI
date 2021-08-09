@@ -15,6 +15,7 @@ const run = require('./run/index');
 const format = require('./format/index');
 const college = require('./college/index');
 const garbage = require('./garbage/index');
+const promotion = require('./promotion/index');
 const tianapi = require('./tianapi/index');
 const caipiao = require('./caipiao/index');
 
@@ -284,6 +285,14 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('promotion/api/list', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await promotion.list(event, context)
+            resolve(res);
+        }); 
+    });
+    
     // 第三方api
     app.router('tianapi/api/pyqwenan', (ctx) => {
         let { OPENID} = cloud.getWXContext()

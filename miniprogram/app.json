@@ -64,6 +64,12 @@
 				"index/index",
 				"history/history"
             ]
+		},
+		{
+            "root": "promotion/",
+            "pages": [
+				"index/index"
+            ]
 		}
 		
 	],

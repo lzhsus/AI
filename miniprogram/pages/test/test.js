@@ -16,6 +16,18 @@ Page({
         url:''
     },
     async onLoad(options) {
+        wx.showNavigationBarLoading({
+            success:(res)=>{
+                console.log('res',res)
+                setTimeout(()=>{
+                    wx.hideNavigationBarLoading()
+                },5000)
+            },
+            fail:(fail)=>{
+                console.log('fail',fail)
+            }
+        })
+        wx.hideHomeButton()
         // Api.cloud_userInfo().then(res=>{
         //     if(res['success']){
         //         console.log(res)
