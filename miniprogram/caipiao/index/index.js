@@ -34,6 +34,18 @@ Page({
         await Api.updataPeriod()
         await Api.updatacode()
     },
+    async updataResultCode(){
+        wx.showLoading({
+          title: '更新中...',
+        })
+        await Api.updataPeriod()
+        let res = await Api.updatacode()
+        wx.hideLoading()
+        wx.showToast({
+          title: res.result.isTrue?'已更新':"更新失败",
+          icon:"none"
+        })
+    },
     openPageHistory(){
         wx.navigateTo({
           url: '/caipiao/history/history',

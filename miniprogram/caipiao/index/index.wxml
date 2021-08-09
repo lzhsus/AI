@@ -1,5 +1,8 @@
 <view class="pages">
-    <view class="history" bindtap="openPageHistory">历史记录</view>
+    <view class="titl">
+        <view class="code" bindtap="updataResultCode">开奖更新</view>
+        <view class="history" bindtap="openPageHistory">历史记录</view>
+    </view>
     <view class="mian">
         <view class="hint">至少选择5个前区号码，2个后区号码</view>
         <view class="ul">
