@@ -19,7 +19,19 @@ module.exports =async (event,context,root)=>{
         let Year = new Date().getFullYear()
         let Month = new Date().getMonth()+1;
         let date = new Date().getDate();
-
+        let week = new Date().getDay();//1 2 3 4 5 6 0
+        let hours = new Date().getHours();
+        // 检查当天是否是 周一 周三 周六 大于晚上8
+        if([1,3,6].indexOf(week)!=-1&&hours>=20){
+            
+            return {
+                errcode:0,
+                msg: "今天为开奖日且已超过购买时间，今天暂不可记录！",
+                result:{},
+                success:false,
+                timestamp:new Date().getTime()
+            }
+        }
 
         let day2 = Year+'-'+(Month<10?'0'+Month:Month)+'-'+(date<10?'0'+date:date)
         var counts = await db.collection('caipiao_log').where({

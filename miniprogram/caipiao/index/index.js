@@ -9,7 +9,8 @@ Page({
         backzoneNumber: [],
         resultList:[],
         todayDayList:[],
-        todayDay:''
+        todayDay:'',
+        popShow:""
     },
     async onLoad (options) {
         let res =  await Api.userInfo();
@@ -49,6 +50,16 @@ Page({
     openPageHistory(){
         wx.navigateTo({
           url: '/caipiao/history/history',
+        })
+    },
+    openPageRule(){
+        this.setData({
+            popShow:'rule'
+        })
+    },
+    closePopClick(){
+        this.setData({
+            popShow:''
         })
     },
     getNumberList(num) {
@@ -165,6 +176,5 @@ Page({
         })
     },
     onShow: function () {
-
     },
 })

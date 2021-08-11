@@ -10,13 +10,10 @@ page {
   height: 50rpx;
 }
 .pages .titl .code {
-  width: 150rpx;
   font-size: 12px;
   color: #000;
 }
 .pages .titl .history {
-  width: 650rpx;
-  text-align: right;
   font-size: 12px;
   color: #000;
 }
@@ -191,4 +188,43 @@ page {
 .pages .today-view .today-view-fixed .today-view-mian .item text.active2 {
   background: #f9c301;
   color: #fff;
+}
+.pop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(175, 175, 175, 0.8);
+}
+.pop .pop-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 600rpx;
+  transform: translate(-50%, -50%);
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx;
+  overflow: hidden;
+  background: #fff;
+}
+.pop .pop-content .title {
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.pop .pop-content .main {
+  padding-bottom: 30rpx;
+}
+.pop .pop-content .main .item {
+  font-size: 10px;
+  color: #000;
+  line-height: 1.4;
+  margin-bottom: 12rpx;
 }
