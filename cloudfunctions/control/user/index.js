@@ -15,7 +15,9 @@ const chongwuupdata = require('./chongwuupdata/index');
 
 const petDetail = require('./petDetail/index');
 const petList = require('./petList/index');
+const userlist = require('./userlist/index');
 const updata = require('./updata/index');
+const updataadmin = require('./updataadmin/index');
 
 module.exports = {
     invoke:invoke,
@@ -34,5 +36,7 @@ module.exports = {
     _send:_send,
     petDetail:petDetail,
     petList:petList,
-    updata:updata
+    updata:updata,
+    userlist:userlist,
+    updataadmin:updataadmin
 }

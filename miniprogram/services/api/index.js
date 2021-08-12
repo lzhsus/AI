@@ -4,6 +4,16 @@ import cloud_index from "./cloud_index";
 
 let api = Object.assign({},cloud_index);
 
+
+// 用户列表
+api.apiUserlist = function(data, isShowLoading=true){
+    return request('control','user/api/userlist',data,isShowLoading);
+}
+// 管理身份更新
+api.apiUserUpdataadmin = function(data, isShowLoading=true){
+    return request('control','user/api/updataadmin',data,isShowLoading);
+}
+
 api.invokeMsg = function(data, isShowLoading=true){
     return request('control','user/api/invoke/msg',data,isShowLoading);
 }

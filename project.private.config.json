@@ -251,6 +251,12 @@
                     "pathName": "promotion/index/index",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/userlist/userlist",
+                    "pathName": "pages/userlist/userlist",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

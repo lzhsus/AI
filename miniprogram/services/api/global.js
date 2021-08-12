@@ -57,6 +57,10 @@ globalApi.invokeService = function(data, isShowLoading=true){
 globalApi.sendMessage = function(data, isShowLoading=true){
     return request('sendMessage','',data,isShowLoading);
 }
+// 用户列表
+globalApi.apiUserlist = function(data, isShowLoading=true){
+    return request('control','user/api/userlist',data,isShowLoading);
+}
 
 
 

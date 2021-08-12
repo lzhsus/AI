@@ -154,6 +154,22 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('user/api/userlist', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.userlist(event, context)
+            resolve(res);
+        }); 
+    });
+
+    app.router('user/api/updataadmin', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await user.updataadmin(event, context)
+            resolve(res);
+        }); 
+    });
+    
     
 
     

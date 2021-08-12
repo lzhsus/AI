@@ -18,6 +18,7 @@
 		"pages/setting/setting",
 		"pages/run/run",
 		"pages/garbage/garbage",
+		"pages/userlist/userlist",
 		"pages/webview/webview"
 	],
 	"subpackages":[
@@ -122,7 +123,10 @@
 	},
 	"usingComponents": {
 		"van-tab": "./components/vant/tab/index",
-		"van-tabs": "./components/vant/tabs/index"
+		"van-tabs": "./components/vant/tabs/index",
+		"van-switch": "./components/vant/switch/index",
+		"van-search": "./components/vant/search/index"
+
 	},
 	"plugins": {
         "WechatSI": {
