@@ -15,10 +15,20 @@ page {
   justify-content: flex-end;
 }
 .today-view-mian .item-box {
-  background: #fff;
   border-radius: 12rpx;
   overflow: hidden;
   margin-bottom: 20rpx;
+  background: #fff;
+  position: relative;
+}
+.today-view-mian .item-box .win-show {
+  position: absolute;
+  bottom: -14rpx;
+  left: -14rpx;
+  width: 110rpx;
+  height: 110rpx;
+  background: url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/win-end-icon.png?sign=3f7f44f4f0c3390c7fcb3db00f71e56e&t=1628764615) center center no-repeat;
+  background-size: 100% auto;
 }
 .today-view-mian .item-box .head {
   width: 100%;

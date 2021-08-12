@@ -2,6 +2,7 @@
     <view class="rule-icon" bindtap="openChangeRule"><text>活动规则</text></view>
     <view class="today-view-y">
         <view class="item-box" wx:for="{{todayDayList}}" wx:key="index">
+            <view class="win-show" wx:if="{{item.win_code&&item.win_code.length>5}}"></view>
             <view class="head">
                 <view class="day" bindtap="selectTodayTiem" data-index="{{index}}">{{item.day2}}：<text class="period" >第{{item.period||"-未知-"}}期</text></view>
                 <view class="win" wx:if="{{item.win_code&&item.win_code.length>5}}">
@@ -12,17 +13,17 @@
             <view class="item" wx:for="{{item.list2}}" wx:for-item="item03" wx:key="inde2x">
                 <text wx:for="{{item03.list}}" wx:for-item="item02" wx:key="index3"
                     class="{{item02.type==1?'active':'active2'}} {{item02.show?'win':''}}">{{item02.num}}</text>
-                <view class="price" wx:if="{{item.win_code.length}}">{{item.price||0}}</view>
+                <view class="price" wx:if="{{item.win_code&&item.win_code.length>5}}">{{item.price||0}}</view>
                 <view class="price" wx:else>未开奖</view>
             </view>
         </view>
     </view>
-    <view class="win-box">
+    <!-- <view class="win-box">
         <view class="win-box-main">
             <view class="input"><input type="text" placeholder="请输入今天中奖号码" bindinput="inputCode"/></view>
             <view class="btn" bindtap="submitWinCode">提 交</view>
         </view>
-    </view>
+    </view> -->
 </view>
 
 <view class="pop" wx:if="{{popShow=='rule'}}">
