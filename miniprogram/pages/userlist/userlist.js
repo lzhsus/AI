@@ -61,12 +61,27 @@ Page({
             generalList:generalList
         })
     },
+    copyClick(e){
+        console.log(e)
+        let { openid } = e.currentTarget.dataset;
+        wx.setClipboardData({
+            data: openid,
+            success: function (res) {
+                wx.showToast({
+                  title: '复制成功',
+                  icon:"none"
+                })
+            }
+        })
+    },
     async changeAdmin(e){
         let list = this.data.userlist;
         let { item,name } = e.currentTarget.dataset;
         let isSuperAdmin = item.isSuperAdmin==1?1:0;
         let isAdmin = item.isAdmin==1?1:0;
         let isCaipiao = item.isCaipiao==1?1:0;
+        let isCommunity = item.isCommunity==1?1:0;
+
         if(name=='isSuperAdmin'){
             isSuperAdmin = isSuperAdmin==1?0:1;
         }
@@ -76,11 +91,15 @@ Page({
         if(name=='isCaipiao'){
             isCaipiao = isCaipiao==1?0:1;
         }
+        if(name=='isCommunity'){
+            isCommunity = isCommunity==1?0:1;
+        }
         let res = await Api.apiUserUpdataadmin({
             _id:item._id,
             isAdmin:isAdmin,
             isSuperAdmin:isSuperAdmin,
-            isCaipiao:isCaipiao
+            isCaipiao:isCaipiao,
+            isCommunity:isCommunity
         })
         if(!res.success){
             wx.showModal({

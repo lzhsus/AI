@@ -32,8 +32,14 @@
                     </view>
                 </view>
                 <view class="item">
+                    <view class="kye">是否开启社区：</view>
+                    <view class="value" bindtap="changeAdmin" data-item="{{item}}" data-name="isCommunity">
+                        <van-switch size="14px" checked="{{ item.isCommunity==1 }}"></van-switch>
+                    </view>
+                </view>
+                <view class="item">
                     <view class="kye">openId：</view>
-                    <view class="value">{{item.openId}}</view>
+                    <view class="value" bindtap="copyClick" data-openId="{{item.openId}}">{{item.openId}}</view>
                 </view>
                 <view class="item">
                     <view class="kye">创建时间：</view>
@@ -66,8 +72,14 @@
                     </view>
                 </view>
                 <view class="item">
+                    <view class="kye">是否开启社区：</view>
+                    <view class="value" bindtap="changeAdmin" data-item="{{item}}" data-name="isCommunity">
+                        <van-switch size="14px" checked="{{ item.isCommunity==1 }}"></van-switch>
+                    </view>
+                </view>
+                <view class="item">
                     <view class="kye">openId：</view>
-                    <view class="value">{{item.openId}}</view>
+                    <view class="value" bindtap="copyClick" data-openId="{{item.openId}}">{{item.openId}}</view>
                 </view>
                 <view class="item">
                     <view class="kye">创建时间：</view>
@@ -112,8 +124,14 @@
                     </view>
                 </view>
                 <view class="item">
+                    <view class="kye">是否开启社区：</view>
+                    <view class="value" bindtap="changeAdmin" data-item="{{item}}" data-name="isCommunity">
+                        <van-switch size="14px" checked="{{ item.isCommunity==1 }}"></van-switch>
+                    </view>
+                </view>
+                <view class="item">
                     <view class="kye">openId：</view>
-                    <view class="value">{{item.openId}}</view>
+                    <view class="value" bindtap="copyClick" data-openId="{{item.openId}}">{{item.openId}}</view>
                 </view>
                 <view class="item">
                     <view class="kye">创建时间：</view>

@@ -71,6 +71,12 @@
             "pages": [
 				"index/index"
             ]
+		},
+		{
+            "root": "challenge/",
+            "pages": [
+				"index/index"
+            ]
 		}
 		
 	],

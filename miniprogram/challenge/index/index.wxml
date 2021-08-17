@@ -1,0 +1,26 @@
+<view class="index" id="index">
+    <view class="page-index">
+        <view class="header">
+            <view class="user-msg-box">                    
+                <view class="cuserAvatarUrl">
+                    <view><open-data type="userAvatarUrl"></open-data></view>
+                </view>
+                <open-data class="userNickName" type="userNickName"></open-data>
+            </view>
+        </view>
+        <view class="main">
+            <view class="item" wx:for="{{gradeList}}" wx:key="index">
+                <view class="item-main">
+                    <!-- 当前等级 -->
+                    <view class="grade-icon" >
+                        <span wx:for="{{item.curGrade}}" wx:key="index"><image src="{{item}}" class="img100" mode="widthFix" /></span>
+                    </view>
+                    <!-- 得分 -->
+                    <view class="grades-icon">
+                        <span wx:for="{{item.grades}}" wx:key="index"></span>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

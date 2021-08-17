@@ -257,6 +257,12 @@
                     "pathName": "pages/userlist/userlist",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "challenge/index/index",
+                    "pathName": "challenge/index/index",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

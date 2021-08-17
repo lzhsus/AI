@@ -85,7 +85,8 @@ module.exports =async (event,context,root)=>{
                 gender:true,
                 isSuperAdmin:true,
                 isAdmin:true,
-                isCaipiao:true
+                isCaipiao:true,
+                isCommunity:true
             })
             .end()
         result = result.list.map(res=>{

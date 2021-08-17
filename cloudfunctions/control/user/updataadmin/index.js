@@ -23,7 +23,8 @@ module.exports =async (event,context,root)=>{
                 updata_time:db.serverDate(),
                 isSuperAdmin:Number(parame.isSuperAdmin),
                 isAdmin:Number(parame.isAdmin),
-                isCaipiao:Number(parame.isCaipiao)
+                isCaipiao:Number(parame.isCaipiao),
+                isCommunity:Number(parame.isCommunity)
             }
         })
 

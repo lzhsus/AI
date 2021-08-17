@@ -21,6 +21,17 @@ export const formatMoney=function (value,isFixed=2){
     }
     return String(value).replace(/./g, (c, i, a) => i && c !== '.' && !((a.length - i) % 3) ? ',' + c : c);
 }
+// 关卡
+export const gradeImage = function(num){
+    let arr = [backImg('l'),backImg('v')]
+
+    let _num = num<10?'0'+num:num+'';
+    arr.push(backImg(_num))
+    return arr;
+    function backImg(txt){
+        return `https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/font_num/font_num_${txt}.png`;
+    }
+}
 // 字体初始化
 export const loadFontFaceInit = function(source,family){
     return new Promise((resolve,reject)=>{
