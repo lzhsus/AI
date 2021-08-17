@@ -159,5 +159,31 @@ api.promotionList = function(data, isShowLoading=true){
     return request('control','promotion/api/list',data,isShowLoading);
 }
 
+// 答题
+api.answergameApiInfo = function(data, isShowLoading=true){
+    return request('control','answergame/api/info',data,isShowLoading);
+}
+// 获取所有关卡
+api.answergameApiLevels = function(data, isShowLoading=true){
+    return request('control','answergame/api/levels',data,isShowLoading);
+}
+// 获取指定关卡的全部题目 code
+api.answergameApiLevelsdetail = function(data, isShowLoading=true){
+    return request('control','answergame/api/levelsdetail',data,isShowLoading);
+}
+// 创建题目
+api.answergameApiUp = function(data, isShowLoading=true){
+    return request('control','answergame/api/up',data,isShowLoading);
+}
+// 提交答案
+api.answergameApiCreate = function(data, isShowLoading=true){
+    return request('control','answergame/api/create',data,isShowLoading);
+}
+// 记录答题 题目日志
+api.answergameApiQaAnswerItem = function(data, isShowLoading=false){
+    return request('control','answergame/api/qa/answer/item',data,isShowLoading);
+}
+
+
 
 module.exports = api;

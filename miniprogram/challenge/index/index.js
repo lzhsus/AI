@@ -5,18 +5,58 @@ import appConfig from '../../common/app_config';
 import mixinsIndex from '../../mixins/index';
 Page({
     data: {
-        gradeList:[{grades:1},{grades:2},{grades:3}]
+        pageShow:'',
+        gameUserInfo:{},
+        levels:[]
     },
     async onLoad (options) {
-        await common.loadFontFaceInit('https://resources.17font.com/ziru/res/fonts/535877f.woff','My-foot')
-        let gradeList = this.data.gradeList;
-        gradeList = gradeList.map(item=>{
-            item.curGrade = common.gradeImage(1)
-            console.log(item.curGrade)
-            return item;
-        })
+        let res = await Api.answergameApiInfo();
+        if(!res.success){
+            wx.showModal({
+                content: res.msg,
+                showCancel:false
+            })
+            return
+        }
+        res = res.result||{}
+        console.log(res)
         this.setData({
-            gradeList:gradeList
+            gameUserInfo:res
+        })
+        this.getAnswergameApiLevels()
+    },
+    getAnswergameApiLevels(){
+        return Api.answergameApiLevels().then(res=>{
+            if(res.success){
+                res = res.result||{};
+                let list = (res.list||[]).map(item=>{
+                    item.curGrade = common.gradeImage(item.level)
+                    return item;
+                })
+                this.setData({
+                    pageShow:"index",
+                    levels:list
+                })
+            }else{
+                wx.showModal({
+                    content: res.msg,
+                    showCancel:false
+                })
+            }
+        });
+    },
+    openClickLevel(e){
+        let { item } = e.currentTarget.dataset;
+        // 检查当前关卡是否开启
+        if(false){
+            wx.showToast({
+              title: '您暂未开启当前关卡！',
+              icon:"none"
+            })
+            return
+        }
+        wx.navigateTo({
+          url: '/challenge/qa/qa?code='+item.code,
         })
     },
     onShow: function () {

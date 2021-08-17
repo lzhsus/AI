@@ -263,6 +263,18 @@
                     "pathName": "challenge/index/index",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "challenge/up/up",
+                    "pathName": "challenge/up/up",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "challenge/qa/qa",
+                    "pathName": "challenge/qa/qa",
+                    "query": "code=20210001",
+                    "scene": null
                 }
             ]
         }

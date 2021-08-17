@@ -1,4 +1,4 @@
-<view class="index" id="index">
+<view class="index" id="index" wx:if="{{pageShow=='index'}}">
     <view class="page-index">
         <view class="header">
             <view class="user-msg-box">                    
@@ -9,16 +9,19 @@
             </view>
         </view>
         <view class="main">
-            <view class="item" wx:for="{{gradeList}}" wx:key="index">
-                <view class="item-main">
+            <view wx:for="{{levels}}" wx:key="index" class="item {{(gameUserInfo.level+1)>=item.level?'unlock-success':''}}">
+                <view class="item-main" bindtap="openClickLevel" data-item="{{item}}">
+                    <!-- 是否开启 -->
+                    <view class="lock-icon"></view>
                     <!-- 当前等级 -->
                     <view class="grade-icon" >
-                        <span wx:for="{{item.curGrade}}" wx:key="index"><image src="{{item}}" class="img100" mode="widthFix" /></span>
+                        <span wx:for="{{item.curGrade}}" wx:key="index"><image src="{{item}}" class="img100 img000" mode="widthFix" /></span>
                     </view>
                     <!-- 得分 -->
                     <view class="grades-icon">
                         <span wx:for="{{item.grades}}" wx:key="index"></span>
                     </view>
+                    <view class="title-icon"></view>
                 </view>
             </view>
         </view>

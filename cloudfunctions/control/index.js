@@ -18,6 +18,7 @@ const garbage = require('./garbage/index');
 const promotion = require('./promotion/index');
 const tianapi = require('./tianapi/index');
 const caipiao = require('./caipiao/index');
+const answergame = require('./answergame/index')
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -356,6 +357,50 @@ exports.main = async (event, context) => {
         }); 
     });
     
+    // 答题
+    app.router('answergame/api/info', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await answergame.info(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('answergame/api/levels', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await answergame.levels(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('answergame/api/levelsdetail', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await answergame.levelsdetail(event, context)
+            resolve(res);
+        }); 
+    });
+    
+    app.router('answergame/api/create', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await answergame.create(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('answergame/api/up', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await answergame.up(event, context)
+            resolve(res);
+        }); 
+    });
+    app.router('answergame/api/qa/answer/item', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await answergame.qaansweritem(event, context)
+            resolve(res);
+        }); 
+    });
     
     
     return app.serve();

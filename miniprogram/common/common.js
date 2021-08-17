@@ -29,7 +29,7 @@ export const gradeImage = function(num){
     arr.push(backImg(_num))
     return arr;
     function backImg(txt){
-        return `https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/font_num/font_num_${txt}.png`;
+        return `https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/font_num/font-num_${txt}.png`;
     }
 }
 // 字体初始化

@@ -1,6 +1,9 @@
 .img100{
     display: block;width: 100%;
 }
+.img000{
+    height: 0;
+}
 .font-size-s{
     font-size: 12px;
 }
