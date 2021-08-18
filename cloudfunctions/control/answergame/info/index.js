@@ -17,9 +17,8 @@ module.exports =async (event,context,root)=>{
     let parame = event.data;
     try {
         let data = {
-            code:-1,
-            level:0, //当前闯关等级
-            score:0, //当前活动的中分
+            maxLevel:0, //当前闯关等级
+            maxScore:0, //当前活动的中分
             levels:[],//闯关等级的分数
         }
         var result= await db.collection('questionnaire_result').aggregate().match({
@@ -41,10 +40,9 @@ module.exports =async (event,context,root)=>{
                 }
             }
             let item = list[i]
-            data.score += item.score
-            if(data.score>0&&item.level>data.level){
-                data.level = item.level;
-                data.code = item.code
+            data.maxScore += item.score
+            if(data.maxScore>0&&item.level>data.maxLevel){
+                data.maxLevel = item.level;
             }
         }
         data.levels = arr

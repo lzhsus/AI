@@ -26,11 +26,35 @@ Page({
         this.getAnswergameApiLevels()
     },
     getAnswergameApiLevels(){
+        let levels = this.data.gameUserInfo.levels||[];
         return Api.answergameApiLevels().then(res=>{
             if(res.success){
                 res = res.result||{};
-                let list = (res.list||[]).map(item=>{
-                    item.curGrade = common.gradeImage(item.level)
+                let list = res.list||[];
+                list = list.map((item,index)=>{
+                    let arr = levels.filter(obj=>{ return obj.code==item.code });
+                    if(arr.length){
+                        item.score = arr[0].score
+                    }
+                    item.curGrade = common.gradeImage(item.level);
+                    if(item.score>=12){
+                        item.grades = 3
+                    }else if(item.score>=5){
+                        item.grades = 2
+                    }else if(item.score>=1){
+                        item.grades = 1
+                    }else{
+                        item.grades = 0
+                    }
+                    // 检查上一级
+                    item.unlock = false;
+                    if(index!=0){
+                        if(list[index-1].grades>=2){
+                            item.unlock = true;
+                        }
+                    }else{
+                        item.unlock = true;
+                    }
                     return item;
                 })
                 this.setData({
