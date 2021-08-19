@@ -183,10 +183,6 @@ api.answergameApiCreate = function(data, isShowLoading=true){
 api.answergameApiQaAnswerItem = function(data, isShowLoading=false){
     return request('control','answergame/api/qa/answer/item',data,isShowLoading);
 }
-// 排行榜
-api.answergameApiRanking = function(data, isShowLoading=false){
-    return request('control','answergame/api/ranking',data,isShowLoading);
-}
 
 
 

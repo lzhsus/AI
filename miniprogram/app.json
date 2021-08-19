@@ -77,8 +77,7 @@
             "pages": [
 				"index/index",
 				"qa/qa",
-				"up/up",
-				"ranking/ranking"
+				"up/up"
             ]
 		}
 		

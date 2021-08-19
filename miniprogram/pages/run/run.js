@@ -8,17 +8,13 @@ Page({
         runInfo:{},
         openSttingShow:false,
         targetStep:false,
-        targetStepNum:0,
-        userInfo:{}
+        targetStepNum:0
     },
    async onLoad (options) {
         this.getWxRunInfo()
     },
     onShow: function () {
-        let userInfo = common.LS.get('userinfo_count');
-        this.setData({
-            userInfo:userInfo
-        })
+        
     },
     openMoreLog(){
         wx.navigateTo({
@@ -155,43 +151,14 @@ Page({
             }
         })
     },
-    // 运动
     openRuningClick(){
-        if(!this.data.userInfo.is_sign){
-            wx.showModal({
-                content: '您当前暂未签到，请前往我的完成签到！',
-                showCancel:false
-            })
-            return
-        }
         wx.navigateTo({
             url: '/sports/running/running',
         })
     },
-    // 社区
     openForumPages(){
-        if(!this.data.userInfo.is_sign){
-            wx.showModal({
-                content: '您当前暂未签到，请前往我的完成签到！',
-                showCancel:false
-            })
-            return
-        }
         wx.navigateTo({
             url: '/forum/index/index',
-        })
-    },
-    // 答题
-    openAnswerPages(){
-        if(!this.data.userInfo.is_sign){
-            wx.showModal({
-                content: '您当前暂未签到，请前往我的完成签到！',
-                showCancel:false
-            })
-            return
-        }
-        wx.navigateTo({
-            url: '/challenge/index/index',
         })
     },
     oenGoodsPage(){
