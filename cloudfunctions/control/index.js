@@ -394,6 +394,13 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    app.router('answergame/api/ranking', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await answergame.ranking(event, context)
+            resolve(res);
+        }); 
+    });
     app.router('answergame/api/qa/answer/item', (ctx) => {
         let { OPENID} = cloud.getWXContext()
         ctx.body = new Promise(async resolve => {

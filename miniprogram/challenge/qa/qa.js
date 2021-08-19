@@ -8,9 +8,16 @@ Page({
         qaList:[],
         qaItem:{},
         index:0,
-        resultData:[]
+        resultData:{},
+        resultListData:[],
+        gameOver:false,
+        isQaResult:-1,
+        code:""
     },
     async onLoad (opt) {
+        this.setData({
+            code:opt.code
+        })
         this.getAnswergameApiLevelsdetail(opt.code)
     },
     getAnswergameApiLevelsdetail(code){
@@ -38,27 +45,32 @@ Page({
     // 选择其中一题
     async choiceQaItem(e){
         let { key } = e.currentTarget.dataset;
-        let { resultData,qaItem } = this.data;
+        let { resultListData,qaItem } = this.data;
         qaItem.qa_choice = key;
         // 得分
+        let isQaResult = 0;
         qaItem.isScore = 0;
         if(key==qaItem.qa.result){
             qaItem.isScore = 1;
+            isQaResult = 1;
         }
-        resultData.push(qaItem)
+        resultListData.push(qaItem)
         this.setData({
-            resultData:resultData,
-            qaItem:qaItem
+            resultListData:resultListData,
+            qaItem:qaItem,
+            isQaResult:isQaResult
         })
         // 记录这一题结果
         wx.showLoading({
-          title: '加载中...',
+          title: '下一题准备中...',
         })
         let item = JSON.parse(JSON.stringify(qaItem));
             delete item._id;
         await Api.answergameApiQaAnswerItem(item)
-        wx.hideLoading()
-        this.nextQaItem()
+        setTimeout(()=>{
+            wx.hideLoading()
+            this.nextQaItem()
+        },1000)
     },
     // 
     nextQaItem(){
@@ -72,28 +84,33 @@ Page({
         }
         this.setData({
             qaItem:qaList[index],
-            index:index
+            index:index,
+            isQaResult:-1
         })
     },
-    setResultData(){
-        let resultData = this.data.resultData;
+    setresultListData(){
+        let resultListData = this.data.resultListData;
         let data = {
-            score:resultData.filter(item=>{ return item.isScore }).length,
-            code:resultData[0].code,
-            level:resultData[0].level,
-            qa_id:resultData[0].qa_id,
-            data:resultData
+            score:resultListData.filter(item=>{ return item.isScore }).length,
+            code:resultListData[0].code,
+            level:resultListData[0].level,
+            qa_id:resultListData[0].qa_id,
+            data:resultListData
         }
         return data;
     },
     // 提交结果
     getAnswergameApiCreate(){
-        let data = this.setResultData()
+        let data = this.setresultListData()
         console.log(data)
         Api.answergameApiCreate(data).then(res=>{
             if(res.success){
                 res = res.result||{};
 
+                this.setData({
+                    gameOver:true,
+                    resultData:data
+                })
             }else{
                 wx.showModal({
                     content: res.msg,
@@ -102,8 +119,21 @@ Page({
             }
         })
     },
-
-    onShow: function () {
-
+    backHome(){
+        wx.navigateBack()
+    },
+    againGame(){
+        this.setData({
+            qaList:[],
+            qaItem:{},
+            index:0,
+            resultData:{},
+            resultListData:[],
+            gameOver:false,
+        })
+        this.getAnswergameApiLevelsdetail(this.data.code)
+    },
+    onShow() {
+        
     },
 })
