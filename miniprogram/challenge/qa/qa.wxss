@@ -11,6 +11,7 @@ page {
   box-sizing: border-box;
   border-radius: 30rpx;
   overflow: hidden;
+  position: relative;
   background: #fff;
   box-shadow: 0 0 20rpx rgba(241, 237, 237, 0.5);
 }
@@ -50,6 +51,18 @@ page {
 }
 #qaId .main-box .sel-item:last-child {
   margin-bottom: 0;
+}
+#qaId .main-box .isQaResult {
+  position: absolute;
+  bottom: 50rpx;
+  right: 20rpx;
+  font-size: 20px;
+  color: #409eff;
+  font-weight: bold;
+  transform: rotate(-45deg);
+}
+#qaId .main-box .isQaResult.red {
+  color: red;
 }
 #qaId .main-box .hint {
   padding: 40rpx 0 0;

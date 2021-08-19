@@ -11,6 +11,7 @@
                 <view>最高通关：<text>{{gameUserInfo.maxLevel}}</text></view>
                 <view>获得总分：<text>{{gameUserInfo.maxScore}}</text></view>
             </view>
+            <view class="ranking" bindtap="openRankingPageClick">排行榜</view>
         </view>
         <view class="main">
             <view wx:for="{{levels}}" wx:key="index" class="item {{item.grades>=2?'unlock-success':''}}">

@@ -275,6 +275,12 @@
                     "pathName": "challenge/qa/qa",
                     "query": "code=20210001",
                     "scene": null
+                },
+                {
+                    "name": "challenge/ranking/ranking",
+                    "pathName": "challenge/ranking/ranking",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

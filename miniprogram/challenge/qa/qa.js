@@ -11,6 +11,7 @@ Page({
         resultData:{},
         resultListData:[],
         gameOver:false,
+        isQaResult:-1,
         code:""
     },
     async onLoad (opt) {
@@ -47,24 +48,29 @@ Page({
         let { resultListData,qaItem } = this.data;
         qaItem.qa_choice = key;
         // 得分
+        let isQaResult = 0;
         qaItem.isScore = 0;
         if(key==qaItem.qa.result){
             qaItem.isScore = 1;
+            isQaResult = 1;
         }
         resultListData.push(qaItem)
         this.setData({
             resultListData:resultListData,
-            qaItem:qaItem
+            qaItem:qaItem,
+            isQaResult:isQaResult
         })
         // 记录这一题结果
         wx.showLoading({
-          title: '加载中...',
+          title: '下一题准备中...',
         })
         let item = JSON.parse(JSON.stringify(qaItem));
             delete item._id;
         await Api.answergameApiQaAnswerItem(item)
-        wx.hideLoading()
-        this.nextQaItem()
+        setTimeout(()=>{
+            wx.hideLoading()
+            this.nextQaItem()
+        },1000)
     },
     // 
     nextQaItem(){
@@ -78,7 +84,8 @@ Page({
         }
         this.setData({
             qaItem:qaList[index],
-            index:index
+            index:index,
+            isQaResult:-1
         })
     },
     setresultListData(){

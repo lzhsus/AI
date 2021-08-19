@@ -72,7 +72,7 @@ Page({
     openClickLevel(e){
         let { item } = e.currentTarget.dataset;
         // 检查当前关卡是否开启
-        if(false){
+        if(!item.unlock){
             wx.showToast({
               title: '您暂未开启当前关卡！',
               icon:"none"
@@ -81,6 +81,11 @@ Page({
         }
         wx.navigateTo({
           url: '/challenge/qa/qa?code='+item.code,
+        })
+    },
+    openRankingPageClick(){
+        wx.navigateTo({
+          url: '/challenge/ranking/ranking'
         })
     },
     onShow: function () {

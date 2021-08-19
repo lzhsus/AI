@@ -5,6 +5,7 @@ const qaansweritem = require('./qaansweritem/index');
 const up = require('./up/index');
 const create = require('./create/index');
 const info = require('./info/index');
+const ranking = require('./ranking/index');
 
 
 module.exports = {
@@ -14,5 +15,6 @@ module.exports = {
     qaansweritem:qaansweritem,
     up:up,
     create:create,
-    info:info
+    info:info,
+    ranking:ranking
 }

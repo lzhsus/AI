@@ -32,6 +32,13 @@ page {
   font-size: 20px;
   font-weight: bold;
 }
+#index .page-index .header .ranking {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  font-size: 12px;
+  color: #000;
+}
 #index .page-index .header .user-msg-box {
   width: 100%;
   position: absolute;
