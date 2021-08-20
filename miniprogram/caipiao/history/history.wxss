@@ -93,6 +93,10 @@ page {
   text-align: center;
   line-height: 40rpx;
 }
+.today-view-mian .item-box .item .price.red {
+  color: red;
+  font-size: 20px;
+}
 .today-view-mian .item-box .item text {
   display: block;
   width: 50rpx;
