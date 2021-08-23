@@ -65,8 +65,8 @@
     </view>
     <view class="sport-module" wx:if="{{runInfo.shequShow}}">
         <view class="sport-module-title">
-            <text>趣味答题专区</text>
-            <text ></text>
+            <text>趣味答题专区 </text>
+            <text ></text> 
         </view>
         <view class="sport-list border" bindtap="openAnswerPages">
             <image src="https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/ranking-cover.jpg?sign=ce845d29410b6f3e19479416912ec817&t=1629345072" mode="widthFix" class="img100" />
