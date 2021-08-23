@@ -15,7 +15,7 @@ Page({
         code:""
     },
     async onLoad (opt) {
-        this.setData({
+        this.setData({  
             code:opt.code
         })
         this.getAnswergameApiLevelsdetail(opt.code)

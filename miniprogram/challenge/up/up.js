@@ -80,7 +80,7 @@ Page({
             }else{
                 wx.showModal({
                     content: res.msg,
-                    showCancel:false
+                    showCancel:false 
                 })
             }
         })

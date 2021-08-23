@@ -22,7 +22,7 @@ module.exports =async (event,context,root)=>{
             levels:[],//闯关等级的分数
         }
         var result= await db.collection('questionnaire_result').aggregate().match({
-            openId:_.eq(OPENID)
+            openId:_.eq(OPENID) 
         }).end();
         let list = result.list||[];
         let arr = []

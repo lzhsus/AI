@@ -19,7 +19,7 @@
         <view class="isQaResult " wx:if="{{isQaResult==1}}">回答正确</view>
     </view>
 
-</view>
+</view> 
 
 <!-- 结束弹窗 -->
 <view class="pop" wx:if="{{gameOver}}">

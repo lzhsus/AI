@@ -21,7 +21,7 @@
                     <!-- 当前等级 -->
                     <view class="grade-icon" >
                         <span wx:for="{{item.curGrade}}" wx:key="index"><image src="{{item}}" class="img100 img000" mode="widthFix" /></span>
-                    </view>
+                    </view> 
                     <!-- 得分 -->
                     <view class="grades-icon">
                         <span wx:for="{{item.grades}}" wx:key="index"></span>

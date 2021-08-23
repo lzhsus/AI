@@ -20,7 +20,7 @@ Page({
         this.setData({
             pageShow:'index',
             rankingList:res.list||[]
-        })
+        }) 
 
     },
     onShow: function () {

@@ -14,7 +14,7 @@ module.exports =async (event,context,root)=>{
         OPENID
     } = cloud.getWXContext();
     // 验证该接口是否需要验证注册
-    let parame = event.data;
+    let parame = event.data; 
     try {
         var result;
         if(parame.count){

@@ -31,7 +31,7 @@ module.exports =async (event,context,root)=>{
         var error_type = globalConfig.common.error_type(error.errCode);
         var res = {
              errcode:404,
-             msg: error_type.type,
+             msg: error_type.type, 
              result:error,
              success:false,
              timestamp:new Date().getTime()

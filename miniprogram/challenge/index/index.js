@@ -13,7 +13,7 @@ Page({
         let res = await Api.answergameApiInfo();
         if(!res.success){
             wx.showModal({
-                content: res.msg,
+                content: res.msg, 
                 showCancel:false
             })
             return

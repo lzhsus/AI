@@ -54,7 +54,7 @@ module.exports =async (event,context,root)=>{
         })
 
         var res = {
-            errcode:200,
+            errcode:200, 
             msg: "操作成功!",
             result:{
                 list:list

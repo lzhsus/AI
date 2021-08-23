@@ -17,4 +17,4 @@ module.exports = {
     create:create,
     info:info,
     ranking:ranking
-}
+} 
