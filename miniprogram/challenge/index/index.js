@@ -23,7 +23,7 @@ Page({
         this.setData({
             gameUserInfo:res
         })
-        this.getAnswergameApiLevels()
+        this.getAnswergameApiLevels() 
     },
     getAnswergameApiLevels(){
         let levels = this.data.gameUserInfo.levels||[];
