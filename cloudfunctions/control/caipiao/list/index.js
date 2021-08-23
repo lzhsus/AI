@@ -26,6 +26,7 @@ module.exports =async (event,context,root)=>{
         var result= await db.collection('caipiao_log').aggregate().match(match).limit(9999).sort({
             day:-1
         })
+
         .lookup({
             from:"caipiao_win",
             let:{
@@ -50,7 +51,8 @@ module.exports =async (event,context,root)=>{
              errcode:200,
              msg: '操作成功！',
              result:{
-                 list:list
+                 list:list,
+                 count:list.length
              },
              success:true,
              timestamp:new Date().getTime()

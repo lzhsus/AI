@@ -6,7 +6,11 @@ import mixinsIndex from '../../mixins/index';
 Page({
     data: {
         todayDayList:[],
-        code:''
+        code:'',
+        priceNum:0,
+        consumeNum:0,
+        consume_count:0,
+        win_count:0
     },
     async onLoad (options) {
         let res =  await Api.userInfo();
@@ -35,6 +39,7 @@ Page({
                 })
                 console.log('list',list)
                 let arr = []
+                let priceNum = 0
                 for(let i=0;i<list.length;i++){
                     // 检查是否存在
                     if(arr.some(item=>{ return list[i].day2==item.day2 })){
@@ -54,6 +59,7 @@ Page({
                         })
                     }
                 }
+                let _num  = 0
                 arr.forEach(item=>{
                     if(item.win_code&&item.win_code.length){
                         let list01 = item.win_code.slice(0,5);
@@ -98,14 +104,20 @@ Page({
                             }else{
                                 obj.price = 0
                             }
-                            obj.price = obj.price+''
+                            obj.price = obj.price+'';
+                            if(obj.price!=0) _num++
+                            priceNum+=Number(obj.price)
                             return obj;
                         })
                     }
                 })
                 console.log('arr',arr)
                 this.setData({
-                    todayDayList:arr
+                    todayDayList:arr,
+                    priceNum:priceNum,
+                    consumeNum:Number(res.count)*2,
+                    consume_count:res.count,
+                    win_count:_num
                 })
             }else{
                 wx.showModal({
