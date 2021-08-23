@@ -16,7 +16,7 @@
                         class="{{index7<5?'active':'active2'}}">{{item05}}</text>
                 </view>
             </view> 
-            <view wx:for="{{item.list2}}" wx:for-item="item03" wx:key="inde2x" class="item {{item.win_code&&item.win_code.length>5&&item03.price>0?'':'no_win'}}">
+            <view wx:for="{{item.list2}}" wx:for-item="item03" wx:key="inde2x" class="item {{item.win_code&&item.win_code.length>5&&item03.price<=0?'no_win':''}}">
                 <text wx:for="{{item03.list}}" wx:for-item="item02" wx:key="index3"
                     class="{{item02.type==1?'active':'active2'}} {{item02.show?'win':''}}">{{item02.num}}</text>
                 <view class="price {{item03.price>0?'red':''}}" wx:if="{{item.win_code&&item.win_code.length>5}}">{{item03.price||0}}</view>
