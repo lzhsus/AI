@@ -45,6 +45,6 @@
                 <van-button bindtap="againGame" size="small" type="primary">再来一次</van-button>
                 <van-button bindtap="backHome" size="small" type="default">返回首页</van-button>
             </view>
-        </view>
+        </view> 
     </view>
 </view>

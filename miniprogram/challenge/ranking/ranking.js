@@ -9,7 +9,7 @@ Page({
     },
     async onLoad (options) {
         let res = await Api.answergameApiRanking()
-        if(!res.success){
+        if(!res.success){ 
             wx.showModal({
                 content: res.msg,
                 showCancel:false

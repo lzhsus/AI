@@ -55,7 +55,7 @@ Page({
                     }else{
                         item.unlock = true;
                     }
-                    return item;
+                    return item; 
                 })
                 this.setData({
                     pageShow:"index",

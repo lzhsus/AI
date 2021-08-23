@@ -11,7 +11,7 @@ Page({
         resultData:{},
         resultListData:[],
         gameOver:false,
-        isQaResult:-1,
+        isQaResult:-1, 
         code:""
     },
     async onLoad (opt) {

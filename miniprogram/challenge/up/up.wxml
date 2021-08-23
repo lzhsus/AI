@@ -15,4 +15,4 @@
 
     <van-button type="primary" size="large" bindtap="submitClick">提交数据</van-button>
 </view>
- 
+  

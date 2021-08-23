@@ -72,7 +72,7 @@ Page({
             code:levels[0].code,
             qa_id:this.data.qa_id+1,
             qa:this.data.qa
-        }
+        } 
         Api.answergameApiUp(data).then(res=>{
             if(res.success){
                 this.setData({qa:{}})

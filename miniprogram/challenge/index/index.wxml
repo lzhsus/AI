@@ -13,7 +13,7 @@
             </view>
             <view class="ranking" bindtap="openRankingPageClick">排行榜</view>
         </view>
-        <view class="main">
+        <view class="main"> 
             <view wx:for="{{levels}}" wx:key="index" class="item {{item.grades>=2?'unlock-success':''}}">
                 <view class="item-main" bindtap="openClickLevel" data-item="{{item}}">
                     <!-- 是否开启 -->

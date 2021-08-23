@@ -14,7 +14,7 @@
             </view>
             <block wx:for="{{rankingList}}" wx:key="index">
             <view class="item">
-                <view class="user"> 
+                <view class="user">  
                     <view class="head"><image src="{{item.userInfo.avatarUrl}}" class="img100" mode="widthFix" /></view>
                     <view class="nickname">{{item.userInfo.nickName}}</view>
                 </view>
