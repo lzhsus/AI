@@ -281,6 +281,12 @@
                     "pathName": "challenge/ranking/ranking",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "member/userinfo/userinfo",
+                    "pathName": "member/userinfo/userinfo",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

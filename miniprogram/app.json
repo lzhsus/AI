@@ -80,6 +80,12 @@
 				"up/up",
 				"ranking/ranking"
             ]
+		},
+		{
+            "root": "member/",
+            "pages": [
+				"userinfo/userinfo"
+            ]
 		}
 		
 	],

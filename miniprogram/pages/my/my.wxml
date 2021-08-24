@@ -18,6 +18,10 @@
                 <view class="query-main" wx:if="{{queryMainShow}}">用户每日可以签到一次，每次签到将将会获取相应的次数奖励。（讲笑话情话+1，情感分析+1，夸夸话术+1）今后也会根据项目的推进有所改进</view>
             </view>
         </view>
+        <!-- 编辑用户信息 -->
+        <view class="edit-icon" bindtap="openPageUserInfo">
+            <image src="https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/user-edit-icon.png?sign=b48f754b5132c6336b6f74b8afb75362&t=1629775112" class="img100" mode="widthFix" />
+        </view>
     </view>
     <view class="main">
         <view class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon00.png)">

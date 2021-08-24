@@ -17,6 +17,12 @@
   background: url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/set-icon.png) center center no-repeat;
   background-size: cover;
 }
+#myWeapp .head-top .edit-icon {
+  position: absolute;
+  top: 76rpx;
+  right: 22rpx;
+  width: 36rpx;
+}
 #myWeapp .head-top .sigin-box {
   position: absolute;
   top: 20rpx;

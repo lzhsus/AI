@@ -30,6 +30,14 @@ Page({
         })
     },
     opensetPage(){
+        // 请先完成每日签到
+        if(this.data.userInfo.is_sign!=1){
+            wx.showModal({
+                content:'请先完成每日签到！',
+                showCancel:false
+            })
+            return
+        }
         wx.navigateTo({
           url: '/pages/setting/setting',
         })
@@ -50,6 +58,14 @@ Page({
         })
     },
     rankingClick(){
+        // 请先完成每日签到
+        if(this.data.userInfo.is_sign!=1){
+            wx.showModal({
+                content:'请先完成每日签到！',
+                showCancel:false
+            })
+            return
+        }
         wx.navigateTo({
             url: '/pages/ranking/ranking',
         })
@@ -95,6 +111,19 @@ Page({
     lookQueryIconClick(){
         this.setData({
             queryMainShow:!this.data.queryMainShow
+        })
+    },
+    openPageUserInfo(){
+        // 请先完成每日签到
+        if(this.data.userInfo.is_sign!=1){
+            wx.showModal({
+                content:'请先完成每日签到！',
+                showCancel:false
+            })
+            return
+        }
+        wx.navigateTo({
+          url: '/member/userinfo/userinfo',
         })
     },
     bindgetuserinfo(e){

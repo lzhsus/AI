@@ -86,7 +86,11 @@ module.exports =async (event,context,root)=>{
                 isSuperAdmin:true,
                 isAdmin:true,
                 isCaipiao:true,
-                isCommunity:true
+                isCommunity:true,
+                city:true,
+                country:true,
+                province:true,
+                mobile:true
             })
             .end()
         result = result.list.map(res=>{
