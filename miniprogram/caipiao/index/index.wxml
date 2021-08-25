@@ -4,6 +4,7 @@
         <view class="history" bindtap="openPageRule">使用规则</view>
         <view class="history" bindtap="openPageHistory">历史记录</view>
     </view>
+    <view class="period">当前创建数据第<text>{{period}}</text>期</view>
     <view class="mian">
         <view class="hint">至少选择5个前区号码，2个后区号码</view>
         <view class="ul">

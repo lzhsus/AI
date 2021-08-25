@@ -10,7 +10,9 @@ Page({
         resultList:[],
         todayDayList:[],
         todayDay:'',
-        popShow:""
+        popShow:"",
+        period:""
+
     },
     async onLoad (options) {
         let res =  await Api.userInfo();
@@ -32,7 +34,12 @@ Page({
             backzoneNumber: arr2
         })
         this.getCaipiaoList()
-        await Api.updataPeriod()
+        let data = await Api.updataPeriod()
+        if(data.success){
+            this.setData({
+                period:data.result.period
+            })
+        }
         await Api.updatacode()
     },
     async updataResultCode(){

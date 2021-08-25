@@ -17,6 +17,15 @@ page {
   font-size: 12px;
   color: #000;
 }
+.pages .period {
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+  padding: 12rpx 0;
+}
+.pages .period text {
+  color: red;
+}
 .pages .mian {
   width: 650rpx;
   border-radius: 30rpx;

@@ -23,7 +23,6 @@ module.exports =async (event,context,root)=>{
         let hours = new Date().getHours();
         // 检查当天是否是 周一 周三 周六 大于晚上8
         if([1,3,6].indexOf(week)!=-1&&hours>=20){
-            
             return {
                 errcode:0,
                 msg: "今天为开奖日且已超过购买时间，今天暂不可记录！",
