@@ -8,10 +8,10 @@
     <view class="mian">
         <view class="hint">至少选择5个前区号码，2个后区号码</view>
         <view class="ul">
-            <text wx:for="{{frontNumber}}" wx:key="index" class="li {{item.show?'active':''}}">{{item.num}}</text>
+            <text wx:for="{{frontNumber}}" wx:key="index" class="li {{item.show?'active':''}}" bindtap="changeData" data-type="1" data-index="{{index}}" data-item="{{item}}">{{item.num}}</text>
         </view>
         <view class="ul">
-            <text wx:for="{{backzoneNumber}}" wx:key="index" class="li {{item.show?'active2':''}}">{{item.num}}</text>
+            <text wx:for="{{backzoneNumber}}" wx:key="index" class="li {{item.show?'active2':''}}" bindtap="changeData" data-type="2" data-index="{{index}}" data-item="{{item}}">{{item.num}}</text>
         </view>
     </view>
     <view class="random-ban" bindtap="randomClickNumber">随机一组数据</view>    

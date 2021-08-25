@@ -79,6 +79,41 @@ Page({
         }
         return arr;
     },
+    changeData(e){
+        let { type,item,index } = e.currentTarget.dataset;
+        let { frontNumber,backzoneNumber } = this.data;
+        if(type==1){
+            if(!frontNumber[index].show){
+                if(frontNumber.filter((obj)=>{ return obj.show }).length==5) return;
+            }
+            frontNumber[index].show = !frontNumber[index].show;
+        }
+        if(type==2){
+            if(!backzoneNumber[index].show){
+                if(backzoneNumber.filter((obj)=>{ return obj.show }).length==2) return;
+            }
+            backzoneNumber[index].show = !backzoneNumber[index].show;
+        }
+        this.setData({
+            frontNumber:frontNumber,
+            backzoneNumber:backzoneNumber
+        })
+        this.updataResultList()
+    },
+    updataResultList(){
+        let { frontNumber,backzoneNumber } = this.data;
+        let _a = frontNumber.filter((obj)=>{ return obj.show });
+        let _b = backzoneNumber.filter((obj)=>{ return obj.show });
+        let resultList = []
+        if(_a.length==5&&_b.length==2){
+            resultList = [].concat(_a.map(item=>{ return {type:1,num:item.num} })).concat(_b.map(item=>{ return {type:2,num:item.num} }))
+        }else{
+            resultList = []
+        }
+        this.setData({
+            resultList:resultList
+        })
+    },
     randomClickNumber() {
         let arr01 = [],arr02 = []
         for(let i=0;i<35;i++){
