@@ -74,12 +74,107 @@ page {
   color: #24c789;
   font-weight: bold;
 }
+.weapper .item .image-cover-box {
+  position: relative;
+}
+.weapper .item .image-cover-box .image-hint {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  display: block;
+  width: 120rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  color: #e9e9e9;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 .weapper .item .cover_img {
   max-height: 700rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+.weapper .item .image-cover {
+  background: url() center center no-repeat;
+  background-size: cover;
+}
+.weapper .item .cover_img2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.weapper .item .cover_img2 .tow-img {
+  width: 49%;
+  height: 400rpx;
+}
+.weapper .item .cover_img3 .three-img {
+  width: 100%;
+  height: 400rpx;
+  margin-top: 2px;
+}
+.weapper .item .cover_img4 .cover_img2 {
+  margin-top: 2px;
+}
+.weapper .item .cover_img4 .cover_img2:first-child {
+  margin-top: 0;
+}
+.weapper .item .cover_img3 {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.weapper .item .cover_img3 .tow-img {
+  width: 32.5%;
+  height: 300rpx;
+}
+.weapper .item .cover_img5 {
+  position: relative;
+}
+.weapper .item .cover_img5 .cover_img2 {
+  margin-top: 2px;
+}
+.weapper .item .cover_img5 .cover_img2:first-child {
+  margin-top: 0;
+}
+.weapper .item .cover_img5 .cover_img3 {
+  margin-top: 2px;
+}
+.weapper .item .cover_img5 .five-img {
+  width: 300rpx;
+  height: 400rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 12rpx rgba(228, 228, 228, 0.5);
+  opacity: 0.5;
+}
+.weapper .item .cover_img6 .cover_img3 {
+  margin-top: 2px;
+}
+.weapper .item .cover_img6 .cover_img3:first-child {
+  margin-top: 0;
+}
+.weapper .item .cover_img7 .cover_img2 {
+  margin-top: 2px;
+}
+.weapper .item .cover_img8 .cover_img3 {
+  margin-top: 2px;
+}
+.weapper .item .cover_img9 .cover_img3 {
+  margin-top: 2px;
+}
+.weapper .item .cover_img9 .cover_img3:first-child {
+  margin-top: 0;
 }
 .weapper .item .text {
   margin: 12rpx auto;

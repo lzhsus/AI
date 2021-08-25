@@ -1,12 +1,5 @@
 page {
   background: rgba(238, 238, 238, 0.1);
-  overflow: hidden;
-}
-#index {
-  height: 100vh;
-}
-#index .page-index {
-  height: 100vh;
 }
 #index .page-index .header {
   width: 700rpx;

@@ -30,12 +30,21 @@ Page({
             }
         });
     },
-    getAnswergameApiLevelsdetail(code){
+    getAnswergameApiLevelsdetail(code,index){
         return Api.answergameApiLevelsdetail({count:true,code:code}).then(res=>{
             if(res.success){
                 res = res.result||{}
-                this.setData({qa_id:res.qa_id||0})
-                console.log(res)
+                if(res.qa_id==12){
+                    wx.showToast({
+                        title: '该题库已经录入完成！',
+                        icon:'none'
+                    })
+                    return
+                }
+                let levels = this.data.levels;
+                levels = levels.map(item=>{ return Object.assign(item,{show:false}) });
+                levels[index].show = true;
+                this.setData({qa_id:res.qa_id||0,levels:levels})
             }else{
                 wx.showModal({
                     content:res.msg,
@@ -47,10 +56,7 @@ Page({
     async changeTagClick(e){
         let { index } = e.target.dataset;
         let levels = this.data.levels;
-        levels = levels.map(item=>{ return Object.assign(item,{show:false}) });
-        levels[index].show = true;
-        await this.getAnswergameApiLevelsdetail(levels[index].code)
-        this.setData({levels})
+        await this.getAnswergameApiLevelsdetail(levels[index].code,index)
     },
     inputTap(e){
         let { name } = e.target.dataset;

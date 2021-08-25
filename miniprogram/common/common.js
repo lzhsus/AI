@@ -24,9 +24,16 @@ export const formatMoney=function (value,isFixed=2){
 // 关卡
 export const gradeImage = function(num){
     let arr = [backImg('l'),backImg('v')]
-
-    let _num = num<10?'0'+num:num+'';
-    arr.push(backImg(_num))
+    if(num<10){
+        let _num = '0'+num;
+        arr.push(backImg(_num))
+    }else{
+        let _nums = (num+'').split('')
+        for(let i=0;i<_nums.length;i++){
+            let _num = '0'+_nums[i];
+            arr.push(backImg(_num))
+        }
+    }
     return arr;
     function backImg(txt){
         return `https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/font_num/font-num_${txt}.png`;

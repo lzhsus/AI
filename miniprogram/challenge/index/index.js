@@ -37,6 +37,7 @@ Page({
                         item.score = arr[0].score
                     }
                     item.curGrade = common.gradeImage(item.level);
+                    console.log(item.curGrade)
                     if(item.score>=12){
                         item.grades = 3
                     }else if(item.score>=5){

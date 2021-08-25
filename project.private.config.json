@@ -287,6 +287,12 @@
                     "pathName": "member/userinfo/userinfo",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "forum/index/index",
+                    "pathName": "forum/index/index",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

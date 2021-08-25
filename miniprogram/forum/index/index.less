@@ -43,8 +43,80 @@ page{
                 }
             }
         }
+        .image-cover-box{
+            position: relative;
+            .image-hint{
+                position: absolute;bottom: 20rpx;right: 20rpx;display: block;
+                width: 120rpx;height: 56rpx;text-align: center;line-height: 56rpx;
+                background: rgba(0, 0, 0, 0.3);
+                font-size: 14px;color: rgb(233, 233, 233);font-weight: bold;letter-spacing: 1px;
+            }
+        }
         .cover_img{
             max-height: 700rpx;display: flex;justify-content: center;align-items: center;overflow: hidden;
+        }
+        .image-cover{
+            background: url() center center no-repeat;
+            background-size: cover;
+        }
+        .cover_img2{
+            width: 100%;display: flex;justify-content: space-around;align-items: center;
+            .tow-img{
+                width: 49%;height: 400rpx;
+            }
+        }
+        .cover_img3{
+            .three-img{
+                width: 100%;height: 400rpx;margin-top: 2px;
+            }
+        }
+        .cover_img4{
+            .cover_img2{
+                margin-top: 2px;
+                &:first-child{ margin-top: 0; }
+            }
+        }
+        .cover_img3{
+            width: 100%;display: flex;justify-content: space-around;align-items: center;
+            .tow-img{
+                width: 32.5%;height: 300rpx;
+            }
+        }
+        .cover_img5{
+            position: relative;
+            .cover_img2{
+                margin-top: 2px;
+                &:first-child{ margin-top: 0; }
+            }
+            .cover_img3{
+                margin-top: 2px;
+            }
+            .five-img{
+                width: 300rpx;height: 400rpx;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);
+                border-radius: 4px;overflow: hidden;box-shadow: 0 0 12rpx rgba(228, 228, 228, 0.5);opacity: 0.5;
+            }
+        }
+        .cover_img6{
+            .cover_img3{
+                margin-top: 2px;
+                &:first-child{ margin-top: 0; }
+            }
+        }
+        .cover_img7{
+            .cover_img2{
+                margin-top: 2px;
+            }
+        }
+        .cover_img8{
+            .cover_img3{
+                margin-top: 2px;
+            }
+        }
+        .cover_img9{
+            .cover_img3{
+                margin-top: 2px;
+                &:first-child{ margin-top: 0; }
+            }
         }
         .text{
             margin: 12rpx auto;height: 42px;font-weight: bold;
