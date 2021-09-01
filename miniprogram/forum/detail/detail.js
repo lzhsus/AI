@@ -38,14 +38,15 @@ Page({
     },
 
     onShow: function () {
-
     },
     setComment(res){
         let comment = res.comment||[]
         comment = comment.map(item=>{
             item.time = common.moment(new Date(res.create_time)).format("YYYY-MM-DD HH:mm:ss")
+            item.userInfo.mobile = item.userInfo.mobile?common.checkMobileTxt(item.userInfo.mobile+''):item.userInfo.nickName
             return item;
         })
+
         for(let i=0;i<comment.length-1;i++){
             for(let j=0;j<comment.length-1;j++){
                 if(comment[i]._id==comment[j+1].target_user._id){
@@ -66,9 +67,18 @@ Page({
     },
     selClickTarget(e){
         let { item } = e.currentTarget.dataset;
+        let { target_user,placeholder } = this.data;
+        console.log(item)
+        if(target_user&&target_user.userInfo){
+            target_user = {}
+            placeholder = '请输入评论内容...'
+        }else{
+            target_user.userInfo = item.userInfo;
+            placeholder = "正在回复@"+item.userInfo.nickName
+        }
         this.setData({
-            target_user:item,
-            placeholder:"正在回复@"+item.userInfo.nickName
+            target_user:target_user,
+            placeholder:placeholder
         })
     },
     bindinput(e){
@@ -86,20 +96,33 @@ Page({
             })
             return
         }
+        let { postCommentValue,itemDetail,userInfo,target_user } = this.data;
         let data = {
-            msg:this.data.postCommentValue,
-            pro_id:this.data.itemDetail._id,
-            userInfo:this.data.userInfo,
-            target_user:this.data.target_user
+            msg:postCommentValue,
+            pro_id:itemDetail._id,
+            userInfo:userInfo,
+            target_user:target_user,
+            id:common.moment().format("YYYYMMDDHHMMSS")
         }
         Api.formatCommentt(data).then(res=>{
             if(res.success){
                 res= res.result||{}
                 let itemDetail = this.data.itemDetail;
-                itemDetail.comment.push(Object.assign(data,{
-                    time:common.moment().format("YYYY-MM-DD HH:mm:ss"),
-                    openId:itemDetail.openId
-                }))
+                if(target_user&&target_user.userInfo){
+                    itemDetail.comment.forEach(element => {
+                        if(element.userInfo.openId==target_user.userInfo.openId){
+                            element.targetList.push(Object.assign(data,{
+                                time:common.moment().format("YYYY-MM-DD HH:mm:ss"),
+                                openId:itemDetail.openId
+                            }))
+                        }
+                    });
+                }else{
+                    itemDetail.comment.push(Object.assign(data,{
+                        time:common.moment().format("YYYY-MM-DD HH:mm:ss"),
+                        openId:itemDetail.openId
+                    }))
+                }
                 this.setComment(itemDetail)
                 this.setData({
                     postCommentValue:''

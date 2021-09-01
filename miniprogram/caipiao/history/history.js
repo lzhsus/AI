@@ -21,7 +21,7 @@ Page({
             })
         }
         res = res.result||{}
-        if(res.isSuperAdmin!=1) return;
+        if(res.isCaipiao!=1) return;
         wx.setNavigationBarTitle({
             title: '创建记录'
         })

@@ -39,6 +39,16 @@ export const gradeImage = function(num){
         return `https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/font_num/font-num_${txt}.png`;
     }
 }
+export const UID = function(){
+    // 年月日时分秒 + 4位随机数
+    let temp = common.moment().format("YYYYMMDDHHmmss");
+    let postfix = ''
+    return temp+''+'postfix';
+}
+export const checkMobileTxt = function(mibile){
+    var reg = /^(\d{3})\d{4}(\d{4})$/;
+    return mibile.replace(reg, "$1****$2")
+}
 // 字体初始化
 export const loadFontFaceInit = function(source,family){
     return new Promise((resolve,reject)=>{

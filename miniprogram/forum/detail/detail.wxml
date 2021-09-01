@@ -30,7 +30,7 @@
                     <view class="comment-li-item" bindtap="selClickTarget" data-item="{{item}}">
                         <view class="avatar"><image src="{{item.userInfo.avatarUrl}}" mode="widthFix" class="img100" /></view>
                         <view class="userinfo">
-                            <view class="nickname-box">{{item.userInfo.nickName}} <text class="time">{{item.time}}</text></view>
+                            <view class="nickname-box">{{item.userInfo.mobile}} <text class="time">{{item.time}}</text></view>
                             <view class="content">{{item.msg}}</view>
                         </view> 
                     </view>
