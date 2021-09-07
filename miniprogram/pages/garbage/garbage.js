@@ -41,7 +41,6 @@ Page({
                     list:res.list||[],
                     isLoadEnd:true
                 })
-                console.log(this.data.list)
             }else{
                 wx.showModal({
                     content: res.msg,

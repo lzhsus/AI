@@ -67,6 +67,10 @@ Page({
 			postCommentValue:text
 		})
 	},
+	copyClick(e){
+		let { msg } = e.currentTarget.dataset;
+		common.copyData(msg)
+	},
     bindinput(e){
 		this.setData({
 			postCommentValue:e.detail.value

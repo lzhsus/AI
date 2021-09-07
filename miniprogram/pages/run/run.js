@@ -157,9 +157,9 @@ Page({
     },
     // 运动
     openRuningClick(){
-        if(!this.data.userInfo.is_sign){
+        if(!this.data.userInfo.avatarUrl){
             wx.showModal({
-                content: '您当前暂未签到，请前往我的完成签到！',
+                content: '请先前往我的页面，完成首次签到！',
                 showCancel:false
             })
             return
@@ -170,9 +170,9 @@ Page({
     },
     // 社区
     openForumPages(){
-        if(!this.data.userInfo.is_sign){
+        if(!this.data.userInfo.avatarUrl){
             wx.showModal({
-                content: '您当前暂未签到，请前往我的完成签到！',
+                content: '请先前往我的页面，完成首次签到！',
                 showCancel:false
             })
             return
@@ -183,9 +183,9 @@ Page({
     },
     // 答题
     openAnswerPages(){
-        if(!this.data.userInfo.is_sign){
+        if(!this.data.userInfo.avatarUrl){
             wx.showModal({
-                content: '您当前暂未签到，请前往我的完成签到！',
+                content: '请先前往我的页面，完成首次签到！',
                 showCancel:false
             })
             return

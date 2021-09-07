@@ -39,6 +39,20 @@ export const gradeImage = function(num){
         return `https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/font_num/font-num_${txt}.png`;
     }
 }
+// 复制内容
+export const copyData =function(data){
+    wx.setClipboardData({
+        data: data,
+        success: function(res) {
+            wx.getClipboardData({
+                success: function(res) { }
+            })
+        },
+        fail:()=>{
+            
+        }
+    })
+}
 export const UID = function(){
     // 年月日时分秒 + 4位随机数
     let temp = common.moment().format("YYYYMMDDHHmmss");

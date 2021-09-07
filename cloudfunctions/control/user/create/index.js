@@ -15,6 +15,21 @@ module.exports =async (event,context,root)=>{
     } = cloud.getWXContext();
     // 验证该接口是否需要验证注册
     let parame = event.data;
+    if(parame.updata){
+        await db.collection('user_info').where({
+            openId:OPENID
+        }).update({
+            data:parame.userInfo
+        })
+        var res = {
+            errcode:200,
+            msg: '操作成功！',
+            result:parame.userInfo,
+            success:true,
+            timestamp:new Date().getTime()
+       }
+        return res;
+    }
     try {
         let result= await cloud.getOpenData({
             list: [parame.cloudID]
@@ -29,6 +44,7 @@ module.exports =async (event,context,root)=>{
                 errcode:200,
                 msg: '操作成功！',
                 result:result.list[0].data,
+                result2:result,
                 success:true,
                 timestamp:new Date().getTime()
            }

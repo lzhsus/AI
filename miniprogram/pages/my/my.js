@@ -43,16 +43,16 @@ Page({
         })
     },
     openPageClick(e){
+        let { path,isuser } = e.currentTarget.dataset||{};
+        if(!path) return;
         // 请先完成每日签到
-        if(this.data.userInfo.is_sign!=1){
+        if(this.data.userInfo.is_sign!=1&&isuser==1){
             wx.showModal({
                 content:'请先完成每日签到！',
                 showCancel:false
             })
             return
         }
-        let { path } = e.currentTarget.dataset||{};
-        if(!path) return;
         wx.navigateTo({
             url: path,
         })
@@ -126,31 +126,32 @@ Page({
           url: '/member/userinfo/userinfo',
         })
     },
-    bindgetuserinfo(e){
-        if(e.detail.errMsg == 'getUserInfo:fail auth deny'){
-            wx.showModal({
-                content: '请允许获取用户信息，以便于获取更好的体验！',
-                showCancel:false
-            })
-            return 
-        }
-        Api.userCreate({
-            cloudID: e.detail.cloudID
-        }).then(res=>{
-            if(res.success){
-                var userInfo = this.data.userInfo;
-                userInfo = Object.assign(userInfo,res.result);
-                this.setData({
-                    userInfo:userInfo
+    getUserProfile(e){
+        let { updata } = e.currentTarget.dataset
+        console.log(e)
+        wx.getUserProfile({
+            desc: '用于完善会员资料！', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+            success: (item) => {
+                Api.userCreate({
+                    updata:1,
+                    userInfo:item.userInfo
+                },!updata).then(res=>{
+                    if(res.success){
+                        var userInfo = this.data.userInfo;
+                        userInfo = Object.assign(userInfo,res.result);
+                        this.setData({
+                            userInfo:userInfo
+                        })
+                        common.LS.put('userinfo_count',userInfo);
+                        if(!updata) this.siginClick()
+                    }else{
+                        wx.showModal({
+                            content: res.msg,
+                            showCancel:false
+                        })
+                    }
                 })
-                common.LS.put('userinfo_count',userInfo);
-                this.siginClick()
-            }else{
-                wx.showModal({
-                    content: res.msg,
-                    showCancel:false
-                })
-            }
+            },
         })
     },
     getUserInfo(){

@@ -23,6 +23,13 @@
   right: 22rpx;
   width: 36rpx;
 }
+#myWeapp .head-top .updata-userinfo {
+  position: absolute;
+  top: 140rpx;
+  right: 22rpx;
+  font-size: 12px;
+  color: #ccc;
+}
 #myWeapp .head-top .sigin-box {
   position: absolute;
   top: 20rpx;
@@ -136,6 +143,15 @@
   font-weight: bold;
   text-align: center;
   margin-top: 10rpx;
+}
+#myWeapp .head-top .user-msg-box .btn {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 142rpx;
+  height: 142rpx;
+  opacity: 0;
+  transform: translateX(-50%);
 }
 #myWeapp .main {
   display: flex;

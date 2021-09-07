@@ -1,7 +1,7 @@
 <!-- 随机入口 -->
-<movable-area style="width:{{windowWidth}}px;height:{{windowHeight}}px;">
+<!-- <movable-area style="width:{{windowWidth}}px;height:{{windowHeight}}px;">
     <movable-view direction="all" x="{{x}}" y="{{y}}" out-of-bounds bindchange="move" bindtouchend="touchEnd" bindtouchstart="touchStart"></movable-view>
-</movable-area>
+</movable-area> -->
 
 <view class="content-weapper" id="indexWeapp">
     <view class="main" id="mainWeapp">
@@ -17,7 +17,7 @@
             <view class="main-li li ai-item" wx:if="{{item.type==2}}">
                 <view class="avater"><image src="{{item.avatar}}" class="img100" mode="widthFix"/></view>
                 <view class="msg-text">
-                    <text class="msg">{{item.msg}}</text>
+                    <text class="msg" bindtap="copyClick" data-msg="{{item.msg}}">{{item.msg}}</text>
                     <text class="time">{{item.time}}</text>
                 </view>
             </view>
