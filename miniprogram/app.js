@@ -1,4 +1,4 @@
-
+import UdeskSdk from './utils/ud-sdk'
 App({
     onLaunch: function () {
         if (!wx.cloud) {
@@ -10,6 +10,34 @@ App({
             })
         }
         this.autoUpdate()
+        // this.UdeskSdkInit()
+    },
+    UdeskSdkInit() {
+        console.log('111111')
+        UdeskSdk.init({
+            appId: "wxfc83fb93b2fb092e",
+            companyToken: "f2d5f4f69d9b960516587581b48fbb88",
+            companyDomain: "1503383.s4.udesk.cn",
+            onPageShow: function () {
+                //do something
+            }
+        });
+        setTimeout(()=>{
+            UdeskSdk.trace('product', {
+                name: " Apple iPhone X (A1903) 64GB 深空灰色 移动联通4G手机",
+                url: "https://item.jd.com/6748052.html",
+                imgUrl: "http://img12.360buyimg.com/n1/s450x450_jfs/t10675/253/1344769770/66891/92d54ca4/59df2e7fN86c99a27.jpg",
+                params: [{
+                    "text": "￥6999.00",
+                    "color": "#FF0000",
+                    "fold": false,
+                    "break": false,
+                    "size": 12
+                }]
+            });
+            console.log('3333')
+        },1000)
+        console.log('222222')
     },
     autoUpdate: function () {
         var self = this
@@ -57,8 +85,8 @@ App({
     },
 
     /**
-   * 下载小程序新版本并重启应用
-   */
+     * 下载小程序新版本并重启应用
+     */
     downLoadAndUpdate: function (updateManager) {
         var self = this
         wx.showLoading();

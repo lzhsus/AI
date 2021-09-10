@@ -8,6 +8,8 @@ import {
     setShareImgLink,
     uploadFiles
 } from '../../services/uploadFile.js';
+
+import UdeskD from '../../utils/ud-sdk'
 Page({
     data: {
         ec: {},
