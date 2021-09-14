@@ -1,0 +1,5 @@
+<!--yugong/achievement/achievement.wxml-->
+<text>yugong/achievement/achievement.wxml</text>
+
+
+<yugongFooter pageTitle="achievement" wx:if="{{!pageUnload}}"></yugongFooter>

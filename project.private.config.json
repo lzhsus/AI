@@ -299,6 +299,12 @@
                     "pathName": "forum/detail/detail",
                     "query": "_id=8937eaa96125f1cb0637fbb67cffe9f5",
                     "scene": null
+                },
+                {
+                    "name": "yugong/index/index",
+                    "pathName": "yugong/index/index",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

@@ -19,6 +19,7 @@ const promotion = require('./promotion/index');
 const tianapi = require('./tianapi/index');
 const caipiao = require('./caipiao/index');
 const answergame = require('./answergame/index')
+const yugong = require('./yugong/index')
 
 exports.main = async (event, context) => {
     const app = new TcbRouter({
@@ -408,7 +409,15 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
+    // 愚公移山
     
+    app.router('yugong/api/userinfo', (ctx) => {
+        let { OPENID} = cloud.getWXContext()
+        ctx.body = new Promise(async resolve => {
+            var res = await yugong.userinfo(event, context)
+            resolve(res);
+        }); 
+    });
     
     return app.serve();
 }

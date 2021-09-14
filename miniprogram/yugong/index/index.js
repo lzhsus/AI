@@ -1,0 +1,153 @@
+const Api = require('../../services/api/index');
+import * as common from '../../common/common';
+import appConfig from '../../common/app_config';
+import mixinsIndex from '../../mixins/index';
+let customs = require('./customs');
+Page({
+    data: {
+        popShow:"",
+        pageUnload:false,
+        userInfo:{},
+        customsList:[],
+
+        _editCustomsItem:{}
+    },
+
+    async onLoad (options) {
+        console.log(customs)
+        let res = await Api.getYugongUserInfo()
+        if(!res.success){
+            wx.showModal({
+                content: res.msg,
+                showCancel:false
+            })
+            return
+        }
+        res = res.result||{};
+        let customsList = customs.map(item=>{
+            res.customs.forEach((e)=>{
+                if(e.id==item.id){
+                    item = Object.assign(item,e)
+                }
+            })
+            if(item.num>item._num.length){
+                item.needChild = item._num[item._num.length-1];
+            }else{
+                item.needChild = item._num[item.num];
+            }
+            return item;
+        })
+        this.setData({
+            pageShow:'index',
+            userInfo:res,
+            customsList:customsList
+        })
+        this.updataInitDefault()
+    },
+    onShow () {
+
+    },
+    // 初始化更新
+    updataInitDefault(){
+        this.updataMaxChildNumber();
+        this.updataChildNumber();
+    },
+    // 实时更新显示的数量
+    updataChildNumber(){
+        let { pageUnload,userInfo } = this.data;
+        if(pageUnload) return;
+        setTimeout(()=>{
+            this.updataChildNumber()
+            if(userInfo.childNumber>=userInfo.maxChildNumber) return;
+            userInfo.childNumber++;
+            this.setData({ userInfo })
+        },10)
+    },
+    // 每秒更新最大数量
+    updataMaxChildNumber(){
+        let { pageUnload,userInfo } = this.data;
+        if(pageUnload) return;
+        setTimeout(()=>{
+            userInfo.maxChildNumber = userInfo.maxChildNumber+userInfo.createChildSpeed;
+            this.updataMaxChildNumber()
+            this.setData({ userInfo })
+        },1000)
+    },
+    // 更新生成子孙的速度
+    updataCreateChildSpeed(){
+        let { userInfo,customsList } = this.data;
+        let _speed = 1
+        customsList.forEach((item=>{
+            if(item.isOpen&&item.num>=1){
+                _speed+=item.num*item.speed
+            }
+        }))
+        userInfo.createChildSpeed = _speed
+        this.setData({ userInfo })
+    },
+    // 选择要派遣的等级 
+    openJoinCustom(e){
+        let { item } = e.currentTarget.dataset;
+        this.setData({
+            _editCustomsItem:item,
+            popShow:'_editCustoms'
+        })
+    },
+    // 确认派遣
+    submitCustoms(){
+        let { customsList,_editCustomsItem,userInfo } = this.data;
+        if(userInfo.childNumber<_editCustomsItem.needChild){
+            wx.showToast({
+                title: '当前子孙数量不足\n\n点击屏幕生成吧！',
+                icon:"none"
+            })
+            this.setData({popShow:''})
+            return
+        }
+        let _index = 0;
+        userInfo.maxChildNumber = userInfo.maxChildNumber-_editCustomsItem.needChild;
+        userInfo.childNumber = userInfo.childNumber-_editCustomsItem.needChild;
+        
+        customsList.forEach(((item,index)=>{
+            if(item.id==_editCustomsItem.id){
+                item.num++;
+                _index = index
+                if(item.num>item._num.length){
+                    item.needChild = item._num[item._num.length-1];
+                }else{
+                    item.needChild = item._num[item.num];
+                }
+            }
+        }))
+        customsList[_index+1].isOpen = true;
+        this.setData({customsList,userInfo,popShow:''})
+        this.updataCreateChildSpeed()
+    },
+    closePop(){
+        this.setData({
+            popShow:''
+        })
+    },
+    getUpdataYugongData(data){
+        let { userInfo,customsList } = this.data;
+        let customs = customsList.filter(item=>{ return item.isOpen }).map(item=>{ return {id:item.id,num:item.num,isOpen:item.isOpen} })
+        Api.updataYugongData({
+            updata:true,
+            data:{
+                maxChildNumber:userInfo.maxChildNumber,
+                createChildSpeed:userInfo.createChildSpeed,
+                childNumber:userInfo.childNumber,
+                customs:customs||[]
+            }
+        })
+    },
+    onHide(){
+        this.getUpdataYugongData()
+    },
+    onUnload(){
+        this.getUpdataYugongData()
+        this.setData({
+            pageUnload:true
+        })
+    }
+})

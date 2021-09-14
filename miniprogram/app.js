@@ -13,7 +13,6 @@ App({
         // this.UdeskSdkInit()
     },
     UdeskSdkInit() {
-        console.log('111111')
         UdeskSdk.init({
             appId: "wxfc83fb93b2fb092e",
             companyToken: "f2d5f4f69d9b960516587581b48fbb88",

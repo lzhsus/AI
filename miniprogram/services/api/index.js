@@ -189,5 +189,14 @@ api.answergameApiRanking = function(data, isShowLoading=false){
 }
 
 
+// 愚公移山
+api.getYugongUserInfo = function(data, isShowLoading=true){
+    return request('control','yugong/api/userinfo',data,isShowLoading);
+}
+api.updataYugongData = function(data, isShowLoading=false){
+    return request('control','yugong/api/userinfo',data,isShowLoading);
+}
+
+
 
 module.exports = api;
