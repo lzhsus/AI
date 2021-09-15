@@ -38,6 +38,7 @@ module.exports =async (event,context,root)=>{
                 data_info.maxChildNumber = 0;
                 data_info.createChildSpeed = 1;
                 data_info.openGrade = 1;//开启等级
+                data_info.houseClass = 1;
                 
                 await db.collection('yugong_user').add({
                     data: Object.assign(parame,data_info)

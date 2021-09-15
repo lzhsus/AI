@@ -47,6 +47,13 @@ Page({
     onShow () {
 
     },
+    // 点击房子
+    tickClickHouse(){
+        let { userInfo } = this.data;
+        userInfo.maxChildNumber = userInfo.maxChildNumber+userInfo.houseClass;
+        userInfo.childNumber = userInfo.childNumber+userInfo.houseClass;
+        this.setData({ userInfo })
+    },
     // 初始化更新
     updataInitDefault(){
         this.updataMaxChildNumber();

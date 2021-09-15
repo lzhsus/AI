@@ -1,11 +1,11 @@
-<view class="yugong-page">
+<view class="yugong-page" wx:if="{{pageShow=='index'}}">
     <view class="yugong-header">
         <view class="yugong-header-main">
             <view class="top">
                 <view class="number">当前共 {{userInfo.childNumber}} 个子孙</view>
                 <view class="number">{{userInfo.createChildSpeed}} /秒（击败了全球 100% 的人）</view>
             </view>
-            <view class="house-img">
+            <view class="house-img" bindtap="tickClickHouse">
                 点击该区域生成子孙
             </view>
         </view>
