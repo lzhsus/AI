@@ -1,6 +1,6 @@
 <view class="pages">
     <view class="titl">
-        <view class="code" bindtap="updataResultCode">开奖更新</view>
+        <view class="code"></view>
         <view class="history" bindtap="openPageRule">使用规则</view>
         <view class="history" bindtap="openPageHistory">历史记录</view>
     </view>

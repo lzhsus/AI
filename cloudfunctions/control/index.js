@@ -335,14 +335,6 @@ exports.main = async (event, context) => {
             resolve(res);
         }); 
     });
-    app.router('caipiao/api/wincode/updata', (ctx) => {
-        let { OPENID} = cloud.getWXContext()
-        ctx.body = new Promise(async resolve => {
-            var res = await caipiao.wincode(event, context)
-            resolve(res);
-        }); 
-    });
-    
     app.router('caipiao/api/wincode/updatacode', (ctx) => {
         let { OPENID} = cloud.getWXContext()
         ctx.body = new Promise(async resolve => {

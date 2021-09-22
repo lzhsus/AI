@@ -24,12 +24,6 @@
             </view>
         </view>
     </view>
-    <!-- <view class="win-box">
-        <view class="win-box-main">
-            <view class="input"><input type="text" placeholder="请输入今天中奖号码" bindinput="inputCode"/></view>
-            <view class="btn" bindtap="submitWinCode">提 交</view>
-        </view>
-    </view> -->
 </view>
 
 <view class="pop" wx:if="{{popShow=='rule'}}">

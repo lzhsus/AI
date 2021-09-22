@@ -305,6 +305,12 @@
                     "pathName": "yugong/index/index",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "yugong/achievement/achievement",
+                    "pathName": "yugong/achievement/achievement",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

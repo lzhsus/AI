@@ -39,9 +39,13 @@ module.exports =async (event,context,root)=>{
                 .done(),
             as:'win'
         }).end();
+        
+        var result2= await db.collection('caipiao_win').aggregate().limit(9999).sort({
+            create_time:-1
+        }).end();
         let list = (result.list||[]).map(item=>{
             item.win_code = []
-            if(item.win&&item.win.length){
+            if(item.win&&item.win.length&&item.win[0].win_code){
                 item.win_code = item.win[0].win_code.split("-")
             }
             delete item.win;
@@ -52,7 +56,8 @@ module.exports =async (event,context,root)=>{
              msg: '操作成功！',
              result:{
                  list:list,
-                 count:list.length
+                 count:list.length,
+                 period:result2.list[0].period
              },
              success:true,
              timestamp:new Date().getTime()

@@ -17,6 +17,11 @@ Component({
         changeTabClick(e){
             let { page } = e.currentTarget.dataset;
             if(common.getCurrentPage()===page) return;
+            wx.showToast({
+                title: '敬请期待...',
+                icon:"none"
+            })
+            return
             wx.redirectTo({ url: page })
         }
     }

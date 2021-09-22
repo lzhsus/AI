@@ -10,7 +10,9 @@ Page({
         userInfo:{},
         customsList:[],
 
-        _editCustomsItem:{}
+        _editCustomsItem:{},
+        _defaultIndex:0,
+        
     },
 
     async onLoad (options) {
@@ -24,6 +26,7 @@ Page({
             return
         }
         res = res.result||{};
+        res._createChildSpeed = res.createChildSpeed.toFixed(2)
         let customsList = customs.map(item=>{
             res.customs.forEach((e)=>{
                 if(e.id==item.id){
@@ -66,9 +69,10 @@ Page({
         setTimeout(()=>{
             this.updataChildNumber()
             if(userInfo.childNumber>=userInfo.maxChildNumber) return;
-            userInfo.childNumber++;
+            let _num = parseInt(userInfo.createChildSpeed/10);
+            userInfo.childNumber = userInfo.childNumber + (_num<=0?1:_num);
             this.setData({ userInfo })
-        },10)
+        },100)
     },
     // 每秒更新最大数量
     updataMaxChildNumber(){
@@ -94,15 +98,21 @@ Page({
     },
     // 选择要派遣的等级 
     openJoinCustom(e){
-        let { item } = e.currentTarget.dataset;
+        let { customsList } = this.data;
+        let { item,index } = e.currentTarget.dataset;
+
+        if(customsList.length-1!=index){
+            item._next = customsList[index+1].nextNum
+        }
         this.setData({
+            _defaultIndex:index,
             _editCustomsItem:item,
             popShow:'_editCustoms'
         })
     },
     // 确认派遣
     submitCustoms(){
-        let { customsList,_editCustomsItem,userInfo } = this.data;
+        let { customsList,_editCustomsItem,userInfo,_defaultIndex } = this.data;
         if(userInfo.childNumber<_editCustomsItem.needChild){
             wx.showToast({
                 title: '当前子孙数量不足\n\n点击屏幕生成吧！',
@@ -126,9 +136,20 @@ Page({
                 }
             }
         }))
-        customsList[_index+1].isOpen = true;
-        this.setData({customsList,userInfo,popShow:''})
+        // 当前等级大于下一级需要的数量
+        if(customsList[_index].num>=customsList[_index+1].nextNum){
+            customsList[_index+1].isOpen = true;
+        }
+        this.setData({customsList,userInfo})
         this.updataCreateChildSpeed()
+
+        
+        this.openJoinCustom({currentTarget:{
+            dataset:{
+                item:customsList[_defaultIndex],
+                index:_defaultIndex
+            }
+        }})
     },
     closePop(){
         this.setData({
@@ -143,7 +164,7 @@ Page({
             data:{
                 maxChildNumber:userInfo.maxChildNumber,
                 createChildSpeed:userInfo.createChildSpeed,
-                childNumber:userInfo.childNumber,
+                childNumber:parseInt(userInfo.maxChildNumber),
                 customs:customs||[]
             }
         })

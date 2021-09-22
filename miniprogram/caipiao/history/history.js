@@ -161,33 +161,6 @@ Page({
             code:value
         })
     },
-    submitWinCode(){
-        if(!this.data.code){
-            wx.showToast({
-                title: '请输入中奖code',
-                icon:"none"
-            })
-            return
-        }
-        Api.caipiaoWincodeUpdata({
-            win_code:this.data.code,
-            day2:this.data.day2||common.moment().format("YYYY-MM-DD")
-        }).then(res=>{
-            if(res.success){
-                res = res.result||{}
-                wx.showToast({
-                    title: '提交成功！',
-                    icon:"none"
-                })
-                this.getCaipiaoList()
-            }else{
-                wx.showModal({
-                    content: res.msg,
-                    showCancel:false
-                })
-            }
-        })
-    },
     onShow: function () {
 
     },

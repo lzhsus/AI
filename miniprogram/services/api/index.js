@@ -146,12 +146,6 @@ api.caipiaoCreate = function(data, isShowLoading=true){
 api.caipiaoList = function(data, isShowLoading=true){
     return request('control','caipiao/api/list',data,isShowLoading);
 }
-api.caipiaoWincodeUpdata = function(data, isShowLoading=true){
-    return request('control','caipiao/api/wincode/updata',data,isShowLoading);
-}
-api.updatacode = function(data, isShowLoading=true){
-    return request('control','caipiao/api/wincode/updatacode',data,isShowLoading);
-}
 api.updataPeriod = function(data, isShowLoading=false){
     return request('control','caipiao/api/wincode/period',data,isShowLoading);
 }

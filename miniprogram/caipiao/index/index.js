@@ -34,25 +34,6 @@ Page({
             backzoneNumber: arr2
         })
         this.getCaipiaoList()
-        let data = await Api.updataPeriod()
-        if(data.success){
-            this.setData({
-                period:data.result.period
-            })
-        }
-        await Api.updatacode()
-    },
-    async updataResultCode(){
-        wx.showLoading({
-          title: '更新中...',
-        })
-        await Api.updataPeriod()
-        let res = await Api.updatacode()
-        wx.hideLoading()
-        wx.showToast({
-          title: res.result.isTrue?'已更新':"更新失败",
-          icon:"none"
-        })
     },
     openPageHistory(){
         wx.navigateTo({
@@ -158,7 +139,6 @@ Page({
     },
     async submitClickBtn(){
         let { frontNumber,backzoneNumber } = this.data;
-        await Api.updataPeriod()
         Api.caipiaoCreate({
             day2:common.moment().format("YYYY-MM-DD"),
             day:common.moment().format("YYYY-MM-DD HH:MM:SS"),
@@ -207,7 +187,8 @@ Page({
                     return item;
                 })
                 this.setData({
-                    todayDayList:list
+                    todayDayList:list,
+                    period:res.period||"未知"
                 })
             }else{
                 wx.showModal({
