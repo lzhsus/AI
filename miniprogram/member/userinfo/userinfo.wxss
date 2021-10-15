@@ -31,6 +31,22 @@
   width: 100%;
   text-align: right;
 }
+#memberUserInfo .input-box .item .value picker,
+#memberUserInfo .input-box .item .value .picker {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#memberUserInfo .input-box .item .value picker.p,
+#memberUserInfo .input-box .item .value .picker.p {
+  color: #ccc;
+}
+#memberUserInfo .input-box .hint {
+  font-size: 10px;
+  color: #ccc;
+  padding: 4px 10px;
+  text-align: right;
+}
 #memberUserInfo .submit {
   width: 350rpx;
   height: 90rpx;

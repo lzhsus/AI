@@ -38,6 +38,10 @@
                     </view>
                 </view>
                 <view class="item">
+                    <view class="kye">手机号码：</view>
+                    <view class="value" bindtap="copyClick" data-mobile="{{item.mobile}}">{{item.mobile||'-'}}</view>
+                </view>
+                <view class="item">
                     <view class="kye">openId：</view>
                     <view class="value" bindtap="copyClick" data-openId="{{item.openId}}">{{item.openId}}</view>
                 </view>
@@ -76,6 +80,10 @@
                     <view class="value" bindtap="changeAdmin" data-item="{{item}}" data-name="isCommunity">
                         <van-switch size="14px" checked="{{ item.isCommunity==1 }}"></van-switch>
                     </view>
+                </view>
+                <view class="item">
+                    <view class="kye">手机号码：</view>
+                    <view class="value" bindtap="copyClick" data-mobile="{{item.mobile}}">{{item.mobile||'-'}}</view>
                 </view>
                 <view class="item">
                     <view class="kye">openId：</view>
@@ -129,6 +137,11 @@
                         <van-switch size="14px" checked="{{ item.isCommunity==1 }}"></van-switch>
                     </view>
                 </view>
+                <view class="item">
+                    <view class="kye">手机号码：</view>
+                    <view class="value" bindtap="copyClick" data-mobile="{{item.mobile}}">{{item.mobile||'-'}}</view>
+                </view>
+                
                 <view class="item">
                     <view class="kye">openId：</view>
                     <view class="value" bindtap="copyClick" data-openId="{{item.openId}}">{{item.openId}}</view>

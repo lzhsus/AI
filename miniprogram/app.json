@@ -95,6 +95,12 @@
 				"shop/shop",
 				"achievement/achievement"
             ]
+		},
+		{
+            "root": "cartoon/",
+            "pages": [
+				"index/index"
+            ]
 		}
 		
 	],

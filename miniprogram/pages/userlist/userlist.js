@@ -54,7 +54,7 @@ Page({
     updataViewList(list){
         let superList = list.filter(item=>{ return item.isSuperAdmin==1; })
         let generalList = list.filter(item=>{ return item.isAdmin==1; })
-
+        console.log('generalList',generalList)
         this.setData({
             userlist:list,
             superList:superList,

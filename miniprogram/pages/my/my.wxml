@@ -81,13 +81,6 @@
                 <text class="tag02">剩余 未知</text>
             </view>
         </view>
-        <view wx:if="{{userInfo.isSuperAdmin}}" bindtap="openPageClick" data-isuser="0" data-path="/college/updata/updata" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon08.png)">
-            <text class="value">高考更新</text>
-            <view class="tag-box" wx:if="{{pageShow}}">
-                <text class="tag01">已用 未知</text>
-                <text class="tag02">剩余 未知</text>
-            </view>
-        </view>
         <view wx:if="{{userInfo.isCaipiao}}" bindtap="openPageClick" data-isuser="0" data-path="/caipiao/index/index" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon09.png)">
             <text class="value">彩票</text>
             <view class="tag-box" wx:if="{{pageShow}}">
@@ -104,6 +97,20 @@
         </view>
         <view bindtap="openPageClick" data-path="/promotion/index/index" data-isuser="0" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon11.png)">
             <text class="value">客推CLUB</text>
+            <view class="tag-box" wx:if="{{pageShow}}">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+        </view>
+        <view bindtap="openPageClick" data-path="/yugong/index/index" data-isuser="0" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon13.png)">
+            <text class="value">愚公移山</text>
+            <view class="tag-box" wx:if="{{pageShow}}">
+                <text class="tag01">已用 未知</text>
+                <text class="tag02">剩余 未知</text>
+            </view>
+        </view>
+        <view wx:if="{{userInfo.isSuperAdmin}}" bindtap="openPageClick" data-isuser="0" data-path="/college/updata/updata" class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon08.png)">
+            <text class="value">高考更新</text>
             <view class="tag-box" wx:if="{{pageShow}}">
                 <text class="tag01">已用 未知</text>
                 <text class="tag02">剩余 未知</text>

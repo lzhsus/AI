@@ -311,6 +311,12 @@
                     "pathName": "yugong/achievement/achievement",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "cartoon/index/index",
+                    "pathName": "cartoon/index/index",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

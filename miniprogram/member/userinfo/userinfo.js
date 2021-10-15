@@ -6,7 +6,8 @@ Page({
     data: {
         userInfo:{},
         pageShow:"",
-        mobile:''
+        mobile:'',
+        region:""
     },
     onLoad(options) {
         this.getUserInfo()
@@ -34,25 +35,42 @@ Page({
             mobile:value
         })
     },
+    bindRegionChange(e){
+        this.setData({
+            region:e.detail.value
+        })
+    },
     submitClick(){
-        if(!this.data.mobile){
+        let { mobile,userInfo } = this.data;
+        let _mobile = mobile||userInfo.mobile
+        if(!_mobile){
             wx.showToast({
                 title: '请输入手机号',
                 icon:'none'
             })
             return;
         }
-        if(!(/^1\d{10}$/).test(this.data.mobile)){
+        if(!(/^1\d{10}$/).test(_mobile)){
             wx.showToast({
                 title: '请输入正确的电话号码',
                 icon:'none'
             })
             return;
         }	
+        if(!this.data.region[0]){
+            wx.showToast({
+                title: '请选择常住城市',
+                icon:'none'
+            })
+            return
+        }
         Api.fieldUpdata({
             name:"user_info",
             data:{
-                mobile:this.data.mobile
+                mobile:_mobile,
+                live_province:this.data.region[0],
+                live_city:this.data.region[1],
+                live_country:this.data.region[2],
             }
         }).then(res=>{
             if(res.success){
