@@ -3,19 +3,26 @@ import * as common from '../../common/common';
 import appConfig from '../../common/app_config';
 import mixinsIndex from '../../mixins/index';
 let globleUserList = []
+let postApi;
 Page({
     data: {
         pageShow:false,
         userlist:[],
         superList:[],
         generalList:[],
-        searchValue:''
+        searchValue:'',
+
+        page:1,
     },
     async onLoad (options) {
         await this.getuserlist()
         this.setData({
             pageShow:true
         })
+    },
+    // 到底监控
+    onReachBottom(){
+        this.allUserList();
     },
     onSearchChange(e){
         let value = e.detail;
@@ -32,6 +39,20 @@ Page({
             searchValue:''
         })
         this.updataViewList(globleUserList)
+    },
+    allUserList(){
+        if(postApi) return
+        postApi = true
+        console.log("--------------------------",this.data.userlist.length)
+        setTimeout(()=>{
+            let list = JSON.parse(JSON.stringify(globleUserList))
+            var data = list.splice(this.data.userlist.length,10)
+            this.data.userlist = this.data.userlist.concat(data);
+            this.setData({
+                userlist:this.data.userlist
+            })
+            postApi = false
+        },1000)
     },
     getuserlist(){
         return Api.apiUserlist().then(res=>{
@@ -55,11 +76,13 @@ Page({
         let superList = list.filter(item=>{ return item.isSuperAdmin==1; })
         let generalList = list.filter(item=>{ return item.isAdmin==1; })
         console.log('generalList',generalList)
+        console.log('list',list)
+        console.log('superList',superList)
         this.setData({
-            userlist:list,
             superList:superList,
             generalList:generalList
         })
+        this.allUserList()
     },
     copyClick(e){
         console.log(e)
@@ -115,7 +138,6 @@ Page({
             }
             return data;
         })
-
         this.updataViewList(list)
     },
     onShow: function () {

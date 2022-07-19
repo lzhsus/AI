@@ -1,4 +1,4 @@
-<view class="userList" id="userList" wx:if="{{pageShow}}">
+<view class="userList" id="userList">
     <view class="search-box">
         <view class="search-main">
             <van-search value="{{ searchValue }}" placeholder="请输入搜索关键词"   bind:change="onSearchChange" bind:clear="onSearchClear" />
