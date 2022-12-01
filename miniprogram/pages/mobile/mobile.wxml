@@ -1,0 +1,13 @@
+<view class="content-weapper" id="mobile">
+
+
+    <view class="main-desc">
+        <view class="tit">车主留言：</view>
+        <view class="txt">
+            “ 临时停车，请多关照~ ”
+        </view>
+    </view>
+    <view class="main-box">
+        <button type="primary" bindtap="buttonClick">电话通知车主挪车</button>
+    </view>
+</view>

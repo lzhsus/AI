@@ -1,5 +1,6 @@
 {
 	"pages": [
+		"pages/mobile/mobile",
 		"pages/my/my",
 		"pages/index/index",
 		"pages/boast/boast",
