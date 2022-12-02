@@ -3,6 +3,7 @@ const Api = require('../../services/api/index');
 Page({
     data: {
 		tel:"",
+		mobile:""
     },
 
     onLoad(opt) {
@@ -11,6 +12,15 @@ Page({
 			tel:this.data.tel
 		})
     },
+    bindinput(e){
+        let value = e.detail.value;
+        this.setData({
+            mobile:value
+        })
+    },
+	bindconfirm(){
+		
+	},
 	buttonClick(e){
 		wx.showModal({
 			content: '您将通过平台的虚拟号联系车主\n（虚拟号不能重拨,再次拨打务必重新扫码！）',

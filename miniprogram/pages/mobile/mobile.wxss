@@ -43,3 +43,20 @@ page {
   width: 600rpx;
   margin: 100rpx auto;
 }
+#mobile .input-info {
+  position: fixed;
+  bottom: 200rpx;
+  left: 75rpx;
+  width: 600rpx;
+  padding: 4px 20rpx;
+  box-sizing: border-box;
+  background: #fff;
+  line-height: 1;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+#mobile .input-info input {
+  display: block;
+  width: 100%;
+  height: 80rpx;
+}

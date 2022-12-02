@@ -10,4 +10,9 @@
     <view class="main-box">
         <button type="primary" bindtap="buttonClick">电话通知车主挪车</button>
     </view>
+
+
+    <view class="input-info">
+        <input type="text" placeholder="可以预留手机号，自己的二维码 " bindinput="bindinput" bindconfirm="bindconfirm" />
+    </view>
 </view>
