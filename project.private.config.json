@@ -2,7 +2,7 @@
 	"setting": {
 		"compileHotReLoad": true,
 		"useIsolateContext": false,
-		"urlCheck": false
+		"urlCheck": true
 	},
 	"condition": {
 		"miniprogram": {
