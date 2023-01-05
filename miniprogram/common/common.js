@@ -12,6 +12,11 @@ export const isIOS = function () {
     const res = wx.getSystemInfoSync();
     return res.system.toLowerCase().indexOf("ios") != -1 && res.platform.indexOf("devtools") == -1
 }
+export const mobile_asterisk = function($mobile){
+	let xx = '****'
+	var $mobile_asterisk = $mobile.substr(0,3)+xx+$mobile.substr(7);
+	return $mobile_asterisk;
+}
 export const formatMoney = function (value, isFixed = 2) {
     value = Number(value)
     if (value == 0) return value;
@@ -150,6 +155,34 @@ export const getNewTime = function () {
     }
 
     return hour + ':' + minute + ':' + second;
+}
+export const  numberFormat = function(val){
+	let num = 10000
+	var sizesValue = ''
+	/**
+	 * 判断取哪个单位
+	 */
+	if(val < 1000){
+		// 如果小于1000则直接返回
+		sizesValue = ''
+		return val
+	}else if(val > 1000 && val < 9999){
+		sizesValue = '千'
+	} else if(val > 10000 && val < 99999999){
+		sizesValue = '万'
+	} else if(val > 100000000){
+		sizesValue = '亿'
+	}
+	/**
+	 * 大于一万则运行下方计算
+	 */
+	let i = Math.floor(Math.log(val) / Math.log(num))
+	/**
+	 * toFixed(0)看你们后面想要取值多少，我是不取所以填了0，一般都是取2个值
+	 */
+	var sizes = ((val / Math.pow(num, i))).toFixed(0)
+	sizes = sizes + sizesValue
+	return sizes
 }
 export const formatSeconds = function (value, language) {
     let secondTime = Number(value) //将传入的秒的值转化为Number

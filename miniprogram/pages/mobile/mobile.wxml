@@ -8,11 +8,14 @@
         </view>
     </view>
     <view class="main-box">
+		<view class="tel2">{{tel2}}</view>
         <button type="primary" bindtap="buttonClick">电话通知车主挪车</button>
     </view>
 
 
-    <view class="input-info">
+    <!-- <view class="input-info">
         <input type="text" placeholder="可以预留手机号，自己的二维码 " bindinput="bindinput" bindconfirm="bindconfirm" />
-    </view>
+    </view> -->
+	<button type="primary" open-type="contact">联系客服</button>
+	<view class="desc">留言联系客服提供手机号码，将免费生成挪车码</view>
 </view>

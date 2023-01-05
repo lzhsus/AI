@@ -4,10 +4,10 @@ import appConfig from '../../common/app_config';
 import mixinsIndex from '../../mixins/index';
 import {uploadFile} from '../../services/uploadFile';
 
-var plugin = requirePlugin("WechatSI");
-let manager = null;
-let innerAudioContext = null;
-let innerAudioContext2 = null;
+// var plugin = requirePlugin("WechatSI");
+// let manager = null;
+// let innerAudioContext = null;
+// let innerAudioContext2 = null;
 
 Page({
     data: {
@@ -34,40 +34,40 @@ Page({
         settingShow:false
     },
     onLoad(){
-        manager = plugin.getRecordRecognitionManager();
-        let _this = this;
-        manager.onRecognize = function(res) {
-            _this.setData({
-                recognizes:_this.data.recognizes.concat([res])
-            })
-        }
-        manager.onStop = async function(res) {
-            _this.setData({
-                managerShow:false,
-                managerItem:res
-            })
-            let path = await uploadFile(res.tempFilePath,'mp3');
-            // 音频是否上传成功
-            if(!path['success']) return;
-            Api.managerLog({
-                duration:res.duration,
-                fileSize:res.fileSize,
-                result:res.result,
-                path:path['fileID'].replace('cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/','https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/')
-            })
-        }
-        manager.onStart = function(res) {
-            _this.setData({
-                managerShow:true
-            })
-        }
-        manager.onError = function(res) {
-            _this.setData({
-                managerShow:false
-            })
-            manager.stop();
-            console.error("error msg", res)
-        }
+        // manager = plugin.getRecordRecognitionManager();
+        // let _this = this;
+        // manager.onRecognize = function(res) {
+        //     _this.setData({
+        //         recognizes:_this.data.recognizes.concat([res])
+        //     })
+        // }
+        // manager.onStop = async function(res) {
+        //     _this.setData({
+        //         managerShow:false,
+        //         managerItem:res
+        //     })
+        //     let path = await uploadFile(res.tempFilePath,'mp3');
+        //     // 音频是否上传成功
+        //     if(!path['success']) return;
+        //     Api.managerLog({
+        //         duration:res.duration,
+        //         fileSize:res.fileSize,
+        //         result:res.result,
+        //         path:path['fileID'].replace('cloud://lzhsus-1g4h29bs69c66542.6c7a-lzhsus-1g4h29bs69c66542-1301447037/','https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/')
+        //     })
+        // }
+        // manager.onStart = function(res) {
+        //     _this.setData({
+        //         managerShow:true
+        //     })
+        // }
+        // manager.onError = function(res) {
+        //     _this.setData({
+        //         managerShow:false
+        //     })
+        //     manager.stop();
+        //     console.error("error msg", res)
+        // }
     },
     onShow: function () {
 

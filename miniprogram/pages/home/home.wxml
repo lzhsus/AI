@@ -1,0 +1,3 @@
+
+<van-cell is-link title="停车码" label="免费领取停车码" link-type="navigateTo" url="/pages/mobile/mobile" />
+<van-cell is-link title="地铁数据" label="每日客流" link-type="navigateTo" url="/pages/metro/metro" />

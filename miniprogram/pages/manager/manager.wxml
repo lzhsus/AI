@@ -1,4 +1,5 @@
-<view class="tab-nav">
+<block wx:if="{{false}}">
+	<view class="tab-nav">
     <view bindtap="changeTabNavClick" data-pageShow="manager" class="item {{pageShow=='manager'?'active':''}}">语言识别</view>
     <view bindtap="changeTabNavClick" data-pageShow="translate" class="item {{pageShow=='translate'?'active':''}}">语言翻译</view>
 </view>
@@ -46,3 +47,4 @@
         <view class="btn" bindtap="openSetting">打开设置</view>
     </view>
 </view>
+</block>

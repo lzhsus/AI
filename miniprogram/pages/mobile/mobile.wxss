@@ -43,6 +43,19 @@ page {
   width: 600rpx;
   margin: 100rpx auto;
 }
+#mobile .main-box .tel2 {
+  font-size: 12Px;
+  color: #999;
+  text-align: center;
+  padding: 4px 0;
+}
+#mobile .desc {
+  font-size: 12Px;
+  color: #999;
+  text-align: center;
+  padding: 4px 0;
+  width: 100%;
+}
 #mobile .input-info {
   position: fixed;
   bottom: 200rpx;
