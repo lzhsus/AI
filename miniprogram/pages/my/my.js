@@ -127,6 +127,7 @@ Page({
         })
     },
     getUserProfile(e){
+        return
         let { updata } = e.currentTarget.dataset
         console.log(e)
         wx.getUserProfile({

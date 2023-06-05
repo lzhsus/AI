@@ -191,6 +191,6 @@ api.updataYugongData = function(data, isShowLoading=false){
     return request('control','yugong/api/userinfo',data,isShowLoading);
 }
 api.metroData = function(data, isShowLoading=true){
-    return requestHttp('https://2018-1258231492.cos.ap-shanghai.myqcloud.com/data.json?q-sign-algorithm=sha1&q-ak=AKIDoilPPE1HZDPyAWEm7rLTpgclOE_WK8dMGcJjUYh8B75e3EB7b68Id_cJPgIpN12_&q-sign-time=1672909675;1672913275&q-key-time=1672909675;1672913275&q-header-list=host&q-url-param-list=&q-signature=7b7b280e77df850c8c378d22c9185c0b86d053de&x-cos-security-token=qO3h1L3VFMAumF71mNbbh8zDuMMOH30aa133904d5c7eaef1a603f28fd897c6669VgMBvbFy6q0wM1kEF4R6RxgxT-6EJWyIaZOoFGEis66QAxXwof8ZVOtbl_MPdArdQwRmOGsSoYFm7kBGe7i3kafr9RD0225gfby2gs4kBOUu3hQC-TdRdznltxcDZe4xCG7jMDtT-R5-uFQSabhRESInvwbmygcfaA_H7nxnbZiMd4QGYZVSxxLQWCKIbge',data,isShowLoading);
+    return requestHttp('https://2018-1258231492.cos.ap-shanghai.myqcloud.com/data.json',data,isShowLoading);
 }
 module.exports = api;

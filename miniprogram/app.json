@@ -3,7 +3,9 @@
 		"pages/home/home",
 		"pages/my/my",
 		"pages/metro/metro",
-		"pages/mobile/mobile"
+		"pages/gpt/gpt",
+		"pages/mobile/mobile",
+		"pages/light-wave/light-wave"
 	],
 	"tabBar": {
 		"color": "#8a8a8a",
@@ -22,11 +24,19 @@
 			}
 		]
 	},
+	"subpackages": [
+        {
+            "root": "cutecard/",
+            "pages": [
+                "index/index"
+            ]
+        }
+	],
 	"window": {
 		"backgroundColor": "#F6F6F6",
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#F6F6F6",
-		"navigationBarTitleText": "Home",
+		"navigationBarTitleText": "H羞羞的语言",
 		"navigationBarTextStyle": "black"
 	},
 	"sitemapLocation": "sitemap.json",

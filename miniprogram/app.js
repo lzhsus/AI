@@ -5,7 +5,8 @@ App({
         //     console.error('请使用 2.2.3 或以上的基础库以使用云能力')
         // } else {
         //     wx.cloud.init({
-        //         env: 'lzhsus-1g4h29bs69c66542',
+        //         // env: 'lzhsus-1g4h29bs69c66542',
+        //         env:"prod-9gnl6m5v2ba141f4",
         //         traceUser: true,
         //     })
         // }

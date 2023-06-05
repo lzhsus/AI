@@ -32,7 +32,9 @@
 		"packNpmRelationList": [],
 		"minifyWXSS": true,
 		"showES6CompileOption": false,
-		"ignoreUploadUnusedFiles": true
+		"ignoreUploadUnusedFiles": true,
+		"condition": false,
+		"skylineRenderEnable": false
 	},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

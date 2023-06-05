@@ -1,12 +1,16 @@
 export default{
     env:"lzhsus-1g4h29bs69c66542",//正式环境
-    
+    // 正式测试
+    production: {
+        serverPath: 'http://127.0.0.1:3000/',
+    },
+    envVersion: 'production',
+
     serverPath:'',
     ossServerPath:'',
     ossPath:"https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/",
     ossCloud:"cloud://text-4zw80.7465-text-4zw80-1301526660/",
     appid: 'wx1314c40d5e143385',
-    envVersion: '',
     tabPath:[],
     txMapKey:"YM3BZ-O466F-RR3JF-J4FPY-V6LOV-P4FZP",
     baidu:{

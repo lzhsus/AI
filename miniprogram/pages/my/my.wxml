@@ -19,9 +19,9 @@
             </view>
         </view>
         <!-- 编辑用户信息 -->
-        <view class="edit-icon" bindtap="openPageUserInfo">
+        <!-- <view class="edit-icon" bindtap="openPageUserInfo">
             <image src="https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/user-edit-icon.png?sign=b48f754b5132c6336b6f74b8afb75362&t=1629775112" class="img100" mode="widthFix" />
-        </view>
+        </view> -->
     </view>
     <view class="main" wx:if="{{false}}">
         <view class="item" style="background-image:url(https://6c7a-lzhsus-1g4h29bs69c66542-1301447037.tcb.qcloud.la/static/image/icon/shiwu-icon00.png)">
