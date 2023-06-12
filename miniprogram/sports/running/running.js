@@ -44,7 +44,6 @@ Page({
         this.setData({
             startRuning:true
         })
-        this.wxGetLocation()
     },
     async wxGetLocation(){
         if(!this.data.startRuning) return;

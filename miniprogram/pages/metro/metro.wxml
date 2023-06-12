@@ -2,3 +2,6 @@
 <view class="container" wx:if="{{pageShow}}">
     <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
 </view>
+<view class="adContainer">
+<ad unit-id="adunit-3160aa49dd9812b1"></ad>
+</view>

@@ -9,7 +9,7 @@
     </view>
     <view class="main-box">
 		<view class="tel2">{{tel2}}</view>
-        <button type="primary" bindtap="buttonClick">电话通知车主挪车</button>
+        <button type="primary" bindtap="openAS">电话通知车主挪车</button>
     </view>
 
 

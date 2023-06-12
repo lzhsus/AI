@@ -2,3 +2,7 @@
 <view class="container" wx:if="{{pageShow}}">
     <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
 </view>
+<!--开发者需在video标签中添加unit-id参数，其他参数参见video组件使用文档 -->
+<view class="adContainer">
+    <ad unit-id="adunit-97c0f7bc9d2278ef" ></ad>
+</view>

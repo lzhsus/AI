@@ -6,7 +6,7 @@ const wxml = `
     <text class="text">yeah!</text>
   </view>
   <view class="item-box blue">
-      <image class="img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3582589792,4046843010&fm=26&gp=0.jpg"></image>
+      <image class="img" src="https://bdb-azure-files.eintone.com/assest/upload/images/3d63b928c7dc7a81c08b90d3f6cd9d6d.jpeg?v=20210414"></image>
   </view>
 </view>
 `

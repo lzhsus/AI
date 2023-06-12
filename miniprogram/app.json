@@ -55,8 +55,11 @@
 		"van-field": "./components/vant/field/index",
 		"van-tag": "./components/vant/tag/index",
 		"van-cell": "./components/vant/cell/index"
-
 	},
 	"plugins": {
+		"weather": {
+		  "version": "1.1.1",
+		  "provider": "wx6578a11b90205be3"
+		}
 	}
 }

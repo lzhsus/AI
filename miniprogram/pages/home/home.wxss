@@ -1,1 +1,7 @@
 /* pages/home/home.wxss */
+
+/* 外层组件的宽度可设置成100%或具体数值 */
+.adContainer {
+  position: fixed;bottom: 0;left: 0;
+    width: 100%;
+  }
