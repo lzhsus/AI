@@ -1,6 +1,6 @@
 <van-cell is-link title="停车码" label="免费领取停车码" link-type="navigateTo" url="/pages/mobile/mobile" />
 <van-cell is-link title="地铁数据" label="每日客流" link-type="navigateTo" url="/pages/metro/metro" />
-<van-cell is-link title="Chat GPT" label="GPT" link-type="navigateTo" url="/pages/gpt/gpt" />
+<!-- <van-cell is-link title="Chat GPT" label="GPT" link-type="navigateTo" url="/pages/gpt/gpt" /> -->
 <van-cell is-link title="光波" label="光波" link-type="navigateTo" url="/pages/light-wave/light-wave" />
 <van-cell bindtap="openpage" is-link title="合成蒙版" label="图片合成" link-type="navigateTo" url="" />
 
