@@ -2,6 +2,7 @@
 	"pages": [
 		"pages/home/home",
 		"pages/my/my",
+		"pages/carbon-water/carbon-water",
 		"pages/metro/metro",
 		"pages/gpt/gpt",
 		"pages/mobile/mobile",
@@ -15,6 +16,11 @@
 				"text": "首页",
 				"iconPath": "./status/nav-icon3.png",
 				"selectedIconPath": "./status/nav-icon3-active.png"
+			},{
+				"pagePath": "pages/carbon-water/carbon-water",
+				"text": "碳水",
+				"iconPath": "./status/my-icon02.png",
+				"selectedIconPath": "./status/my-icon03.png"
 			},
 			{
 				"pagePath": "pages/my/my",
@@ -30,7 +36,12 @@
             "pages": [
                 "index/index"
             ]
-        }
+        },{
+					"root": "ts/",
+					"pages": [
+							"index/index"
+					]
+			}
 	],
 	"window": {
 		"backgroundColor": "#F6F6F6",
@@ -54,7 +65,9 @@
 		"van-search": "./components/vant/search/index",
 		"van-field": "./components/vant/field/index",
 		"van-tag": "./components/vant/tag/index",
-		"van-cell": "./components/vant/cell/index"
+		"van-cell": "./components/vant/cell/index",
+		"van-cell-group": "./components/vant/cell-group/index",
+		"van-panel":"./components/vant/panel/index"
 	},
 	"plugins": {
 		"weather": {

@@ -1,0 +1,13 @@
+<!-- 快速入口 -->
+<view class="entrance-box">
+	<block wx:for="{{list}}" wx:key="index">
+		<view class="entrance-item" bindtap="openEntranceClick" data-item="{{item}}">
+			<view class="icon-img" style="background-image:url({{item.code}})"></view>
+			<view class="name">{{ item.cfg_text }}</view>
+		</view>
+	</block>
+</view>
+
+<view class="ad-food">
+	<ad unit-id="adunit-0728657a45f53c2a" ad-type="video" ad-theme="white"></ad>
+</view>

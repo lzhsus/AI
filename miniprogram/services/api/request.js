@@ -21,10 +21,10 @@ export default async function request(name,url, params={},isShowLoading=true) {
 
     let userInfo = wx.getStorageSync('userInfo');
     if(!userInfo){
-        if(!loginPromis){        
-            loginPromis=login('login');
-        }
-        userInfo=await loginPromis;
+        // if(!loginPromis){        
+        //     loginPromis=login('login');
+        // }
+        // userInfo=await loginPromis;
     }
     // 检查是否过期
     let header={
@@ -34,30 +34,30 @@ export default async function request(name,url, params={},isShowLoading=true) {
     data.data.header = header
 
     let res;
-    try{
-        res=await wx.cloud.callFunction(data)
-    }catch(e){
-        //console.log("系统忙，请重试！",e)
-        wx.showModal({
-            title: '',
-            content: '网络错误，请重试！',
-            showCancel:false,
-        })
-        if(isShowLoading) {
-            wx.hideLoading()
-        }
-    }
+    // try{
+    //     res=await wx.cloud.callFunction(data)
+    // }catch(e){
+    //     //console.log("系统忙，请重试！",e)
+    //     wx.showModal({
+    //         title: '',
+    //         content: '网络错误，请重试！',
+    //         showCancel:false,
+    //     })
+    //     if(isShowLoading) {
+    //         wx.hideLoading()
+    //     }
+    // }
     
-    res=res.result;
-    if( Object.prototype.toString.call(res)!=='[object Object]' ){
-        if(isShowLoading) {
-            wx.hideLoading()
-        }
-        return {
-            res:res,
-            msg: '网络错误！'
-        }
-    }
+    res=res?.result||{};
+    // if( Object.prototype.toString.call(res)!=='[object Object]' ){
+    //     if(isShowLoading) {
+    //         wx.hideLoading()
+    //     }
+    //     return {
+    //         res:res,
+    //         msg: '网络错误！'
+    //     }
+    // }
     // 未注册会员
     if(res.errcode == '41001'){
         wx.removeStorageSync('userInfo')

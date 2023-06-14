@@ -19,7 +19,7 @@ Page({
 				adUnitId: 'adunit-fe4704d84f0d7d7c'
 			})
 			interstitialAd.onLoad(() => {
-				console.log('插屏 广告加载成功')
+				console.log('插屏 广告加载成功-fe4704d84f0d7d7c')
 			})
 			interstitialAd.onError((err) => {
 				console.log('插屏 广告加载失败'+err)

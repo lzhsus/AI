@@ -2,7 +2,7 @@
 	"setting": {
 		"compileHotReLoad": false,
 		"useIsolateContext": false,
-		"urlCheck": false
+		"urlCheck": true
 	},
 	"condition": {
 		"miniprogram": {
@@ -323,6 +323,20 @@
 					"name": "",
 					"pathName": "pages/metro/metro",
 					"query": "",
+					"launchMode": "default",
+					"scene": null
+				},
+				{
+					"name": "",
+					"pathName": "pages/carbon-water/carbon-water",
+					"query": "",
+					"launchMode": "default",
+					"scene": null
+				},
+				{
+					"name": "",
+					"pathName": "ts/index/index",
+					"query": "cfg_key=1",
 					"launchMode": "default",
 					"scene": null
 				}

@@ -1,0 +1,31 @@
+<van-tabs active="{{ cfg_key }}" animated swipeable bind:change="onChange" data-index="{{index}}">
+	<block wx:for="{{list}}" wx:key="index">
+		<van-tab title="{{item.name}}">
+			<view class="ts-mian">
+				<veiw class="tip">温馨提交：一下数据仅供参数~</veiw>
+				<block wx:for="{{item.list}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
+					<view class="ts-item">
+						<view class="ts-item-cover" style="background-image:url({{item2.image}})"></view>
+						<view class="ts-item-info">
+							<view class="ts-item-info-name line-clamp-3">{{item2.food_name}}</view>
+							<view class="ts-item-info-txt">可吸收碳水: <text class="t{{item2.level}}">{{item2.carbon_water}}</text>g/{{item2.unit}}</view>
+							<view class="ts-item-info-txt">总碳水: {{item2.all_carbon_water}}/{{item2.unit}}</view>
+							<view class="ts-item-info-txt">热量: {{item2.calorie}}kcal/{{item2.unit}}</view>
+							<view class="ts-item-info-txt">脂肪: {{item2.fat}}g/{{item2.unit}}</view>
+							<view class="ts-item-info-txt">膳食纤维: {{item2.fiber}}g/{{item2.unit}}</view>
+							<view class="ts-item-info-txt">蛋白质: {{item2.protein}}g/{{item2.unit}}</view>
+							<view class="ts-item-desc">
+								<text class="t1" wx:if="{{item2.level==1}}">{{item2.level==1?'优先食用':""}}</text>
+								<text class="t2" wx:if="{{item2.level==2}}">{{item2.level==1?'可适量食用':""}}</text>
+								<text class="t3" wx:if="{{item2.level==3}}">{{item2.level==1?'不推荐食用':""}}</text>
+							</view>
+						</view>
+					</view>
+				</block>
+				<text class="desc">
+					*数据来源\n美国农业部辖下的营养素资料实验室（SR22）\n中国疾病预防控制中心辖下的营养与食品安全所(CEC2002Ed2)\n食物安全中心辖下的食物研究化验所(ERL)\n澳洲新西兰食品标准管理局(NUTTAB2006)\n泰国国立玛希隆大学营养学学院(ECD2002)
+				</text>
+			</view>
+		</van-tab>
+	</block>
+</van-tabs>

@@ -191,6 +191,7 @@ api.updataYugongData = function(data, isShowLoading=false){
     return request('control','yugong/api/userinfo',data,isShowLoading);
 }
 api.metroData = function(data, isShowLoading=true){
-    return requestHttp('https://2018-1258231492.cos.ap-shanghai.myqcloud.com/data.json',data,isShowLoading);
+    return request('https://2018-1258231492.cos.ap-shanghai.myqcloud.com/data.json',data,isShowLoading);
 }
+
 module.exports = api;
